@@ -119,7 +119,7 @@ def train(model, train_loader, val_loader, epochs):
     
     epoch = 0
     
-    if args.resume_train = True:
+    if args.resume_train == True:
         model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
     
     for e in range(epoch,epochs):
