@@ -10,6 +10,9 @@ class MarkdownModel(nn.Module):
         self.model = AutoModel.from_pretrained(model_path)
         #self.top = nn.Linear(769, 1)
         self.top = nn.Linear(768, 1)
+        #self.reinit_n_layers = 1
+        #for n in range(1, self.reinit_n_layers + 1): 
+          #self.model.encoder.layer[-n].apply(self.model._init_weights)
 
     #def forward(self, ids, mask, fts):
     def forward(self, ids, mask):
