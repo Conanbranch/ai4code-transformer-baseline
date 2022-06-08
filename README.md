@@ -52,6 +52,10 @@ To continue from previous checkpoint:
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --resume_train True```
 
+To continue from previous checkpoint (with specific filename name and path):
+
+```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --resume_train True --model_ckp_path "/checkpoint_path" --model_ckp "checkpoint.pt"```
+
 ### Inference
 - Add
 
