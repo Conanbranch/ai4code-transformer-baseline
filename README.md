@@ -15,11 +15,11 @@ Ranking of code cells is preserved between training and validation sets:
 
 Modiified original input from:
 
-```<cls> Markdown content <cls> Code content 1 <cls> Code content 2 <cls> ... <cls> Code content 20 <cls> ```
+```<cls> markdown <cls> code <cls> code <cls> ... <cls> code <cls> ```
 
 To:
 
-```<cls> Markdown content <sep> Code content 1 <sep> Code content 2 <sep> ... <sep> Code content 20 <sep> ```
+```<cls> mardkdown <sep> code <sep> code <sep> ... <sep> code <sep> ```
 
 ### Preprocessing
 To prepare the data and extract features for training, including the markdown-only dataframes and sampling the code cells needed for each note book, simply run:
