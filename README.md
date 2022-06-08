@@ -68,3 +68,5 @@ To save model (with specific file name):
 - Clean up ranking
 - Clean up default command line arguments
 - Add support for different sample sizes via command line arguments
+- Add Stochastic Weight Averaging (SWA)
+- Maybe add frequent evaluation
