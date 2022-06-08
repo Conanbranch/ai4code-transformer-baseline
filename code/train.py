@@ -31,6 +31,7 @@ parser.add_argument('--epochs', type=int, default=5)
 parser.add_argument('--n_workers', type=int, default=8)
 parser.add_argument('--re_init', type=bool, default=False)
 parser.add_argument('--reinit_n_layers', type=int, default=1)
+parser.add_argument('--resume_train', type=bool, default=False)
 
 args = parser.parse_args()
 
@@ -115,11 +116,13 @@ def train(model, train_loader, val_loader, epochs):
                                                 num_training_steps=num_train_optimization_steps)  # PyTorch scheduler
     criterion = torch.nn.L1Loss()
     scaler = torch.cuda.amp.GradScaler()
-
-    #model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
-
-    #for e in range(epoch,epochs):
-    for e in range(epochs):
+    
+    epoch = 0
+    
+    if args.resume_train = True:
+        model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
+    
+    for e in range(epoch,epochs):
         model.train()
         tbar = tqdm(train_loader, file=sys.stdout)
         loss_list = []
