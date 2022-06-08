@@ -29,6 +29,8 @@ parser.add_argument('--batch_size', type=int, default=8)
 parser.add_argument('--accumulation_steps', type=int, default=4)
 parser.add_argument('--epochs', type=int, default=5)
 parser.add_argument('--n_workers', type=int, default=8)
+parser.add_argument('--re_init', type=bool, default=False)
+parser.add_argument('--reinit_n_layers', type=int, default=1)
 
 args = parser.parse_args()
 
@@ -165,6 +167,6 @@ def train(model, train_loader, val_loader, epochs):
         
     return model, y_pred
 
-model = MarkdownModel(args.model_name_or_path)
+model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
 model = model.cuda()
 model, y_pred = train(model, train_loader, val_loader, epochs=args.epochs)
