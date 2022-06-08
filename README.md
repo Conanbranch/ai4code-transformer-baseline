@@ -19,7 +19,7 @@ Modiified original input from (https://github.com/suicao/ai4code-baseline):
 
 To:
 
-``<CLS> mardkdown <SEP> code <SEP> code <SEP> ... <SEP> code <SEP>```
+```<CLS> mardkdown <SEP> code <SEP> code <SEP> ... <SEP> code <SEP>```
 
 ### Preprocessing
 To prepare the data and extract features for training, including the markdown-only dataframes and sampling the code cells needed for each note book, simply run:
