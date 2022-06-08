@@ -7,7 +7,7 @@ Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pyt
 
 Instead of predicting the cell position with only the markdown itself, we randomly sample code cells to act as the global context. So your input will look something like this:
 
-```<cls> Markdown content <sep> Code content 1 <sep> Code content 2 <sep> ... <sep> Code content 20 <sep> ```
+```<cls> mardkdown <sep> code <sep> code <sep> ... <sep> code <sep>```
 
 Ranking of code cells is preserved between training and validation sets:
 
