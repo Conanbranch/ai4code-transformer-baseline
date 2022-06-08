@@ -58,9 +58,28 @@ df_ranks = (
         .set_index('cell_id', append=True)
 )
 
+# A bit of a mess, could probably clean this up. 
 df_ancestors = pd.read_csv(data_dir / 'train_ancestors.csv', index_col='id')
 df = df.reset_index().merge(df_ranks, on=["id", "cell_id"]).merge(df_ancestors, on=["id"])
-df["pct_rank"] = df["rank"] / df.groupby("id")["cell_id"].transform("count")
+df["pct_rank_old"] = df["rank"] / df.groupby("id")["cell_id"].transform("count")
+df = df.sort_values(['id','rank'],ascending=True).reset_index(drop=True)
+df["ct_rank"] = df.groupby(["id", "cell_type"]).cumcount() + 1 # this will shift the first value to 0.5 and duplicate the orignal pred
+df["mod_rank"] = df.loc[df['cell_type'] == 'code']['ct_rank']
+df["mod_rank"] = df.groupby(["id"])["mod_rank"].fillna(method='ffill')
+df["dup_rank"] = df.loc[df['cell_type'] == 'markdown'].groupby(["id", "cell_type", "mod_rank"]).cumcount() + 1
+df["dup_count"] = df.loc[df['cell_type'] == 'markdown'].groupby(["id", "cell_type", "mod_rank"])["mod_rank"].transform("count")
+df["t_mod_rank"] = df.loc[(df['cell_type'] == 'markdown')]["mod_rank"] + (df.loc[(df['cell_type'] == 'markdown')]["dup_rank"] / (df.loc[(df['cell_type'] == 'markdown')]["dup_count"] + 1))
+df.t_mod_rank.fillna(df.mod_rank, inplace=True)
+df["mod_rank_1"] = df.groupby(["id"])["t_mod_rank"].fillna(method='bfill')
+df["dup_rank_1"] = df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)].groupby(["id", "cell_type", "mod_rank_1"]).cumcount() + 1
+df["dup_count_1"] = df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)].groupby(["id", "cell_type", "mod_rank_1"])["mod_rank_1"].transform("count")
+df["mod_rank_2"] = df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["mod_rank_1"] - ((df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["dup_count_1"] + 1) - (df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["dup_rank_1"])) / (df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["dup_count_1"] + 1)
+df.t_mod_rank.fillna(df.mod_rank_2, inplace=True)
+df["mod_rank"] = df["t_mod_rank"]
+df["count"] = df.loc[df['cell_type'] == 'code'].groupby(["id", "cell_type"])["mod_rank"].transform("count") # + 1
+df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='ffill')
+df["pct_rank"] = df["mod_rank"] / df["count"]
+df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
 
 from sklearn.model_selection import GroupShuffleSplit
 
