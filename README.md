@@ -30,7 +30,7 @@ To reduce the training and validation set to speed up training:
 
 ```$ python preprocess.py --sample_data 0.2```
 
-This will create training and validation set that is 20% of the data, where the training set is 18% and the validation set is 2%.
+This will create training and validation set that is 20% of the data with a 90/10 split (i.e the training set will be 18% and the validation set is 2%)
 
 Output will be in the ```./data``` folder:
 ```
