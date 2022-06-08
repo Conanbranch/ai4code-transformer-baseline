@@ -91,8 +91,8 @@ df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1
 
 from sklearn.model_selection import GroupShuffleSplit
 
-NTRAIN = 0.9 * arg.sample_data # proportion of training set
-NVALID = 0.1 * arg.sample_data # proportion of validation set
+NTRAIN = 0.9 * args.sample_data # proportion of training set
+NVALID = 0.1 * args.sample_data # proportion of validation set
 
 splitter = GroupShuffleSplit(n_splits=1, train_size=NTRAIN, test_size=NVALID, random_state=0)
 train_ind, val_ind = next(splitter.split(df, groups=df["ancestor_id"]))
@@ -138,7 +138,7 @@ def get_features(df):
         total_md = sub_df[sub_df.cell_type == "markdown"].shape[0]
         code_sub_df = sub_df[sub_df.cell_type == "code"]
         total_code = code_sub_df.shape[0]
-        codes = sample_cells(code_sub_df.source.values, arg.num_sample)
+        codes = sample_cells(code_sub_df.source.values, args.num_sample)
         features[idx]["total_code"] = total_code
         features[idx]["total_md"] = total_md
         features[idx]["codes"] = codes
