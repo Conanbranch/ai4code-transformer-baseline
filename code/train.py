@@ -27,6 +27,8 @@ parser.add_argument('--batch_size', type=int, default=8)
 parser.add_argument('--accumulation_steps', type=int, default=4)
 parser.add_argument('--epochs', type=int, default=5)
 parser.add_argument('--n_workers', type=int, default=8)
+parser.add_argument('--num_feature_sample', type=int, default=20)
+parser.add_argument('--train_sample_size', type=float, default=0.2)
 
 args = parser.parse_args()
 
