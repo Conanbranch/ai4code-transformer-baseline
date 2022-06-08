@@ -24,6 +24,7 @@ class MarkdownDataset(Dataset):
             return_token_type_ids=True,
             truncation=True
         )
+        
         code_inputs = self.tokenizer.batch_encode_plus(
             [str(x) for x in self.fts[row.id]["codes"]],
             add_special_tokens=True,
@@ -31,17 +32,11 @@ class MarkdownDataset(Dataset):
             padding="max_length",
             truncation=True
         )
-       
-        #n_md = self.fts[row.id]["total_md"]
-        #n_code = self.fts[row.id]["total_md"]
-        #if n_md + n_code == 0:
-        #    fts = torch.FloatTensor([0])
-        #else:
-        #   fts = torch.FloatTensor([n_md / (n_md + n_code)])
-
+        
         ids = inputs['input_ids']
         for x in code_inputs['input_ids']:
-            ids.extend(x[:-1])
+            #ids.extend(x[:-1])
+            ids.extend(x[1:])
         ids = ids[:self.total_max_len]
         if len(ids) != self.total_max_len:
             ids = ids + [self.tokenizer.pad_token_id, ] * (self.total_max_len - len(ids))
@@ -49,7 +44,8 @@ class MarkdownDataset(Dataset):
 
         mask = inputs['attention_mask']
         for x in code_inputs['attention_mask']:
-            mask.extend(x[:-1])
+            #mask.extend(x[:-1])
+            mask.extend(x[1:])
         mask = mask[:self.total_max_len]
         if len(mask) != self.total_max_len:
             mask = mask + [self.tokenizer.pad_token_id, ] * (self.total_max_len - len(mask))
