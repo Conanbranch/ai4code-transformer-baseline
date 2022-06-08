@@ -55,11 +55,11 @@ val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_w
                         pin_memory=False, drop_last=False)
 
 def save_ckp(state, checkpoint_dir):
-    f_path = checkpoint_dir + '/checkpoint.pt'
+    f_path = checkpoint_dir + '/model_new_rank_01_v2.pt'
     torch.save(state, f_path)
 
 def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
-    checkpoint = torch.load(checkpoint_fpath + '/checkpoint.pt')
+    checkpoint = torch.load(checkpoint_fpath + '/model_new_rank_01_v2.pt')
     model.load_state_dict(checkpoint['state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer'])
     scheduler.load_state_dict(checkpoint['scheduler'])
@@ -108,6 +108,7 @@ def train(model, train_loader, val_loader, epochs):
     scaler = torch.cuda.amp.GradScaler()
 
     #model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
+
     #for e in range(epoch,epochs):
     for e in range(epochs):
         model.train()
@@ -137,7 +138,7 @@ def train(model, train_loader, val_loader, epochs):
 
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
         
-        torch.save(model.state_dict(), "/content/gdrive/MyDrive/model.bin")
+        torch.save(model.state_dict(), "/content/gdrive/MyDrive/model_new_rank_01_v2.bin")
 
         checkpoint = {
           'epoch': e + 1,
@@ -148,7 +149,8 @@ def train(model, train_loader, val_loader, epochs):
         save_ckp(checkpoint, args.model_ckp_path)
 
         y_val, y_pred = validate(model, val_loader)
-        val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
+        #val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
+        val_df["pred"] = val_df["pct_rank"]
         val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
         y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
         print("Preds score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
