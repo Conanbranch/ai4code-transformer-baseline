@@ -147,7 +147,7 @@ def train(model, train_loader, val_loader, epochs):
 
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
         
-        torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
+        torch.save(model.state_dict(), args.model_ckp_path + "/" + str(e) + "_" args.model)
         #torch.save(model.state_dict(), "/content/gdrive/MyDrive/model_new_rank_01_v2.bin")
 
         checkpoint = {
@@ -164,7 +164,9 @@ def train(model, train_loader, val_loader, epochs):
         val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
         y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
         print("Preds score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-        
+    
+    torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
+    
     return model, y_pred
 
 model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
