@@ -56,5 +56,3 @@ I found ```codebert-base``` to be the best of all the transformers:
 - Clean up ranking
 - Clean up default command line arguments
 - Add support for different sample sizes via command line arguments
-- Add saving models by epoch
-
