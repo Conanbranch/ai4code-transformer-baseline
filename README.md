@@ -5,7 +5,7 @@ Solution for [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) compe
 ### Overview
 Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and https://github.com/suicao/ai4code-baseline. 
 
-Instead of predicting the cell position with only the markdown itself, we randomly sample code cells to act as the context. The code is sampled uniformaly, perserving the order. So your input will look something like this:
+Instead of predicting the cell position with only the markdown itself, we randomly sample code cells to act as the context. The code is sampled uniformaly, perserving the order. Input will look like this:
 
 ```<cls> mardkdown <sep> code <sep> code <sep> ... <sep> code <sep>```
 
