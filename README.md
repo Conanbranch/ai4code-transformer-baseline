@@ -26,7 +26,7 @@ To prepare the data and extract features for training, including the markdown-on
 
 ```$ python preprocess.py```
 
-To reduce the training and validation set to speed up training:
+To reduce the size of the data set used for training and validation:
 
 ```$ python preprocess.py --sample_data 0.2```
 
