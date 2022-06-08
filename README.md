@@ -9,7 +9,7 @@ Instead of predicting the cell position with only the markdown itself, we random
 
 ```<cls> Markdown content <sep> Code content 1 <sep> Code content 2 <sep> ... <sep> Code content 20 <sep> ```
 
-Ranking of code cells is now preserved between training and validation sets:
+Ranking of code cells is preserved between training and validation sets:
 
 - Add
 
