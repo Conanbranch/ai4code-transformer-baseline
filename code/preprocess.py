@@ -9,8 +9,8 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Process some arguments')
 
-parser.add_argument('--num_sample', type=int, default=20)
-parser.add_argument('--num_samples', type=float, default=1.0)
+parser.add_argument('--num_samples', type=int, default=20)
+parser.add_argument('--sample_data', type=float, default=1.0)
 
 args = parser.parse_args()
 
@@ -139,7 +139,7 @@ def get_features(df):
         code_sub_df = sub_df[sub_df.cell_type == "code"]
         total_code = code_sub_df.shape[0]
         codes = sample_cells(code_sub_df.source.values, args.num_samples)
-        features[idx]["sample_size"] = args.num_samples
+        features[idx]["num_samples"] = args.num_samples
         features[idx]["total_code"] = total_code
         features[idx]["total_md"] = total_md
         features[idx]["codes"] = codes
