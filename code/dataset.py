@@ -33,6 +33,7 @@ class MarkdownDataset(Dataset):
             max_length=code_max_length + 1,
             padding="max_length",
             truncation=True
+        )
         
         ids = inputs['input_ids']
         for x in code_inputs['input_ids']:
