@@ -72,3 +72,4 @@ To save model (with specific file name):
 - Maybe add frequent evaluation
 - may want to try correct_bias=True in adamW as per https://arxiv.org/pdf/2006.05987.pdf
 - double check on named paramaters in weight decay
+- confirm no notebooks from same ancestors between training and validation sets
