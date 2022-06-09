@@ -32,7 +32,6 @@ parser.add_argument('--n_workers', type=int, default=8)
 parser.add_argument('--re_init', type=bool, default=False)
 parser.add_argument('--reinit_n_layers', type=int, default=1)
 parser.add_argument('--resume_train', type=bool, default=False)
-parser.add_argument('--vbl_code', type=bool, default=False)
 
 args = parser.parse_args()
 
@@ -55,9 +54,9 @@ df_orders = pd.read_csv(
 ).str.split()
 
 train_ds = MarkdownDataset(train_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
-                           total_max_len=args.total_max_len, fts=train_fts, vbl_code=args.vbl_code)
+                           total_max_len=args.total_max_len, fts=train_fts)
 val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
-                         total_max_len=args.total_max_len, fts=val_fts, vbl_code=args.vbl_code)
+                         total_max_len=args.total_max_len, fts=val_fts)
 train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.n_workers,
                           pin_memory=False, drop_last=True)
 val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.n_workers,
