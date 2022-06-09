@@ -64,7 +64,7 @@ To save model (with specific file name):
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --model "model.bin"```
 
-The code_max_length is a function of the number of sampled code cells. The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/sample_size)```, where the code size (number of tokens per code cell) is fixed regardless of the number of code cells in the notebook. Use variable length code, where ```code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)``` for code sizes that are a function of the actual number of code cells sampled (i.e. there was only 7 code cells but you were sampling 20, this gives you more tokens per code cell where the number of code cells < sample_size)':
+The code_max_length is a function of the number of sampled code cells. The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)```, where the code size (number of tokens per code cell) is fixed regardless of the number of code cells in the notebook. Use variable length code, where ```code_max_length = int((self.total_max_len - self.md_max_len)/num_sampled)``` for code sizes that are a function of the actual number of code cells sampled (i.e. there was only 7 code cells but you were sampling 20, this gives you more tokens per code cell where the number of code cells num_sampled < num_samples, such that num_samples will be 7)':
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --vbl_code True``` 
 
