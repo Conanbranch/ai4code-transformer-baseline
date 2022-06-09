@@ -70,3 +70,4 @@ To save model (with specific file name):
 - Add support for different sample sizes via command line arguments
 - Add Stochastic Weight Averaging (SWA)
 - Maybe add frequent evaluation
+- may want to try correct_bias=True in adamW as per https://arxiv.org/pdf/2006.05987.pdf
