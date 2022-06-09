@@ -19,9 +19,9 @@ class MarkdownDataset(Dataset):
         num_sampled = self.fts[row.id]["num_sampled"]
         
         if self.vbl_code == True:
-            code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)
+            code_max_length = int((self.total_max_len - self.md_max_len)/num_sampled)
         else:
-            code_max_length = int((self.total_max_len - self.md_max_len)/sample_size)
+            code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)
 
         inputs = self.tokenizer.encode_plus(
             row.source,
