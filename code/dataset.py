@@ -14,6 +14,8 @@ class MarkdownDataset(Dataset):
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
+        sample_size = self.fts[row.id]["sample_size"]
+        code_max_length = int((self.total_max_len - self.md_max_len)/sample_size)
 
         inputs = self.tokenizer.encode_plus(
             row.source,
@@ -28,14 +30,13 @@ class MarkdownDataset(Dataset):
         code_inputs = self.tokenizer.batch_encode_plus(
             [str(x) for x in self.fts[row.id]["codes"]],
             add_special_tokens=True,
-            max_length=23,
+            max_length=code_max_length + 1,
             padding="max_length",
             truncation=True
         )
         
         ids = inputs['input_ids']
         for x in code_inputs['input_ids']:
-            #ids.extend(x[:-1])
             ids.extend(x[1:])
         ids = ids[:self.total_max_len]
         if len(ids) != self.total_max_len:
@@ -44,7 +45,6 @@ class MarkdownDataset(Dataset):
 
         mask = inputs['attention_mask']
         for x in code_inputs['attention_mask']:
-            #mask.extend(x[:-1])
             mask.extend(x[1:])
         mask = mask[:self.total_max_len]
         if len(mask) != self.total_max_len:
@@ -53,7 +53,6 @@ class MarkdownDataset(Dataset):
 
         assert len(ids) == self.total_max_len
 
-        #return ids, mask, fts, torch.FloatTensor([row.pct_rank])
         return ids, mask, torch.FloatTensor([row.pct_rank])
 
     def __len__(self):
