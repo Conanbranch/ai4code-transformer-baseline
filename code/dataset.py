@@ -15,8 +15,8 @@ class MarkdownDataset(Dataset):
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
-        sample_size = self.fts[row.id]["sample_size"]
         num_samples = self.fts[row.id]["num_samples"]
+        num_sampled = self.fts[row.id]["num_sampled"]
         
         if self.vbl_code == True:
             code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)
