@@ -139,6 +139,7 @@ def get_features(df):
         code_sub_df = sub_df[sub_df.cell_type == "code"]
         total_code = code_sub_df.shape[0]
         codes = sample_cells(code_sub_df.source.values, args.num_sample)
+        features[idx]["sample_size"] = args.num_sample
         features[idx]["total_code"] = total_code
         features[idx]["total_md"] = total_md
         features[idx]["codes"] = codes
