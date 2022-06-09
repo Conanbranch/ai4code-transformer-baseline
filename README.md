@@ -32,7 +32,7 @@ To reduce the size of the data set used for training and validation:
 
 To change the number of feature samples:
 
-```$ python preprocess.py --n_samples = 20```
+```$ python preprocess.py --n_samples 20```
 
 This will create training and validation set that is 20% of the data with a 90/10 split (i.e the training set will be 18% and the validation set is 2%)
 
