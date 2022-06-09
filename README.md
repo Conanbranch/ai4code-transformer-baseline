@@ -60,6 +60,10 @@ To save model (with specific file name):
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --model "model.bin"```
 
+The code_max_length is a function of the number of code cells sampled. The default is '''code_max_length = int((self.total_max_len - self.md_max_len)/sample_size)''', where sample size is fixed regardless of the number of actual cells in the notebook. To use variable length code '''code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)'', where the nuber of tolkens are a function of the actual number of code cells sampled (i.e. there was only 7 code cells but you were sampling 20, this gives you more tokens per code cell)':
+
+``$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --vbl_code True``` 
+
 ### Inference
 - Add
 
