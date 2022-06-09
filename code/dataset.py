@@ -14,8 +14,8 @@ class MarkdownDataset(Dataset):
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
-        sample_size = self.fts[row.id]["sample_size"]
-        code_max_length = int((self.total_max_len - self.md_max_len)/sample_size)
+        num_samples = self.fts[row.id]["num_samples"]
+        code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)
 
         inputs = self.tokenizer.encode_plus(
             row.source,
