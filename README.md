@@ -60,6 +60,8 @@ To save model (with specific file name):
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --model "model.bin"```
 
+- Added CLI option to enable bias corection as per https://arxiv.org/pdf/2006.05987.pdf
+
 ### Inference
 - Add
 
