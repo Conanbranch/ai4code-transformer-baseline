@@ -68,7 +68,7 @@ def save_ckp(state, checkpoint_dir):
     torch.save(state, f_path)
 
 def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
-    checkpoint = torch.load(checkpoint_dir + '/' + args.model_ckp)
+    checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp)
     #checkpoint = torch.load(checkpoint_fpath + '/model_new_rank_01_v2.pt')
     model.load_state_dict(checkpoint['state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer'])
