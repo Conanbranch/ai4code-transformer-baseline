@@ -75,4 +75,6 @@ To save model (with specific file name):
 - Maybe add frequent evaluation
 - may want to try correct_bias=True in adamW as per https://arxiv.org/pdf/2006.05987.pdf
 - double check on named paramaters in weight decay
-- confirm no notebooks from same ancestors between training and validation sets
+- confirm no that the notebooks with the same parent ID have the same ancestor ID
+- May want to sweep batch size depending on GPU availailibity 8, 16 (with V100 or lower), 32, 64 (with A100)
+- May want to sweep learning rates
