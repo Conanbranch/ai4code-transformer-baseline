@@ -76,3 +76,5 @@ To save model (with specific file name):
 - May want to sweep learning rates
 - Clean up input
 - Sweep # of epochs try 3 - 10
+- Could also try using an activation function and dropout
+- Could also try to use MSE instead of BCE
