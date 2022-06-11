@@ -71,3 +71,4 @@ To save model (with specific file name):
 - Could also try using an activation function and dropout
 - Could also try to use MSE instead of BCE
 - Look into end of sentence token [EOS]
+- May want to do a paramater sweep with a smaller md_max_len such as --md_max_len 32 for different code sample sizes, larger sample sizes may simply be impacted by the size of the each code sample as it will get smaller with more samples. 
