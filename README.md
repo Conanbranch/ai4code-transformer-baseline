@@ -73,7 +73,7 @@ To save model (with specific file name):
 - confirm no that the notebooks with the same parent ID have the same ancestor ID
 - May want to sweep batch size depending on GPU availailibity 8, 16 (with V100 or lower), 32, 64 (with A100)
 - May want to sweep learning rates
-- Clean up input
+- Clean up input (remove comments from code, remove markup and other stuff from comments)
 - Sweep # of epochs try 3 - 10
 - Could also try using an activation function and dropout
 - Could also try to use MSE instead of BCE
