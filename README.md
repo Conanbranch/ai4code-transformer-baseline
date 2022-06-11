@@ -71,4 +71,3 @@ To save model (with specific file name):
 - Could also try using an activation function and dropout
 - Could also try to use MSE instead of BCE
 - Look into end of sentence token [EOS]
-- Double check re-init is working, doesn't seem to decrease performance regardless of how many layers are re-initialized
