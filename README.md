@@ -13,7 +13,7 @@ Ranking of code cells is preserved between training and validation sets:
 
 - Add
 
-### Preprocessing
+### Preprocess
 To prepare the markdown and code cells for training run:
 
 ```$ python preprocess.py```
