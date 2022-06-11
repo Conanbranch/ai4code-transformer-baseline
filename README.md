@@ -70,3 +70,4 @@ To save model (with specific file name):
 - Sweep # of epochs try 3 - 10
 - Could also try using an activation function and dropout
 - Could also try to use MSE instead of BCE
+- Look into end of sentence token [EOS]
