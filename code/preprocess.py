@@ -66,10 +66,13 @@ df_ranks = (
         .set_index('cell_id', append=True)
 )
 
-# A bit of a mess, could probably clean this up. 
+# original
 df_ancestors = pd.read_csv(data_dir / 'train_ancestors.csv', index_col='id')
 df = df.reset_index().merge(df_ranks, on=["id", "cell_id"]).merge(df_ancestors, on=["id"])
 df["pct_rank_old"] = df["rank"] / df.groupby("id")["cell_id"].transform("count")
+#df["pct_rank"] = df["rank"] / df.groupby("id")["cell_id"].transform("count")
+
+# new ranking
 df = df.sort_values(['id','rank'],ascending=True).reset_index(drop=True)
 df["ct_rank"] = df.groupby(["id", "cell_type"]).cumcount() + 1 # this will shift the first value to 0.5 and duplicate the orignal pred
 df["mod_rank"] = df.loc[df['cell_type'] == 'code']['ct_rank']
