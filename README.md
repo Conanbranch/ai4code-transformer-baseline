@@ -35,7 +35,7 @@ ai4code-transformer-baseline
 │   val.csv
 ```
 
-###  Training
+###  Train
 
 This solution fine tunes the code-bert pre-trained transformer. To fine tune the transfomer: 
 
