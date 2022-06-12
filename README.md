@@ -2,7 +2,7 @@
 
 Solution for [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition
 
-### Overview
+## Overview
 Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells). 
 
 Instead of predicting the rank of the markdown cells, code cells are sampled from the notebook to provide context for the markdown. The code cells are sampled uniformaly, perserving the order. Input will look like this: 
@@ -13,7 +13,7 @@ Ranking of code cells is preserved between training and validation sets:
 
 - Add
 
-### Preprocess
+## Preprocess
 To prepare the markdown and code cells for training run:
 
 ```$ python preprocess.py```
@@ -35,7 +35,7 @@ ai4code-transformer-baseline
 │   val.csv
 ```
 
-###  Train
+## Train
 
 This solution fine tunes the code-bert pre-trained transformer. To fine tune the transfomer: 
 
@@ -53,16 +53,16 @@ To save model (with specific file name):
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 2 --model "model.bin"```
 
-## Training Time
+### Training Time
 
 ~ 20 Hours - Tesla A100
 
 ~ 33 Hours - Tesla V100-SXM2-16GB
 
-### Inference
+## Inference
 - Add
 
-### To Do
+## To Do
 
 - Clean up ranking
 - Clean up default command line arguments
