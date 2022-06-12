@@ -56,6 +56,7 @@ To save model (with specific file name):
 ## Training Time
 
 ~ 20 Hours - Tesla A100
+
 ~ 33 Hours - Tesla V100-SXM2-16GB
 
 ### Inference
