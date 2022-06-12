@@ -64,7 +64,7 @@ To save model (with specific file name):
 
 ## Results
 
-- Bias correction does not seem to help with 10% training set Bias Correction: .8094 No Bias Correction: .8060 
+- Bias correction does not seem to help with 10% training (.8094 (Bias Correction) vs. .8060 (No Bias Correction))
 
 ## To Do
 
