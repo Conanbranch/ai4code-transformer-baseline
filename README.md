@@ -62,6 +62,10 @@ To save model (with specific file name):
 ## Inference
 - Add
 
+## Results
+
+- Bias correction does not seem to help with 10% training set Bias Correction: .8094 No Bias Correction: .8060 
+
 ## To Do
 
 - Clean up ranking
