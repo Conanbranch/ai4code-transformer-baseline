@@ -55,7 +55,7 @@ To save model (with specific file name):
 
 ### Approximate Training Time
 
-~ 20 Hours - Tesla A100
+~ 20 Hours - Tesla A100-SXM4-40GB
 
 ~ 33 Hours - Tesla V100-SXM2-16GB
 
