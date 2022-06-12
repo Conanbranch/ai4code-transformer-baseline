@@ -53,6 +53,11 @@ To save model (with specific file name):
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 2 --model "model.bin"```
 
+## Training Time
+
+~ 20 Hours - Tesla A100
+~ 33 Hours - Tesla V100-SXM2-16GB
+
 ### Inference
 - Add
 
