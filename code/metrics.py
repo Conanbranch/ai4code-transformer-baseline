@@ -9,7 +9,6 @@ def count_inversions(a):
         sorted_so_far.insert(j, u)
     return inversions
 
-
 def kendall_tau(ground_truth, predictions):
     total_inversions = 0
     total_2max = 0  # twice the maximum possible inversions across all instances

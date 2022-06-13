@@ -7,10 +7,10 @@ from tqdm import tqdm
 import os
 import argparse
 
-parser = argparse.ArgumentParser(description='Process some arguments')
+parser = argparse.ArgumentParser(description='process arguments')
 
-parser.add_argument('--num_sample', type=int, default=20)
-parser.add_argument('--sample_data', type=float, default=1.0)
+parser.add_argument('--num_samples', type=int, default=20, help='number of code cells to sample')
+parser.add_argument('--sample_data', type=float, default=1.0, help='proportion the data for training and validation set')
 
 args = parser.parse_args()
 
@@ -27,11 +27,11 @@ def read_notebook(path):
             .rename_axis('cell_id')
     )
 
-
 paths_train = list((data_dir / 'train').glob('*.json'))
 notebooks_train = [
     read_notebook(path) for path in tqdm(paths_train, desc='Train NBs')
 ]
+
 df = (
     pd.concat(notebooks_train)
         .set_index('id', append=True)
@@ -45,10 +45,8 @@ df_orders = pd.read_csv(
     squeeze=True,
 ).str.split()  # Split the string representation of cell_ids into a list
 
-
 def get_ranks(base, derived):
     return [base.index(d) for d in derived]
-
 
 df_orders_ = df_orders.to_frame().join(
     df.reset_index('cell_id').groupby('id')['cell_id'].apply(list),
@@ -66,10 +64,13 @@ df_ranks = (
         .set_index('cell_id', append=True)
 )
 
-# A bit of a mess, could probably clean this up. 
+# original
 df_ancestors = pd.read_csv(data_dir / 'train_ancestors.csv', index_col='id')
 df = df.reset_index().merge(df_ranks, on=["id", "cell_id"]).merge(df_ancestors, on=["id"])
 df["pct_rank_old"] = df["rank"] / df.groupby("id")["cell_id"].transform("count")
+#df["pct_rank"] = df["rank"] / df.groupby("id")["cell_id"].transform("count")
+
+# new ranking
 df = df.sort_values(['id','rank'],ascending=True).reset_index(drop=True)
 df["ct_rank"] = df.groupby(["id", "cell_type"]).cumcount() + 1 # this will shift the first value to 0.5 and duplicate the orignal pred
 df["mod_rank"] = df.loc[df['cell_type'] == 'code']['ct_rank']
@@ -107,11 +108,9 @@ val_df_mark.to_csv("./data/val_mark.csv", index=False)
 val_df.to_csv("./data/val.csv", index=False)
 train_df.to_csv("./data/train.csv", index=False)
 
-
 # Additional code cells
 def clean_code(cell):
     return str(cell).replace("\\n", "\n")
-
 
 def sample_cells(cells, n):
     cells = [clean_code(cell) for cell in cells]
@@ -129,7 +128,6 @@ def sample_cells(cells, n):
             results[-1] = cells[-1]
         return results
 
-
 def get_features(df):
     features = dict()
     df = df.sort_values("rank").reset_index(drop=True)
@@ -138,7 +136,12 @@ def get_features(df):
         total_md = sub_df[sub_df.cell_type == "markdown"].shape[0]
         code_sub_df = sub_df[sub_df.cell_type == "code"]
         total_code = code_sub_df.shape[0]
-        codes = sample_cells(code_sub_df.source.values, args.num_sample)
+        codes = sample_cells(code_sub_df.source.values, args.num_samples)
+        features[idx]["num_samples"] = args.num_samples
+        if total_code < 20:
+            features[idx]["num_sampled"] = total_code
+        else:
+            features[idx]["num_sampled"] = args.num_samples
         features[idx]["total_code"] = total_code
         features[idx]["total_md"] = total_md
         features[idx]["codes"] = codes
