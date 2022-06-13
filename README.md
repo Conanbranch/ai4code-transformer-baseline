@@ -84,13 +84,13 @@ Testing on 10% of Data:
 - Consider adding frequent evaluation
 
 ## To Do (Experiments)
+- Test Variable Length Code
+- Try adding end of sentence token [EOS] 
+- Try adding activation function (sigmoid or tanh) and dropout (0.10)
+- Try MSE instead of BCE
 - Sweep batch size (depending on GPU availailibity 8, 16 with V100 or lower, 32, 64 with A100)
 - Sweep learning rate
 - Sweep epochs (3 - 10)
 - Sweep md_max_len (32, 64, 128)
-- Test Variable Length Code
-- Try adding activation function (sigmoid or tanh) and dropout (0.10)
-- Try MSE instead of BCE
-- Try adding end of sentence token [EOS] 
 - Do I need to reset the pooler?
 - Do any of the parents cross over?
