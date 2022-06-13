@@ -30,7 +30,7 @@ parser.add_argument('--accumulation_steps', type=int, default=4, help='number of
 parser.add_argument('--epochs', type=int, default=5, help='number of epochs, 3 or 5 are good starting points')
 parser.add_argument('--n_workers', type=int, default=8, help='number of workers')
 parser.add_argument('--re_init', type=bool, default=False, help="option to re-initialize layers of the pretrained model")
-parser.add_argument('--reinit_n_layers', type=int, default=1, help="number of layers of the pretrained model to re-initialize")
+parser.add_argument('--reinit_n_layers', type=int, default=0, help="number of layers of the pretrained model to re-initialize")
 parser.add_argument('--resume_train', type=bool, default=False, help="option to resume training if previous training was interupted")
 
 args = parser.parse_args()
