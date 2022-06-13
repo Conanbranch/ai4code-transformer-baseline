@@ -77,11 +77,11 @@ Testing on 10% of Data:
 - Clean up default command line arguments
 - Add helper to command line arguments
 - Double check on named paramaters in weight decay
-- Clean up input (remove comments from code, remove markup and other stuff from comments)
 
 ## To Do (Features)
 - Add Stochastic Weight Averaging (SWA)
 - Consider adding frequent evaluation
+- Clean up input (remove comments from code, remove markup and other stuff from comments)
 
 ## To Do (Experiments)
 - Test Variable Length Code
