@@ -97,7 +97,6 @@ def validate(model, val_loader):
 
     return np.concatenate(labels), np.concatenate(preds)
 
-
 def train(model, train_loader, val_loader, epochs):
     np.random.seed(0)
     
