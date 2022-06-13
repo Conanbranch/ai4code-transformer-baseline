@@ -92,3 +92,4 @@ Testing on 10% of Data:
 - Try MSE instead of BCE
 - Try adding end of sentence token [EOS] 
 - Do I need to reset the pooler?
+- Do any of the parents cross over?
