@@ -19,7 +19,7 @@ parser.add_argument('--train_features_path', type=str, default='./data/train_fts
 parser.add_argument('--val_mark_path', type=str, default='./data/val_mark.csv')
 parser.add_argument('--val_features_path', type=str, default='./data/val_fts.json')
 parser.add_argument('--val_path', type=str, default="./data/val.csv")
-parser.add_argument('--model_ckp_path', type=str, default="/content/gdrive/MyDrive", help='Path for saving model and model checkpoints during training')
+parser.add_argument('--model_ckp_path', type=str, default="./output", help='Path for saving model and model checkpoints during training')
 parser.add_argument('--model_ckp', type=str, default="model.pt", help='Model checkpoint filename e.g. model_name.pt')
 parser.add_argument('--model', type=str, default="model.bin", help='Trained model filename e.g. model_name.bin')
 
@@ -35,8 +35,8 @@ parser.add_argument('--resume_train', type=bool, default=False, help="Option to 
 
 args = parser.parse_args()
 
-#if not os.mkdir("./outputs"):
-#    os.mkdir("./outputs")
+if not os.mkdir("./output"):
+    os.mkdir("./output")
     
 data_dir = Path('..//input/')
 
