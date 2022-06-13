@@ -60,7 +60,8 @@ To save model (with specific file name):
 ~ 33 Hours - Tesla V100-SXM2-16GB
 
 ## Inference
-- Add
+
+See: https://www.kaggle.com/conanbranch/ai4code-transformer-baseline-inference/
 
 ## Results
 
