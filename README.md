@@ -79,7 +79,6 @@ Testing on 10% of Data:
 ## To Do (Code)
 
 - Clean up ranking
-- Double check on named paramaters in weight decay
 
 ## To Do (Features)
 - Add Stochastic Weight Averaging (SWA)
