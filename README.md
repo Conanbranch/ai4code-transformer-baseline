@@ -74,7 +74,8 @@ Testing on 10% of Data:
 ## Working Example
 
 Preprocessing and Training Notebook: Add
-Inference Notebook: 
+
+Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-baseline-inference/
 
 ## To Do
 
