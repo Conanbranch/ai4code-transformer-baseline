@@ -1,6 +1,6 @@
 # ai4code-transformer-baseline
 
-Solution for [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition
+Solution for [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition.
 
 ## Overview
 Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells). 
