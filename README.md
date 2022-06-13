@@ -76,18 +76,19 @@ Testing on 10% of Data:
 - Clean up ranking
 - Clean up default command line arguments
 - Add helper to command line arguments
-- Add Stochastic Weight Averaging (SWA)
-- Consider adding frequent evaluation
 - Double check on named paramaters in weight decay
 - Clean up input (remove comments from code, remove markup and other stuff from comments)
 
+## To Do (Features)
+- Add Stochastic Weight Averaging (SWA)
+- Consider adding frequent evaluation
+
 ## To Do (Experiments)
-- Sweep batch size depending on GPU availailibity 8, 16 (with V100 or lower), 32, 64 (with A100)
-- Consider sweeping learning rate
-- Sweep # of epochs try 3 - 10
-- Consider using using an activation function (sigmoid or tanh) and dropout (.10)
-- Could try to use MSE instead of BCE
-- Look into end of sentence token [EOS]
-- May want to do a paramater sweep with a smaller md_max_len such as --md_max_len 32 for different code sample sizes, larger sample sizes may simply be impacted by the size of the each code sample as it will get smaller with more samples. 
-- Might want to check in reseting the pooler
-- Confirm no that the notebooks with the same parent ID have the same ancestor ID
+- Sweep batch size (depending on GPU availailibity 8, 16 with V100 or lower, 32, 64 with A100)
+- Sweep learning rate
+- Sweep epochs (3 - 10)
+- Sweep with a smaller md_max_len such as --md_max_len 32 for different code sample sizes, larger sample sizes may simply be impacted by the size of the each code sample as it will get smaller with more samples.
+- Try adding activation function (sigmoid or tanh) and dropout (0.10)
+- Try MSE instead of BCE
+- Try adding end of sentence token [EOS] 
+- Do I need to reset the pooler?
