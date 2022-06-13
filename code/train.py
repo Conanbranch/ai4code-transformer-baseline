@@ -31,7 +31,8 @@ parser.add_argument('--epochs', type=int, default=5, help='number of epochs, 3 o
 parser.add_argument('--n_workers', type=int, default=8, help='number of workers')
 parser.add_argument('--re_init', type=bool, default=False, help="option to re-initialize layers of the pretrained model")
 parser.add_argument('--reinit_n_layers', type=int, default=0, help="number of layers of the pretrained model to re-initialize")
-parser.add_argument('--resume_train', type=bool, default=False, help="option to resume training if previous training was interupted")
+parser.add_argument('--resume_train', type=bool, default=False, help="resume training if previous training was interupted")
+parser.add_argument('--correct_bias', type=bool, default=False, help="include bias correction")
 
 args = parser.parse_args()
 
@@ -110,7 +111,7 @@ def train(model, train_loader, val_loader, epochs):
 
     num_train_optimization_steps = int(args.epochs * len(train_loader) / args.accumulation_steps)
     optimizer = AdamW(optimizer_grouped_parameters, lr=3e-5,
-                      correct_bias=False)  # To reproduce BertAdam specific behavior set correct_bias=False
+                      correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
     scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0.05 * num_train_optimization_steps,
                                                 num_training_steps=num_train_optimization_steps)  # PyTorch scheduler
     criterion = torch.nn.L1Loss()
