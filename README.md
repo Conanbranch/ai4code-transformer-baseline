@@ -71,7 +71,7 @@ Testing on 10% of Data:
 - Bias correction does not seem to help with 10% training (.8094 (Bias Correction) vs. .8060 (No Bias Correction))
 - Re-Init appears to start to have an negative impact once we re-init 4 layers and the degration is much more evident by 7 layers.
 
-## To Do
+## To Do (Code)
 
 - Clean up ranking
 - Clean up default command line arguments
@@ -79,13 +79,15 @@ Testing on 10% of Data:
 - Add Stochastic Weight Averaging (SWA)
 - Consider adding frequent evaluation
 - Double check on named paramaters in weight decay
-- Confirm no that the notebooks with the same parent ID have the same ancestor ID
+- Clean up input (remove comments from code, remove markup and other stuff from comments)
+
+## To Do (Experiments)
 - Sweep batch size depending on GPU availailibity 8, 16 (with V100 or lower), 32, 64 (with A100)
 - Consider sweeping learning rate
-- Clean up input (remove comments from code, remove markup and other stuff from comments)
 - Sweep # of epochs try 3 - 10
 - Consider using using an activation function (sigmoid or tanh) and dropout (.10)
 - Could try to use MSE instead of BCE
 - Look into end of sentence token [EOS]
 - May want to do a paramater sweep with a smaller md_max_len such as --md_max_len 32 for different code sample sizes, larger sample sizes may simply be impacted by the size of the each code sample as it will get smaller with more samples. 
 - Might want to check in reseting the pooler
+- Confirm no that the notebooks with the same parent ID have the same ancestor ID
