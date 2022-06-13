@@ -88,7 +88,7 @@ Testing on 10% of Data:
 ## To Do (Experiments)
 - Test Variable Length Code
 - Try adding end of sentence token [EOS] 
-- Try adding activation function (sigmoid or tanh) and dropout (0.10)
+- Try adding activation function (sigmoid or tanh)
 - Try MSE instead of BCE
 - Sweep batch size (depending on GPU availailibity 8, 16 with V100 or lower, 32, 64 with A100)
 - Sweep learning rate
