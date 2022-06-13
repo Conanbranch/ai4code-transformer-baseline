@@ -28,7 +28,6 @@ To change the number of feature samples:
 
 ```$ python preprocess.py --num_samples 20```
 
-Output will be in the ```./data``` folder:
 ```
 ai4code-transformer-baseline
 │   train_mark.csv
@@ -56,6 +55,8 @@ To continue from previous checkpoint (with specific filename name and path):
 To save model (with specific file name):
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 2 --model "model.bin"```
+
+Output will be in the ```./data``` folder:
 
 ### Approximate Training Time
 
