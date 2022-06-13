@@ -79,7 +79,6 @@ Testing on 10% of Data:
 
 - Clean up ranking
 - Double check on named paramaters in weight decay
-- Add Re-Init for pooler (I don't belive the pooler, but might as well have it place)
 
 ## To Do (Features)
 - Add Stochastic Weight Averaging (SWA)
