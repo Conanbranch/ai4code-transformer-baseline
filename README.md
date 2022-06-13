@@ -87,7 +87,7 @@ Testing on 10% of Data:
 - Sweep batch size (depending on GPU availailibity 8, 16 with V100 or lower, 32, 64 with A100)
 - Sweep learning rate
 - Sweep epochs (3 - 10)
-- Sweep md_max_len such as --md_max_len 32 for different code sample sizes (larger sample sizes may simply be impacted by the size of the each code sample as it will get smaller with more samples)
+- Sweep md_max_len (32, 64, 128)
 - Try adding activation function (sigmoid or tanh) and dropout (0.10)
 - Try MSE instead of BCE
 - Try adding end of sentence token [EOS] 
