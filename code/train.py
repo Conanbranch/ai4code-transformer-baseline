@@ -69,7 +69,6 @@ def save_ckp(state, checkpoint_dir):
 
 def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp)
-    #checkpoint = torch.load(checkpoint_fpath + '/model_new_rank_01_v2.pt')
     model.load_state_dict(checkpoint['state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer'])
     scheduler.load_state_dict(checkpoint['scheduler'])
@@ -151,7 +150,6 @@ def train(model, train_loader, val_loader, epochs):
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
         
         torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
-        #torch.save(model.state_dict(), "/content/gdrive/MyDrive/model_new_rank_01_v2.bin")
 
         checkpoint = {
           'epoch': e + 1,
@@ -159,6 +157,7 @@ def train(model, train_loader, val_loader, epochs):
           'optimizer': optimizer.state_dict(),
           'scheduler': scheduler.state_dict()
         }
+        
         save_ckp(checkpoint, args.model_ckp_path)
 
         y_val, y_pred = validate(model, val_loader)
