@@ -12,31 +12,31 @@ import torch
 import argparse
 import shutil
 
-parser = argparse.ArgumentParser(description='Process some arguments')
-parser.add_argument('--model_name_or_path', type=str, default='microsoft/codebert-base')
-parser.add_argument('--train_mark_path', type=str, default='./data/train_mark.csv')
-parser.add_argument('--train_features_path', type=str, default='./data/train_fts.json')
-parser.add_argument('--val_mark_path', type=str, default='./data/val_mark.csv')
-parser.add_argument('--val_features_path', type=str, default='./data/val_fts.json')
-parser.add_argument('--val_path', type=str, default="./data/val.csv")
-parser.add_argument('--model_ckp_path', type=str, default="/content/gdrive/MyDrive")
-parser.add_argument('--model_ckp', type=str, default="model.pt")
-parser.add_argument('--model', type=str, default="model.bin")
+parser = argparse.ArgumentParser(description='process arguments')
+parser.add_argument('--model_name_or_path', type=str, default='microsoft/codebert-base', help='path for pretrained model')
+parser.add_argument('--train_mark_path', type=str, default='./data/train_mark.csv', help='path for markdown training data')
+parser.add_argument('--train_features_path', type=str, default='./data/train_fts.json', help='path for code training data')
+parser.add_argument('--val_mark_path', type=str, default='./data/val_mark.csv', help='path for markdown validation data')
+parser.add_argument('--val_features_path', type=str, default='./data/val_fts.json', help='path for code validation data')
+parser.add_argument('--val_path', type=str, default="./data/val.csv", help='path for validation data')
+parser.add_argument('--model_ckp_path', type=str, default="./output", help='path for model and model checkpoints')
+parser.add_argument('--model_ckp', type=str, default="model.pt", help='model checkpoint filename')
+parser.add_argument('--model', type=str, default="model.bin", help='model filename')
 
-parser.add_argument('--md_max_len', type=int, default=64)
-parser.add_argument('--total_max_len', type=int, default=512)
-parser.add_argument('--batch_size', type=int, default=8)
-parser.add_argument('--accumulation_steps', type=int, default=4)
-parser.add_argument('--epochs', type=int, default=5)
-parser.add_argument('--n_workers', type=int, default=8)
-parser.add_argument('--re_init', type=bool, default=False)
-parser.add_argument('--reinit_n_layers', type=int, default=1)
-parser.add_argument('--resume_train', type=bool, default=False)
+parser.add_argument('--md_max_len', type=int, default=64, help='maximum length of tokenized markdown')
+parser.add_argument('--total_max_len', type=int, default=512, help='maximum length of tokenized markdown and code')
+parser.add_argument('--batch_size', type=int, default=8, help='training batchsize, try --batch_size 8 if you encounter memory issues')
+parser.add_argument('--accumulation_steps', type=int, default=4, help='number of accumulating steps')
+parser.add_argument('--epochs', type=int, default=5, help='number of epochs, 3 or 5 are good starting points')
+parser.add_argument('--n_workers', type=int, default=8, help='number of workers')
+parser.add_argument('--re_init', type=bool, default=False, help="option to re-initialize layers of the pretrained model")
+parser.add_argument('--reinit_n_layers', type=int, default=0, help="number of layers of the pretrained model to re-initialize")
+parser.add_argument('--resume_train', type=bool, default=False, help="option to resume training if previous training was interupted")
 
 args = parser.parse_args()
 
-#if not os.mkdir("./outputs"):
-#    os.mkdir("./outputs")
+if not os.mkdir("./output"):
+    os.mkdir("./output")
     
 data_dir = Path('..//input/')
 
@@ -69,7 +69,6 @@ def save_ckp(state, checkpoint_dir):
 
 def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp)
-    #checkpoint = torch.load(checkpoint_fpath + '/model_new_rank_01_v2.pt')
     model.load_state_dict(checkpoint['state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer'])
     scheduler.load_state_dict(checkpoint['scheduler'])
@@ -98,10 +97,10 @@ def validate(model, val_loader):
 
     return np.concatenate(labels), np.concatenate(preds)
 
-
 def train(model, train_loader, val_loader, epochs):
     np.random.seed(0)
-    # Creating optimizer and lr schedulers
+    
+    # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
     optimizer_grouped_parameters = [
@@ -151,7 +150,6 @@ def train(model, train_loader, val_loader, epochs):
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
         
         torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
-        #torch.save(model.state_dict(), "/content/gdrive/MyDrive/model_new_rank_01_v2.bin")
 
         checkpoint = {
           'epoch': e + 1,
@@ -159,6 +157,7 @@ def train(model, train_loader, val_loader, epochs):
           'optimizer': optimizer.state_dict(),
           'scheduler': scheduler.state_dict()
         }
+        
         save_ckp(checkpoint, args.model_ckp_path)
 
         y_val, y_pred = validate(model, val_loader)

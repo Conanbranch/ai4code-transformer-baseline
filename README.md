@@ -2,10 +2,10 @@
 
 Solution for [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition
 
-### Overview
-Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and https://github.com/suicao/ai4code-baseline. 
+## Overview
+Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells). 
 
-Instead of predicting the cell position with only the markdown itself, we randomly sample code cells to act as the context. The code is sampled uniformaly, perserving the order. Input will look like this:
+Instead of predicting the rank of the markdown cells, code cells are sampled from the notebook to provide context for the markdown. The code cells are sampled uniformaly, perserving the order. Input will look like this: 
 
 ```<CLS> markdown <SEP> code <SEP> code <SEP> ... <SEP> code <SEP>```
 
@@ -13,16 +13,8 @@ Ranking of code cells is preserved between training and validation sets:
 
 - Add
 
-Modiified original input from (https://github.com/suicao/ai4code-baseline):
-
-```<CLS> markdown <CLS> code <CLS> code <CLS> ... <CLS> code <CLS> ```
-
-To:
-
-```<CLS> markdown <SEP> code <SEP> code <SEP> ... <SEP> code <SEP>```
-
-### Preprocessing
-To prepare the data and extract features for training, including the markdown-only dataframes and sampling the code cells needed for each note book, simply run:
+## Preprocess
+To prepare the markdown and code cells for training run:
 
 ```$ python preprocess.py```
 
@@ -38,7 +30,7 @@ To change the number of feature samples:
 
 Output will be in the ```./data``` folder:
 ```
-project
+ai4code-transformer-baseline
 │   train_mark.csv
 │   train_fts.json   
 |   train.csv
@@ -47,34 +39,60 @@ project
 │   val.csv
 ```
 
-###  Training
-I found ```codebert-base``` to be the best of all the transformers:
+## Train
 
-```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8```
+This solution fine tunes the code-bert pre-trained transformer. To fine tune the transfomer: 
+
+```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 2```
 
 To continue from previous checkpoint:
 
-```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --resume_train True```
+```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 2 --resume_train True```
 
 To continue from previous checkpoint (with specific filename name and path):
 
-```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --resume_train True --model_ckp_path "/checkpoint_path" --model_ckp "checkpoint.pt"```
+```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 2 --resume_train True --model_ckp_path "/checkpoint_path" --model_ckp "checkpoint.pt"```
 
 To save model (with specific file name):
 
-```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 8 --model "model.bin"```
+```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 5 --n_workers 2 --model "model.bin"```
 
-### Inference
-- Add
+### Approximate Training Time
 
-### To Do
+~ 20 Hours - Tesla A100-SXM4-40GB
+
+~ 33 Hours - Tesla V100-SXM2-16GB
+
+## Working Example
+
+Preprocessing and Training Notebook: Add
+
+Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-baseline-inference/
+
+## Results
+
+Testing on 10% of Data:
+- Bias correction does not seem to help with 10% training (.8094 (Bias Correction) vs. .8060 (No Bias Correction))
+- Re-Init appears to start to have an negative impact once we re-init 4 layers and the degration is much more evident by 7 layers.
+
+## To Do (Code)
 
 - Clean up ranking
-- Clean up default command line arguments
+- Double check on named paramaters in weight decay
+
+## To Do (Features)
 - Add Stochastic Weight Averaging (SWA)
-- Maybe add frequent evaluation
-- may want to try correct_bias=True in adamW as per https://arxiv.org/pdf/2006.05987.pdf
-- double check on named paramaters in weight decay
-- confirm no that the notebooks with the same parent ID have the same ancestor ID
-- May want to sweep batch size depending on GPU availailibity 8, 16 (with V100 or lower), 32, 64 (with A100)
-- May want to sweep learning rates
+- Consider adding frequent evaluation
+- Clean up input (remove comments from code, remove markup and other stuff from comments)
+
+## To Do (Experiments)
+- Test Variable Length Code
+- Try adding end of sentence token [EOS] 
+- Try adding activation function (sigmoid or tanh) and dropout (0.10)
+- Try MSE instead of BCE
+- Sweep batch size (depending on GPU availailibity 8, 16 with V100 or lower, 32, 64 with A100)
+- Sweep learning rate
+- Sweep epochs (3 - 10)
+- Sweep md_max_len (32, 64, 128)
+- Do I need to reset the pooler?
+- Do any of the parents cross over?
