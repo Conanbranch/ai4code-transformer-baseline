@@ -74,8 +74,6 @@ Testing on 10% of Data:
 ## To Do (Code)
 
 - Clean up ranking
-- Clean up default command line arguments
-- Add helper to command line arguments
 - Double check on named paramaters in weight decay
 
 ## To Do (Features)
