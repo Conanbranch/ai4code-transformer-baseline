@@ -9,7 +9,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='process arguments')
 
-parser.add_argument('--num_sample', type=int, default=20, help='number of code cells to sample')
+parser.add_argument('--num_samples', type=int, default=20, help='number of code cells to sample')
 parser.add_argument('--sample_data', type=float, default=1.0, help='proportion the data for training and validation set')
 
 args = parser.parse_args()
