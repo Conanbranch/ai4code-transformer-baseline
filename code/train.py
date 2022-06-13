@@ -100,7 +100,8 @@ def validate(model, val_loader):
 
 def train(model, train_loader, val_loader, epochs):
     np.random.seed(0)
-    # Creating optimizer and lr schedulers
+    
+    # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
     optimizer_grouped_parameters = [
