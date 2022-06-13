@@ -3,7 +3,6 @@ import torch.nn as nn
 import torch
 from transformers import AutoModel, AutoTokenizer, AdamW, get_linear_schedule_with_warmup
 
-
 class MarkdownModel(nn.Module):
     def __init__(self, model_path, re_init = False, reinit_n_layers = 0):
         super(MarkdownModel, self).__init__()
