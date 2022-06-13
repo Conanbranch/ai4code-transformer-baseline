@@ -27,11 +27,11 @@ def read_notebook(path):
             .rename_axis('cell_id')
     )
 
-
 paths_train = list((data_dir / 'train').glob('*.json'))
 notebooks_train = [
     read_notebook(path) for path in tqdm(paths_train, desc='Train NBs')
 ]
+
 df = (
     pd.concat(notebooks_train)
         .set_index('id', append=True)
@@ -45,10 +45,8 @@ df_orders = pd.read_csv(
     squeeze=True,
 ).str.split()  # Split the string representation of cell_ids into a list
 
-
 def get_ranks(base, derived):
     return [base.index(d) for d in derived]
-
 
 df_orders_ = df_orders.to_frame().join(
     df.reset_index('cell_id').groupby('id')['cell_id'].apply(list),
@@ -110,11 +108,9 @@ val_df_mark.to_csv("./data/val_mark.csv", index=False)
 val_df.to_csv("./data/val.csv", index=False)
 train_df.to_csv("./data/train.csv", index=False)
 
-
 # Additional code cells
 def clean_code(cell):
     return str(cell).replace("\\n", "\n")
-
 
 def sample_cells(cells, n):
     cells = [clean_code(cell) for cell in cells]
@@ -131,7 +127,6 @@ def sample_cells(cells, n):
         if cells[-1] not in results:
             results[-1] = cells[-1]
         return results
-
 
 def get_features(df):
     features = dict()
