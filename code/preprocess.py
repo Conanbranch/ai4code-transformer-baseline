@@ -10,7 +10,7 @@ import argparse
 parser = argparse.ArgumentParser(description='Process some arguments')
 
 parser.add_argument('--num_sample', type=int, default=20, help='Number of code cells to sample')
-parser.add_argument('--sample_data', type=float, default=1.0, help='Proportion of the data for creating the training and validation set e.g. 0.1 is 10% of the data')
+parser.add_argument('--sample_data', type=float, default=1.0, help='Proportion the data used in the training and validation set e.g. 0.1 is 10% of the data')
 
 args = parser.parse_args()
 
