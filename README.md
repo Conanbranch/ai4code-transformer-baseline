@@ -88,6 +88,7 @@ Testing on 10% of Data:
 - Sweep learning rate
 - Sweep epochs (3 - 10)
 - Sweep md_max_len (32, 64, 128)
+- Test Variable Length Code
 - Try adding activation function (sigmoid or tanh) and dropout (0.10)
 - Try MSE instead of BCE
 - Try adding end of sentence token [EOS] 
