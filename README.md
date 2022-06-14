@@ -77,6 +77,25 @@ Testing on 10% of Data:
 - Re-Init appears to start to have an negative impact once we re-init 4 layers and the degration is much more evident by 7 layers.
 - Smaller MD does not seem to help (32)
 
+| # Code Cells Sampled | Validation |
+| --- | --- | 
+| 10 | .7921 | 
+| 15 | .8039 | 
+| 20 | .8066 | 
+| 25 | .8092 |  
+| 30 | .8148 | 
+| 35 | .8138 | 
+| 40 | .8124 |   
+| 45 | .8157 | 
+| 50 | .8140 |  
+| 55 | .8152 |  
+| 60 | .8138 |  
+| 70 | .8098 |  
+| 80 | .8045 |  
+| 90 | .7956 |  
+| 100 | .7937 | 
+
+
 ## To Do (Code)
 
 - Clean up ranking
