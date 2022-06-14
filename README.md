@@ -58,7 +58,7 @@ To save model (with specific file name):
 
 Output will be in the ```./data``` folder:
 
-### Approximate Training Time
+### Training Time
 
 ~ 20 Hours - Tesla A100-SXM4-40GB - 5 Epochs
 
