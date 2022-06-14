@@ -93,7 +93,7 @@ Testing on 10% of Data:
 - Try adding activation function (sigmoid, will need to adjust ranking a tiny bit)
 - Try MSE instead of BCE
 - Sweep batch size (depending on GPU availailibity 8, 16 (current) with V100 or lower, 32, 64 with A100)
-- Sweep learning rate (*1e-5, 3e-5 (current), 5e-5) 
+- Sweep learning rate (1e-5, 3e-5 (current), 5e-5) 
 - Sweep weight decay (0.1, 0.01 (current), 0.001)
 - Sweep epochs (3, 5(current), 7)
 - Sweep md_max_len (32, 64 (current), 128)
