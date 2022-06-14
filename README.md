@@ -72,10 +72,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 ## Results
 
-Testing on 10% of Data:
-- Bias correction does not seem to help with 10% training (.8094 (Bias Correction) vs. .8060 (No Bias Correction))
-- Re-Init appears to start to have an negative impact once we re-init 4 layers and the degration is much more evident by 7 layers.
-- Smaller MD does not seem to help (32)
+Testing on 10% of Data where training set = 9% and the validation set = 1%
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
