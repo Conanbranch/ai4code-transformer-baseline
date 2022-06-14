@@ -35,10 +35,10 @@ parser.add_argument('--resume_train', type=bool, default=False, help="resume tra
 parser.add_argument('--correct_bias', type=bool, default=False, help="include bias correction")
 
 args = parser.parse_args()
-
-if not os.mkdir("./output"):
-    os.mkdir("./output")
     
+if not os.path.exists("./output"):
+    os.mkdir("./output")      
+      
 data_dir = Path('..//input/')
 
 train_df_mark = pd.read_csv(args.train_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
