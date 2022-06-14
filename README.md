@@ -72,7 +72,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 ## Results
 
-Testing on 10% of data where training set = 9% and the validation set = 1%
+Evalution on 10% of data where training set = 9% and the validation set = 1%
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
