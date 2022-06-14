@@ -20,4 +20,5 @@ class MarkdownModel(nn.Module):
     def forward(self, ids, mask):
         x = self.model(ids, mask)[0]
         x = self.top(x[:, 0, :])
+        #x = torch.sigmoid(x) 
         return x
