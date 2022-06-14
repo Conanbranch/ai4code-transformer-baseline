@@ -85,11 +85,13 @@ Testing on 10% of Data:
 - Add Stochastic Weight Averaging (SWA)
 - Consider adding frequent evaluation
 - Clean up input (remove comments from code, remove markup and other stuff from comments)
-- Try no seperators
+- Add optional no seperators
+- Add optional [EOS]
 
 ## To Do (Experiments)
 - Test Variable Length Code
-- Try adding end of sentence token [EOS] 
+- Try end of sentence token [EOS]
+- Try no seperators [SEP]
 - Try adding activation function (sigmoid, will need to adjust ranking a tiny bit)
 - Try MSE instead of BCE
 - Sweep batch size (depending on GPU availailibity 8, 16 (current) with V100 or lower, 32, 64 with A100)
