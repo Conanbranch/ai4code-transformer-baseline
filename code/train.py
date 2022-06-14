@@ -114,6 +114,8 @@ def train(model, train_loader, val_loader, epochs):
                       correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
     scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0.05 * num_train_optimization_steps,
                                                 num_training_steps=num_train_optimization_steps)  # PyTorch scheduler
+    
+    #criterion = torch.nn.MSELoss()
     criterion = torch.nn.L1Loss()
     scaler = torch.cuda.amp.GradScaler()
     
