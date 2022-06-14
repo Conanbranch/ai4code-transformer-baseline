@@ -84,6 +84,7 @@ Testing on 10% of Data:
 - Add Stochastic Weight Averaging (SWA)
 - Consider adding frequent evaluation
 - Clean up input (remove comments from code, remove markup and other stuff from comments)
+- Try no seperators
 
 ## To Do (Experiments)
 - Test Variable Length Code
