@@ -79,6 +79,7 @@ Testing on 10% of Data:
 ## To Do (Code)
 
 - Clean up ranking
+- Explore https://github.com/huggingface/evaluate (includes function for average word length)
 
 ## To Do (Features)
 - Add Stochastic Weight Averaging (SWA)
