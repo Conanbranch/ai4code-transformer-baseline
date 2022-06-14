@@ -92,8 +92,9 @@ Testing on 10% of Data:
 - Try adding end of sentence token [EOS] 
 - Try adding activation function (sigmoid, will need to adjust ranking a tiny bit)
 - Try MSE instead of BCE
-- Sweep batch size (depending on GPU availailibity 8, 16 with V100 or lower, 32, 64 with A100)
-- Sweep learning rate
-- Sweep epochs (3 - 10)
-- Sweep md_max_len (32, 64, 128)
+- Sweep batch size (depending on GPU availailibity 8, 16 (current) with V100 or lower, 32, 64 with A100)
+- Sweep learning rate (1e-5, 2e-5, 3e-5 (current), 4e-5, 5e-5) 
+- Sweep weight decay (0.4, 0.2, 0.1 (current), 0.001, 0.0001)
+- Sweep epochs (3,4,5(current),6,7,8,9,10)
+- Sweep md_max_len (32, 64 (current), 128)
 - Do any parents cross over?
