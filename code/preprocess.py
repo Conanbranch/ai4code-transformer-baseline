@@ -85,7 +85,7 @@ df["dup_count_1"] = df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1
 df["mod_rank_2"] = df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["mod_rank_1"] - ((df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["dup_count_1"] + 1) - (df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["dup_rank_1"])) / (df.loc[(df['cell_type'] == 'markdown') & (df.mod_rank_1 == 1.0)]["dup_count_1"] + 1)
 df.t_mod_rank.fillna(df.mod_rank_2, inplace=True)
 df["mod_rank"] = df["t_mod_rank"]
-df["count"] = df.loc[df['cell_type'] == 'code'].groupby(["id", "cell_type"])["mod_rank"].transform("count") # + 1
+df["count"] = df.loc[df['cell_type'] == 'code'].groupby(["id", "cell_type"])["mod_rank"].transform("count") # + 1 # needed if using sigmoid activation function, keeps pct_rank between 0 and 1
 df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='ffill')
 df["pct_rank"] = df["mod_rank"] / df["count"]
 df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
