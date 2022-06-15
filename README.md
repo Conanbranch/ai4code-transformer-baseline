@@ -122,7 +122,7 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Add Stochastic Weight Averaging (SWA)
 - Consider adding frequent evaluation
 - Clean up input (remove comments from code, remove markup and other stuff from comments)
-- Add optional no seperators
+- Add optional no seperators [SEP]
 - Add optional [EOS]
 
 ## To Do (Experiments)
