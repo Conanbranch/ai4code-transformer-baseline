@@ -72,6 +72,32 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 ## Results
 
+Evalution on 20% of data where training set = 18% and the validation set = 2%:
+
+| Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
+| --- | --- | --- |
+| 20 | | |
+| 40 | | |   
+| 60 | | |  
+| 80 | | |  
+| 100 | | | 
+
+| Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
+| --- | --- | --- | --- |
+| 20 |  |  |  | 
+| 40 |  |  |  |  
+| 60 |  |  |  |  
+| 80 |  |  |  |    
+| 100 |  |  |  | 
+
+| # Re-Init | Val. | BC Val. |
+| --- | --- | --- | 
+| 0 |  |  |  
+| 1 |  |  | 
+| 2 |  |  |   
+| 4 |  |  |    
+| 8 |  |  | 
+
 Evalution on 10% of data where training set = 9% and the validation set = 1%
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
