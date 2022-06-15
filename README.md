@@ -74,6 +74,42 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
+| Batch Size |  Val. |
+| --- | --- | 
+| 8 | | 
+| 16 | |    
+| 32 | |   
+| 64 | |  
+
+| Epochs |  Val. |
+| --- | --- | 
+| 3 | | 
+| 5 | |    
+| 7 | |   
+| 10 | |  
+
+| lr |  Val. |
+| --- | --- | 
+| 1e-5 | | 
+| 3e-5 | |    
+| 5e-5 | | 
+
+| weight <br> decay |  Val. |
+| --- | --- | 
+| .1 | | 
+| .01 | |    
+| .001 | |  
+
+| activation |  Val. |
+| --- | --- | 
+| sigmoid | | 
+| linear | | 
+
+| eval |  Val. |
+| --- | --- | 
+| MSE | | 
+| BSE | |
+
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
 | 20 | | |
