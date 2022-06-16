@@ -15,8 +15,11 @@ class MarkdownDataset(Dataset):
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
-        num_samples = self.fts[row.id]["num_samples"]
-        code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)
+        num_samples = self.fts[row.id]["num_samples"]        
+        if self.code_sep_token == True:
+            code_max_length = int((self.total_max_len - self.md_max_len)/num_samples) + 1
+        else:
+            code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples) + 2
 
         inputs = self.tokenizer.encode_plus(
             row.source,
@@ -31,7 +34,7 @@ class MarkdownDataset(Dataset):
         code_inputs = self.tokenizer.batch_encode_plus(
             [str(x) for x in self.fts[row.id]["codes"]],
             add_special_tokens=True,
-            max_length=code_max_length + 1,
+            max_length=code_max_length,
             padding="max_length",
             truncation=True
         )
@@ -42,7 +45,6 @@ class MarkdownDataset(Dataset):
                 ids.extend(x[1:])
             else:
                 ids.extend(x[1:-2])
-        # if this works we can add adjust max_length=code_max_length + 1 to max_length=code_max_length  and code_max_length = int((self.total_max_len - self.md_max_len)/num_samples) to code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples) 
         if self.code_sep_token == False: 
             ids.extend([self.tokenizer.sep_token_id, ]) 
         ids = ids[:self.total_max_len]
@@ -55,9 +57,9 @@ class MarkdownDataset(Dataset):
             if self.code_sep_token == True:
                 mask.extend(x[1:])
             else:
-                ids.extend(x[1:-2]) 
+                mask.extend(x[1:-2]) 
         if self.code_sep_token == False: 
-            ids.extend([self.tokenizer.sep_token_id, ])        
+            mask.extend([self.tokenizer.sep_token_id, ])        
         mask = mask[:self.total_max_len] 
         if len(mask) != self.total_max_len:
             mask = mask + [self.tokenizer.pad_token_id, ] * (self.total_max_len - len(mask))
