@@ -17,7 +17,7 @@ class MarkdownDataset(Dataset):
         row = self.df.iloc[index]
         num_samples = self.fts[row.id]["num_samples"]        
         if self.code_sep_token == True:
-            add_tokens == True
+            add_tokens = True
             code_max_length = int((self.total_max_len - self.md_max_len)/num_samples) + 1
         else:
             add_tokens = False
