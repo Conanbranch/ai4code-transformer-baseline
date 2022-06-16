@@ -46,8 +46,6 @@ class MarkdownDataset(Dataset):
         if self.code_sep_token == False: 
             ids.extend([self.tokenizer.sep_token_id, ]) 
         ids = ids[:self.total_max_len]
-        #if self.eos_token == True:
-        #    ids[self.total_max_len] = [EOS] 
         if len(ids) != self.total_max_len:
             ids = ids + [self.tokenizer.pad_token_id, ] * (self.total_max_len - len(ids))
         ids = torch.LongTensor(ids)
@@ -60,9 +58,7 @@ class MarkdownDataset(Dataset):
                 ids.extend(x[1:-2]) 
         if self.code_sep_token == False: 
             ids.extend([self.tokenizer.sep_token_id, ])        
-        mask = mask[:self.total_max_len]
-        #if self.eos_token == True:
-        #   ids[self.total_max_len] = [EOS] 
+        mask = mask[:self.total_max_len] 
         if len(mask) != self.total_max_len:
             mask = mask + [self.tokenizer.pad_token_id, ] * (self.total_max_len - len(mask))
         mask = torch.LongTensor(mask)
