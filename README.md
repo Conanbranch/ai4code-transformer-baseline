@@ -121,7 +121,7 @@ Processing:
 
 | eval |  Val. |
 | --- | --- | 
-| Code (/n) | | 
+| Code (//n) | | 
 | Markdown | |
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
