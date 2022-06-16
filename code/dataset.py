@@ -46,7 +46,7 @@ class MarkdownDataset(Dataset):
             if self.code_sep_token == True:
                 ids.extend(x[1:])
             else:
-                ids.extend(x[1:-2])
+                ids.extend(x)
         if self.code_sep_token == False: 
             ids.extend([self.tokenizer.sep_token_id, ]) 
         ids = ids[:self.total_max_len]
@@ -59,7 +59,7 @@ class MarkdownDataset(Dataset):
             if self.code_sep_token == True:
                 mask.extend(x[1:])
             else:
-                mask.extend(x[1:-2]) 
+                mask.extend(x) 
         if self.code_sep_token == False: 
             mask.extend([self.tokenizer.sep_token_id, ])        
         mask = mask[:self.total_max_len] 
