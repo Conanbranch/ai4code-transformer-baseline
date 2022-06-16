@@ -191,9 +191,9 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Clean up ranking
 
 ## To Do (Features)
-- Frequent evaluation 
 - Clean up input (remove comments from code, remove markup and other stuff from comments) Remove \r and \n from markup 
-- Add Stochastic Weight Averaging (SWA) - Complicated, Final Step Only If Necessary - Some chatter that it doens't help anyway
+- Frequent evaluation - May not make any difference, don't bother unless really need a boost
+- Add Stochastic Weight Averaging (SWA) - Complicated, Final Step Only If Necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
 
 ## To Do (Experiments)
 - Do any parents cross over?
