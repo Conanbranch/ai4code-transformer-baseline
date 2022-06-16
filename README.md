@@ -115,7 +115,6 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | eval |  Val. |
 | --- | --- | 
 | \<SEP\> | | 
-| \<EOS\> | |
 | No \<SEP\> | |
 
 Processing:
@@ -197,8 +196,6 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Add Stochastic Weight Averaging (SWA)
 - Consider adding frequent evaluation
 - Clean up input (remove comments from code, remove markup and other stuff from comments) Remove \r and \n from markup 
-- Add optional no seperators [SEP]
-- Add optional [EOS]
 
 ## To Do (Experiments)
 - Do any parents cross over?
