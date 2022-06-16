@@ -116,6 +116,13 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | \<EOS\> | |
 | No \<SEP\> | |
 
+Processing:
+
+| eval |  Val. |
+| --- | --- | 
+| Code (/n) | | 
+| Markdown | |
+
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
 | 20 | | |
