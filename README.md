@@ -161,6 +161,7 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 | 100 | .7937 |.8022 | 
 
 | Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. |
+| --- | --- | --- |
 | 10 | .7872 | .7921 |
 | 20 | .8000 |.8066 |
 | 30 | .8089 |**.8148** | 
@@ -201,11 +202,5 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Test Variable Length Code
 - Try end of sentence token [EOS]
 - Try no seperators [SEP]
-- Try adding activation function (sigmoid, will need to adjust ranking a tiny bit)
-- Try MSE instead of BCE
 - Sweep batch size (depending on GPU availailibity 8, 16 (current) with V100 or lower, 32, 64 with A100)
-- Sweep learning rate (1e-5, 3e-5 (current), 5e-5) 
-- Sweep weight decay (0.1, 0.01 (current), 0.001)
-- Sweep epochs (3, 5(current), 7, 10)
-- Sweep md_max_len (32, 64 (current), 128)
 - Do any parents cross over?
