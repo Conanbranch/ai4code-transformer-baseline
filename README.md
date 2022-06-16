@@ -147,7 +147,7 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 | 70 | .8098 | .8098 |  
 | 80 | .8045 | .8027 |  
 | 90 | .7956 | .7995 |	
-| 100 | .7937 | | 
+| 100 | .7937 |.8022 | 
 
 | Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
 | --- | --- | --- | --- |
