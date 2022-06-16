@@ -74,12 +74,14 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
-| Batch Size |  Val. |
+| Batch Size* |  Val. |
 | --- | --- | 
 | 8 | | 
 | 16 | |    
 | 32 | |   
 | 64 | |  
+
+\*depending on GPU availailibity 8, 16 (current) with V100 or lower, 32, 64 with A100
 
 | Epochs |  Val. |
 | --- | --- | 
@@ -199,8 +201,4 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Add optional [EOS]
 
 ## To Do (Experiments)
-- Test Variable Length Code
-- Try end of sentence token [EOS]
-- Try no seperators [SEP]
-- Sweep batch size (depending on GPU availailibity 8, 16 (current) with V100 or lower, 32, 64 with A100)
 - Do any parents cross over?
