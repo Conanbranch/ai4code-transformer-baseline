@@ -114,8 +114,8 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
 | eval |  Val. |
 | --- | --- | 
-| \<SEP\> | | 
-| No \<SEP\> | |
+| Code \<SEP\> | | 
+| No Code \<SEP\> | |
 
 Processing:
 
