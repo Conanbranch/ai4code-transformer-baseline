@@ -4,15 +4,14 @@ from transformers import AutoTokenizer
 
 class MarkdownDataset(Dataset):
 
-    def __init__(self, df, model_name_or_path, total_max_len, md_max_len, fts, sep_token = True, eos_token = False):
+    def __init__(self, df, model_name_or_path, total_max_len, md_max_len, fts, code_sep_token = True):
         super().__init__()
         self.df = df.reset_index(drop=True)
         self.md_max_len = md_max_len
         self.total_max_len = total_max_len  # maxlen allowed by model config
         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
         self.fts = fts
-        self.sep_token = sep_token
-        self.eos_token = eos_token
+        self.code_sep_token = code_sep_token
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
@@ -39,10 +38,13 @@ class MarkdownDataset(Dataset):
         
         ids = inputs['input_ids']
         for x in code_inputs['input_ids']:
-            if self.sep_token == True:
+            if self.code_sep_token == True:
                 ids.extend(x[1:])
             else:
-                ids.extend(x[1:1])
+                ids.extend(x[1:-2])
+        # if this works we can add adjust max_length=code_max_length + 1 to max_length=code_max_length  and code_max_length = int((self.total_max_len - self.md_max_len)/num_samples) to code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples) 
+        if self.code_sep_token == False: 
+            ids.extend([self.tokenizer.sep_token_id, ]) 
         ids = ids[:self.total_max_len]
         #if self.eos_token == True:
         #    ids[self.total_max_len] = [EOS] 
@@ -52,10 +54,12 @@ class MarkdownDataset(Dataset):
 
         mask = inputs['attention_mask']
         for x in code_inputs['attention_mask']:
-            if self.sep_token == True:
+            if self.code_sep_token == True:
                 mask.extend(x[1:])
             else:
-                ids.extend(x[1:1]) 
+                ids.extend(x[1:-2]) 
+        if self.code_sep_token == False: 
+            ids.extend([self.tokenizer.sep_token_id, ])        
         mask = mask[:self.total_max_len]
         #if self.eos_token == True:
         #   ids[self.total_max_len] = [EOS] 
