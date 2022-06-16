@@ -145,8 +145,8 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 | 50 | .8140 | .8154 |  
 | 60 | .8138 | .8188 |  
 | 70 | .8098 | .6206 |  
-| 80 | .8045 | |  
-| 90 | .7956 | |  
+| 80 | .8045 | .8027 |  
+| 90 | .7956 | .7995 |	
 | 100 | .7937 | | 
 
 | Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
@@ -183,7 +183,7 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 ## To Do (Features)
 - Add Stochastic Weight Averaging (SWA)
 - Consider adding frequent evaluation
-- Clean up input (remove comments from code, remove markup and other stuff from comments)
+- Clean up input (remove comments from code, remove markup and other stuff from comments) Remove \r and \n from markup 
 - Add optional no seperators [SEP]
 - Add optional [EOS]
 
