@@ -33,6 +33,7 @@ parser.add_argument('--re_init', type=bool, default=False, help="option to re-in
 parser.add_argument('--reinit_n_layers', type=int, default=0, help="number of layers of the pretrained model to re-initialize")
 parser.add_argument('--resume_train', type=bool, default=False, help="resume training if previous training was interupted")
 parser.add_argument('--correct_bias', type=bool, default=False, help="include bias correction")
+parser.add_argument('--code_sep_token', type=bool, default=True, help="include seperator tokens between code samples")
 
 args = parser.parse_args()
     
@@ -55,9 +56,9 @@ df_orders = pd.read_csv(
 ).str.split()
 
 train_ds = MarkdownDataset(train_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
-                           total_max_len=args.total_max_len, fts=train_fts)
+                           total_max_len=args.total_max_len, fts=train_fts, code_sep_token = args.code_sep_token)
 val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
-                         total_max_len=args.total_max_len, fts=val_fts)
+                         total_max_len=args.total_max_len, fts=val_fts, code_sep_token = args.code_sep_token)
 train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.n_workers,
                           pin_memory=False, drop_last=True)
 val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.n_workers,
