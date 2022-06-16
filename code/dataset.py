@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 
 class MarkdownDataset(Dataset):
 
-    def __init__(self, df, model_name_or_path, total_max_len, md_max_len, fts, code_sep_token = True):
+    def __init__(self, df, model_name_or_path, total_max_len, md_max_len, fts, code_sep_token):
         super().__init__()
         self.df = df.reset_index(drop=True)
         self.md_max_len = md_max_len
