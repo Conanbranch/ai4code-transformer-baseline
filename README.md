@@ -110,6 +110,12 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | MSE | | 
 | BSE | |
 
+| eval |  Val. |
+| --- | --- | 
+| <SEP> | | 
+| <EOS> | |
+| No <SEP> | |
+
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
 | 20 | | |
