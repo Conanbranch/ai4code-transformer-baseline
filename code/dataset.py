@@ -17,9 +17,11 @@ class MarkdownDataset(Dataset):
         row = self.df.iloc[index]
         num_samples = self.fts[row.id]["num_samples"]        
         if self.code_sep_token == True:
+            add_tokens == True
             code_max_length = int((self.total_max_len - self.md_max_len)/num_samples) + 1
         else:
-            code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples) + 2
+            add_tokens = False
+            code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples) 
 
         inputs = self.tokenizer.encode_plus(
             row.source,
@@ -33,7 +35,7 @@ class MarkdownDataset(Dataset):
         
         code_inputs = self.tokenizer.batch_encode_plus(
             [str(x) for x in self.fts[row.id]["codes"]],
-            add_special_tokens=True,
+            add_special_tokens=add_tokens,
             max_length=code_max_length,
             padding="max_length",
             truncation=True
