@@ -131,6 +131,8 @@ Processing:
 | 60 | .8377 | |  
 | 80 | .8302| |  
 
+Note: If VLC does better, consider testing re-init with it as well as the different MDL
+
 | Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
 | --- | --- | --- | --- |
 | 20 |  |  |  | 
