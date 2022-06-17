@@ -146,6 +146,16 @@ Processing:
 | 4 |  |  |    
 | 8 |  |  | 
 
+40 Sample Size
+
+| # Re-Init | Val. | BC Val. |
+| --- | --- | --- | 
+| 0 |  |  |  
+| 1 |  |  | 
+| 2 |  |  |   
+| 4 |  |  |    
+| 8 |  |  | 
+
 Evalution on 10% of data where training set = 9% and the validation set = 1%
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
