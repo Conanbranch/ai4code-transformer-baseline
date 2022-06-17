@@ -150,13 +150,13 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 
 40 Sample Size
 
-| # Re-Init | Val. | BC Val. |
-| --- | --- | --- | 
-| 0 |  |  |  
-| 1 |  |  | 
-| 2 |  |  |   
-| 4 |  |  |    
-| 8 |  |  | 
+| # Re-Init | Val. | 
+| --- | --- | 
+| 0 |  | 
+| 1 |  |  
+| 2 |  |    
+| 4 |  |     
+| 8 |  |  
 
 Evalution on 10% of data where training set = 9% and the validation set = 1%
 
