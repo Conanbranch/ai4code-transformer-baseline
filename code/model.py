@@ -8,6 +8,7 @@ class MarkdownModel(nn.Module):
         super(MarkdownModel, self).__init__()
         self.model = AutoModel.from_pretrained(model_path)
         self.top = nn.Linear(768, 1)
+        #if reinit_n_layers != 0: 
         if re_init == True: 
             #self.model.pooler.dense.weight.data.normal_(mean=0.0, std=self.model.config.initializer_range)
             #self.model.pooler.dense.bias.data.zero_()
