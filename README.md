@@ -135,10 +135,10 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 
 | Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
 | --- | --- | --- | --- |
-| 20 |  |  |  | 
-| 40 |  |  |  |  
-| 60 |  |  |  |  
-| 80 |  |  |  |    
+| 20 |  | .8323 |  | 
+| 40 |  | **.8385** |  |  
+| 60 |  | .8377 |  |  
+| 80 |  | .8302 |  |    
 
 | # Re-Init | Val. | 
 | --- | --- | 
