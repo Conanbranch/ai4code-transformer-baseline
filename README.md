@@ -140,13 +140,13 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 | 60 |  |  |  |  
 | 80 |  |  |  |    
 
-| # Re-Init | Val. | BC Val. |
-| --- | --- | --- | 
-| 0 |  |  |  
-| 1 |  |  | 
-| 2 |  |  |   
-| 4 |  |  |    
-| 8 |  |  | 
+| # Re-Init | Val. | 
+| --- | --- | 
+| 0 | .8385 | 
+| 1 | .8400 | 
+| 2 | .8392 |   
+| 4 | .8401 |    
+| 8 |  | 
 
 40 Sample Size
 
