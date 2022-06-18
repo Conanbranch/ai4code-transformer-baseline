@@ -211,3 +211,6 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Do any parents cross over?
 - Think about the padding, seperators, etc. Both with FLC and VLC. Make sure it makes sense.
 - Maybe explore https://github.com/huggingface/evaluate (includes function for average word length)
+
+## To Try (Input Preprocessing)
+- https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
