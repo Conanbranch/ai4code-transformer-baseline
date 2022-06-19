@@ -209,3 +209,4 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 Note: Heavy processing may not be a good idea as transformers can utilize context.
 
 - https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
+- https://www.kaggle.com/code/yuanzhezhou/ai4code-pairwise-bertsmall-training/notebook
