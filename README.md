@@ -127,9 +127,9 @@ Processing:
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
 | 20 | .8323 | |
-| 40 | **.8385** | |   
+| 40 | .8385 | |   
 | 60 | .8377 | |  
-| 80 | .8302| |  
+| 80 | .8302 | |  
 
 Note: If VLC does better, consider testing re-init with it as well as the different MDL
 
