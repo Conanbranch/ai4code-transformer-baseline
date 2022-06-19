@@ -148,16 +148,6 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 | 4 | **.8401** |    
 | 8 | .8206 | 
 
-40 Sample Size
-
-| # Re-Init | Val. | 
-| --- | --- | 
-| 0 |  | 
-| 1 |  |  
-| 2 |  |    
-| 4 |  |     
-| 8 |  |  
-
 Evalution on 10% of data where training set = 9% and the validation set = 1%
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
