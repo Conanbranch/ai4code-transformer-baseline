@@ -198,6 +198,7 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Add Stochastic Weight Averaging (SWA) - Complicated, Final Step Only If Necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
 
 ## To Do (Experiments)
+- Try no padding except at end of markdown and code
 - Do any parents cross over?
 - Think about the padding, seperators, etc. Both with FLC and VLC. Make sure it makes sense.
 - Maybe explore https://github.com/huggingface/evaluate (includes function for average word length)
