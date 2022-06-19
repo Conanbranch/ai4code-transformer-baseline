@@ -144,9 +144,9 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 | --- | --- | 
 | 0 | .8385 | 
 | 1 | .8400 | 
-| 2 | .8392 |   
-| 4 | .8401 |    
-| 8 |  | 
+| 2 | .8392** |   
+| 4 | **.8401** |    
+| 8 | .8206 | 
 
 40 Sample Size
 
