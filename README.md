@@ -85,10 +85,10 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
 | Epochs |  Val. |
 | --- | --- | 
-| 3 | | 
-| 5 | |    
-| 7 | |   
-| 10 | |  
+| 3 | .8385 | 
+| 5 | .8385 |    
+| 7 | .8359 |   
+| 10 | .8353 |  
 
 | lr |  Val. |
 | --- | --- | 
