@@ -99,14 +99,14 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | weight <br> decay |  Val. |
 | --- | --- | 
 | .1 | | 
-| .01 | |    
+| .01 | .8385 |    
 | .001 | |  
 
 | activation | BCE Val. | MSE Val. |
 | --- | --- | ---|
 | tanh | | |
 | sigmoid | | | 
-| linear | | |
+| linear | .8385| |
 
 | eval |  Val. |
 | --- | --- | 
