@@ -138,7 +138,7 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 | 20 |  | .8323 | .8326  | 
 | 40 |  | **.8385** | **.8394** |  
 | 60 |  | .8377 | .8357 |  
-| 80 |  | .8302 |  |    
+| 80 |  | .8302 | .8248 |
 
 | # Re-Init | Val. | 
 | --- | --- | 
