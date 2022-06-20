@@ -76,8 +76,8 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
 | Batch Size* |  Val. |
 | --- | --- | 
-| 8 | .8385 | 
-| 16 | .8385 |    
+| 8 | **.8385** | 
+| 16 | **.8385** |    
 | 32 | .8359 |   
 | 64 | .8353 |  
 
