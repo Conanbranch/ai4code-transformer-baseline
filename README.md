@@ -76,19 +76,19 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
 | Batch Size* |  Val. |
 | --- | --- | 
-| 8 | | 
-| 16 | |    
-| 32 | |   
-| 64 | |  
+| 8 | .8385 | 
+| 16 | .8385 |    
+| 32 | .8359 |   
+| 64 | .8353 |  
 
 \*depending on GPU availailibity 8, 16 (current) with V100 or lower, 32, 64 with A100
 
 | Epochs |  Val. |
 | --- | --- | 
-| 3 | .8385 | 
-| 5 | .8385 |    
-| 7 | .8359 |   
-| 10 | .8353 |  
+| 3 | | 
+| 5 | |    
+| 7 | |   
+| 10 | |  
 
 | lr |  Val. |
 | --- | --- | 
