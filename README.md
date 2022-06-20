@@ -102,15 +102,11 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | .01 | |    
 | .001 | |  
 
-| activation |  Val. |
-| --- | --- | 
-| sigmoid | | 
-| linear | | 
-
-| eval |  Val. |
-| --- | --- | 
-| MSE | | 
-| BSE | |
+| activation | BCE Val. | MSE Val. |
+| --- | --- | ---|
+| tanh | | |
+| sigmoid | | | 
+| linear | | |
 
 | eval |  Val. |
 | --- | --- | 
