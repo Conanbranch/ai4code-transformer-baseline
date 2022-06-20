@@ -112,7 +112,7 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | --- | --- | 
 | Code \<SEP\> | .8385 | 
 | No Code \<SEP\> | |
-| No Code <PAD> | |
+| No Code \<PAD\> | |
 
 
 Processing:
