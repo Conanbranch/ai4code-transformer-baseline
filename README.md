@@ -193,14 +193,12 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Clean up ranking
 
 ## To Do (Features)
-- Clean up input (remove comments from code, remove markup and other stuff from comments) Remove \r and \n from markup 
+
 - Frequent evaluation - May not make any difference, don't bother unless really need a boost
 - Add Stochastic Weight Averaging (SWA) - Complicated, Final Step Only If Necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
 
 ## To Do (Experiments)
 - Try no padding except at end of markdown and code
-- Do any parents cross over?
-- Think about the padding, seperators, etc. Both with FLC and VLC. Make sure it makes sense.
 - Maybe explore https://github.com/huggingface/evaluate (includes function for average word length)
 - Different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
 
@@ -208,5 +206,6 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 
 Note: Heavy processing may not be a good idea as transformers can utilize context.
 
+- Clean up input (remove comments from code, remove markup and other stuff from comments) Remove \r and \n from markup 
 - https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
 - https://www.kaggle.com/code/yuanzhezhou/ai4code-pairwise-bertsmall-training/notebook
