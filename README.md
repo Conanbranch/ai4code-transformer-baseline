@@ -141,7 +141,7 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 | Code \<SEP\> | .8385 | |
 | No Code \<SEP\> | | |
 | No Code \<PAD\>* | | |
-
+| No Code \<SEP\> and \<PAD\>* | | |
 \*No pad between code, just after
 
 | eval |  Val. |
