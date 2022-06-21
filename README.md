@@ -90,6 +90,7 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | 7 | .8411 |   
 | 10 | .8437 |  
 | 15 |  |  
+| 20 |  |  
 
 | lr |  Val. |
 | --- | --- | 
