@@ -128,6 +128,14 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 | sigmoid | **.8434** | | 
 | linear | .8385| |
 
+| # Re-Init | Val. | 
+| --- | --- | 
+| 0 | .8385 | 
+| 1 | .8400 | 
+| 2 | .8392 |   
+| 4 | **.8401** |    
+| 8 | .8206 | 
+
 | eval |  Val. |
 | --- | --- | 
 | Code \<SEP\> | .8385 | 
@@ -136,21 +144,10 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 
 \*No pad between code, just after
 
-Processing:
-
 | eval |  Val. |
 | --- | --- | 
 | Code (//n) | | 
 | Markdown | |
-
-
-| # Re-Init | Val. | 
-| --- | --- | 
-| 0 | .8385 | 
-| 1 | .8400 | 
-| 2 | .8392 |   
-| 4 | **.8401** |    
-| 8 | .8206 | 
 
 ## Sigmoid Eval
 
