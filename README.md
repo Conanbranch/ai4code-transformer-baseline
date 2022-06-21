@@ -90,7 +90,7 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
 Note: If VLC does better, consider testing re-init with it as well as the different MDL
 
-Aside from the above, all experiments below used a default sample of 40, a linear activation, and an MDL of 64
+Aside from the above, all below experiments are a sample of 40, a linear activation, and an MDL of 64
 
 | Batch Size* |  Val. |
 | --- | --- | 
