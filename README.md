@@ -74,6 +74,15 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 Evalution on 20% of data where training set = 18% and the validation set = 2%:
 
+| Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
+| --- | --- | --- | --- |
+| 20 |  | .8323 | .8326  | 
+| 40 |  | **.8385** | **.8394** |  
+| 60 |  | .8377 | .8357 |  
+| 80 |  | .8302 | .8248 |
+
+Aside from the above all experiments below used a default sample of 40, a linear activation, and an MDL of 64
+
 | Batch Size* |  Val. |
 | --- | --- | 
 | 8 | **.8385** | 
@@ -95,7 +104,7 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | lr |  Val. |
 | --- | --- | 
 | 1e-5 | | 
-| 3e-5 | |    
+| 3e-5 | .8385 |    
 | 5e-5 | | 
 
 | weight <br> decay |  Val. |
@@ -133,13 +142,6 @@ Processing:
 | 80 | .8302 | |  
 
 Note: If VLC does better, consider testing re-init with it as well as the different MDL
-
-| Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
-| --- | --- | --- | --- |
-| 20 |  | .8323 | .8326  | 
-| 40 |  | **.8385** | **.8394** |  
-| 60 |  | .8377 | .8357 |  
-| 80 |  | .8302 | .8248 |
 
 | # Re-Init | Val. | 
 | --- | --- | 
