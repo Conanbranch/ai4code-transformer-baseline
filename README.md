@@ -81,6 +81,15 @@ Evalution on 20% of data where training set = 18% and the validation set = 2%:
 | 60 |  | .8377 | .8357 |  
 | 80 |  | .8302 | .8248 |
 
+| Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
+| --- | --- | --- |
+| 20 | .8323 | |
+| 40 | **.8385** | |   
+| 60 | .8377 | |  
+| 80 | .8302 | |  
+
+Note: If VLC does better, consider testing re-init with it as well as the different MDL
+
 Aside from the above all experiments below used a default sample of 40, a linear activation, and an MDL of 64
 
 | Batch Size* |  Val. |
@@ -134,14 +143,6 @@ Processing:
 | Code (//n) | | 
 | Markdown | |
 
-| Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
-| --- | --- | --- |
-| 20 | .8323 | |
-| 40 | **.8385** | |   
-| 60 | .8377 | |  
-| 80 | .8302 | |  
-
-Note: If VLC does better, consider testing re-init with it as well as the different MDL
 
 | # Re-Init | Val. | 
 | --- | --- | 
