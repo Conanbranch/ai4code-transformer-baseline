@@ -136,11 +136,11 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 | 4 | **.8401** |    
 | 8 | .8206 | 
 
-| eval |  Val. |
-| --- | --- | 
-| Code \<SEP\> | .8385 | 
-| No Code \<SEP\> | |
-| No Code \<PAD\>* | |
+| eval |  FLC Val. |  VLC Val. |
+| --- | --- | --- |
+| Code \<SEP\> | .8385 | |
+| No Code \<SEP\> | | |
+| No Code \<PAD\>* | | |
 
 \*No pad between code, just after
 
