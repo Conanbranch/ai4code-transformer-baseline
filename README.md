@@ -148,46 +148,43 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 | 4 | **.8401** |    
 | 8 | .8206 | 
 
-Evalution on 10% of data where training set = 9% and the validation set = 1%
+## Full Dataset Eval
 
-| Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
-| --- | --- | --- |
-| 10 | .7921 | .7942 |
-| 20 | .8066 | .8077 |
-| 30 | **.8148** | .8177 | 
-| 40 | .8124 | .8149 |   
-| 50 | .8140 | .8154 |  
-| 60 | .8138 | .8188 |  
-| 70 | .8098 | .8098 |  
-| 80 | .8045 | .8027 |  
-| 90 | .7956 | .7995 |	
-| 100 | .7937 |.8022 | 
+Re-Init = 1
+Code Sampled = 40
+MDL = 64
+Activation = Sigmoid
+Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
 
-| Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. |
-| --- | --- | --- |
-| 10 | .7872 | .7921 |
-| 20 | .8000 |.8066 |
-| 30 | .8089 |**.8148** | 
-| 40 | **.8107** |.8124 | 
-| 50 | .8040 |.8140 | 
-| 60 | .8062 |.8138 |  
-| 70 | .8050 |.8098 | 
-| 80 | |.8045 | 
-| 90 | |.7956 | 
-| 100 | |.7937 |
+Re-Init = 1
+Code Sampled = 30
+MDL = 64
+Activation = Sigmoid
+Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
 
-| # Re-Init | Val. | BC Val. |
-| --- | --- | --- |
-| 0 | **.8094** | .8060 | 
-| 1 | .8069 | **.8084** |  
-| 2 | .8077 | .8058  | 
-| 3 | .8073 | .8066 |  
-| 4 | .8052 | .8055 | 
-| 5 | .8019 | .8040 | 
-| 6 | .8046 | .8025 |
-| 7 |  | .7970 |
-| 8 |  | .7907 |
-| 9 |  | .7849 |
+Re-Init = 2
+Code Sampled = 40
+MDL = 64
+Activation = Sigmoid
+Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
+
+Re-Init = 2
+Code Sampled = 30
+MDL = 64
+Activation = Sigmoid
+Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
+
+Re-Init = 3
+Code Sampled = 40
+MDL = 64
+Activation = Sigmoid
+Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
+
+Re-Init = 3
+Code Sampled = 30
+MDL = 64
+Activation = Sigmoid
+Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 
 ## To Do (Code)
 - Clean up ranking
