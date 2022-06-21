@@ -201,6 +201,7 @@ Evalution on 10% of data where training set = 9% and the validation set = 1%
 - Maybe explore https://github.com/huggingface/evaluate (includes function for average word length)
 - Different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
 - Might be able to include comments in with the code for the context, even if not in the correct order. Maybe.
+- Try sigmoid with proper scalling where all ranks are between 0 - 1
 
 ## To Try (Input Preprocessing)
 
