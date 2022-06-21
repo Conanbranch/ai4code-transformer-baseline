@@ -148,6 +148,25 @@ Note: If VLC does better, consider testing re-init with it as well as the differ
 | 4 | **.8401** |    
 | 8 | .8206 | 
 
+## Sigmoid Eval
+
+| # Re-Init | Val. | 
+| --- | --- | 
+| 0 |  | 
+| 1 |  | 
+| 2 |  |   
+| 4 |  |    
+| 8 |  | 
+
+| Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
+| --- | --- | --- |
+| 20 |  | |
+| 30 |  | |
+| 40 |  | |
+| 50 |  | |  
+| 60 |  | |  
+| 80 |  | |  
+
 ## Full Dataset Eval
 
 Re-Init = 1
