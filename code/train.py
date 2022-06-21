@@ -170,8 +170,9 @@ def train(model, train_loader, val_loader, epochs):
         val_df["pred"] = val_df["pct_rank"]
         val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
         y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("Val score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
         print("Val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
+        print("Pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+
     
     torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
     
