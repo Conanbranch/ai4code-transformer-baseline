@@ -229,3 +229,5 @@ Note: Heavy processing may not be a good idea as transformers can utilize contex
 - Clean up input (remove comments from code, remove markup and other stuff from comments) Remove \r and \n from markup 
 - https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
 - https://www.kaggle.com/code/yuanzhezhou/ai4code-pairwise-bertsmall-training/notebook
+- https://www.kaggle.com/code/takanorihasebe/text-cleaning-bert-and-transformer/notebook
+- https://www.kaggle.com/code/shahules/basic-eda-cleaning-and-glove/notebook
