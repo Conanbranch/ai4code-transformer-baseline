@@ -118,7 +118,7 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 
 | weight <br> decay |  Val. |
 | --- | --- | 
-| .1 | .8389 | 
+| .1 | **.8389** | 
 | .01 | .8385 |    
 | .001 | .8373 |  
 
