@@ -72,7 +72,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 ## Results
 
-Evalution on 20% of data where training set = 18% and the validation set = 2% (90/10 Split):
+90/10 Split evalution on 20% of data where training set = 18% and the validation set = 2%:
 
 | Code Cells <br> Sampled | MDL 32 <br> Val. | MDL 64 <br> Val. | MDL 128 <br> Val. |
 | --- | --- | --- | --- |
