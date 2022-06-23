@@ -124,7 +124,7 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 
 | activation | BCE Val. | MSE Val. |
 | --- | --- | ---|
-| tanh |  | |
+| tanh | .8401 | |
 | sigmoid | **.8438** | | 
 | linear | .8385| |
 
