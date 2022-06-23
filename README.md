@@ -107,24 +107,24 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 | 5 | .8385 |    
 | 7 | .8411 |   
 | 10 | .8437 |  
-| 15 |  |  
+| 15 | .8424 |  
 | 20 |  |  
 
 | lr |  Val. |
 | --- | --- | 
-| 1e-5 | | 
+| 1e-5 | .8309 | 
 | 3e-5 | .8385 |    
 | 5e-5 | | 
 
 | weight <br> decay |  Val. |
 | --- | --- | 
-| .1 | | 
+| .1 | .8389 | 
 | .01 | .8385 |    
-| .001 | |  
+| .001 | .8373 |  
 
 | activation | BCE Val. | MSE Val. |
 | --- | --- | ---|
-| tanh | .8421 | |
+| tanh |  | |
 | sigmoid | **.8438** | | 
 | linear | .8385| |
 
