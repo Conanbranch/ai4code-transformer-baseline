@@ -114,7 +114,7 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 | --- | --- | 
 | 1e-5 | .8309 | 
 | 3e-5 | .8385 |    
-| 5e-5 | | 
+| 5e-5 | .8428 | 
 
 | weight <br> decay |  Val. |
 | --- | --- | 
