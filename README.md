@@ -116,7 +116,7 @@ Very little gain from 10, but double the training time
 | --- | --- | 
 | 1e-5 | .8309 | 
 | 3e-5 | .8385 |    
-| 5e-5 | .8428 | 
+| 5e-5 | **.8428** | 
 
 | weight <br> decay |  Val. |
 | --- | --- | 
