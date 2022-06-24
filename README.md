@@ -106,9 +106,11 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 | 3 | .8363 | 
 | 5 | .8385 |    
 | 7 | .8411 |   
-| 10 | **.8437** |  
+| 10 | .8437 |  
 | 15 | .8424 |  
 | 20 | **.8445** |  
+
+Very little gain from 10, but double the training time
 
 | lr |  Val. |
 | --- | --- | 
