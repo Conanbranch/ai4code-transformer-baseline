@@ -12,6 +12,7 @@ class MarkdownDataset(Dataset):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
         self.fts = fts
         self.code_sep_token = code_sep_token
+        self.pad_between_code = pad_between_code
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
@@ -22,6 +23,12 @@ class MarkdownDataset(Dataset):
         else:
             add_tokens = False
             code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples) 
+            
+        if self.pad_between_code == True:
+            code_padding = "max_length"
+        else:
+            code_padding = "do_not_pad"
+            
 
         inputs = self.tokenizer.encode_plus(
             row.source,
@@ -37,7 +44,7 @@ class MarkdownDataset(Dataset):
             [str(x) for x in self.fts[row.id]["codes"]],
             add_special_tokens=add_tokens,
             max_length=code_max_length,
-            padding="max_length",
+            padding=code_padding,
             truncation=True
         )
         
