@@ -108,7 +108,7 @@ Aside from the above, all below experiments are a sample of 40, a linear activat
 | 7 | .8411 |   
 | 10 | **.8437** |  
 | 15 | .8424 |  
-| 20 |  |  
+| 20 | .8445 |  
 
 | lr |  Val. |
 | --- | --- | 
