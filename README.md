@@ -141,7 +141,7 @@ Very little gain from 10, but double the training time
 | eval |  FLC Val. |  VLC Val. |
 | --- | --- | --- |
 | Code \<SEP\> | .8385 | |
-| No Code \<SEP\> | | |
+| No Code \<SEP\> | .8372 | |
 | No Code \<PAD\>* | | |
 | No Code \<SEP\> and \<PAD\>* | | |
 
