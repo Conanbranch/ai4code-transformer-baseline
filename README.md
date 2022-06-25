@@ -60,9 +60,9 @@ Output will be in the ```./data``` folder:
 
 ### Training Time
 
-~ 20 Hours - Tesla A100-SXM4-40GB - 5 Epochs
+~ 20 Hours - Tesla A100-SXM4-40GB - 5 Epochs - 54.8
 
-~ 33 Hours - Tesla V100-SXM2-16GB - 5 Epochs
+~ 33 Hours - Tesla V100-SXM2-16GB - 5 Epochs - 54.8 Gb RAM
 
 ## Working Example
 
