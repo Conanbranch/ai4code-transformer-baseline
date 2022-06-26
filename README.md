@@ -83,7 +83,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
-| 20 | .8323 | |
+| 20 | .8323 | .8318 |
 | 40 | **.8385** | |   
 | 60 | .8377 | |  
 | 80 | .8302 | |  
