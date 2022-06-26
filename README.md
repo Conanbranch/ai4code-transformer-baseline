@@ -5,7 +5,7 @@ Solution for [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) compe
 ## Overview
 Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with numerous modifications. 
 
-Instead of soley predicting the rank of the markdown cells, code cells are sampled from the notebook to provide context for the markdown. The code cells are sampled uniformaly, perserving the order. Input will look like this: 
+Instead of predicting the rank of the markdown cells from the markdown alone, code cells are sampled from the notebook to provide context for the markdown. The code cells are sampled uniformaly, perserving the order. Input will look like this: 
 
 ```<CLS> markdown <SEP> code <SEP> code <SEP> ... <SEP> code <SEP>```
 
