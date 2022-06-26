@@ -142,8 +142,8 @@ Very little gain from 10, but double the training time
 | --- | --- | --- |
 | Code \<SEP\> | .8385 | |
 | No Code \<SEP\> | .8372 | |
-| No Code \<PAD\>* | | |
-| No Code \<SEP\> and \<PAD\>* | | |
+| No Code \<PAD\>* | .8391 | |
+| No Code \<SEP\> and \<PAD\>* | .8397 | |
 
 \*No pad between code, just after
 
