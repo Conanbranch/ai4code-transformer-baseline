@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 
 class MarkdownDataset(Dataset):
 
-    def __init__(self, df, model_name_or_path, total_max_len, md_max_len, fts, code_sep_token = True, pad_between_code = True):
+    def __init__(self, df, model_name_or_path, total_max_len, md_max_len, fts, code_sep_token = True, pad_between_code = True, vbl_code = False):
         super().__init__()
         self.df = df.reset_index(drop=True)
         self.md_max_len = md_max_len
@@ -13,16 +13,24 @@ class MarkdownDataset(Dataset):
         self.fts = fts
         self.code_sep_token = code_sep_token
         self.pad_between_code = pad_between_code
+        self.vbl_code = vbl_code
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
-        num_samples = self.fts[row.id]["num_samples"]        
+        num_samples = self.fts[row.id]["num_samples"]  
+        num_sampled = self.fts[row.id]["num_sampled"]
         if self.code_sep_token == True:
             add_tokens = True
-            code_max_length = int((self.total_max_len - self.md_max_len)/num_samples) + 1
+            if self.vbl_code == True:
+                code_max_length = int((self.total_max_len - self.md_max_len)/num_sampled) + 1
+            else:
+                code_max_length = int((self.total_max_len - self.md_max_len)/num_samples) + 1 
         else:
             add_tokens = False
-            code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples) 
+            if self.vbl_code == True:
+                code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_sampled)
+            else:
+                code_max_length = int((self.total_max_len - self.md_max_len - 1)/num_samples)
             
         if self.pad_between_code == True:
             code_padding = "max_length"
