@@ -138,7 +138,7 @@ def get_features(df):
         total_code = code_sub_df.shape[0]
         codes = sample_cells(code_sub_df.source.values, args.num_samples)
         features[idx]["num_samples"] = args.num_samples
-        if total_code < 20:
+        if total_code < args.num_samples:
             features[idx]["num_sampled"] = total_code
         else:
             features[idx]["num_sampled"] = args.num_samples
