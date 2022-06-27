@@ -36,8 +36,7 @@ class MarkdownDataset(Dataset):
         if self.pad_between_code == True:
             code_padding = "max_length"
         else:
-            code_padding = "do_not_pad"
-            
+            code_padding = "do_not_pad"  
 
         inputs = self.tokenizer.encode_plus(
             row.source,
