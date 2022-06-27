@@ -92,9 +92,9 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
 | 20 | .8323 | .8318 |
-| 40 | **.8385** | .8404 |   
-| 60 | .8377 | .8371 |  
-| 80 | .8302 | .8295 |  
+| 40 | **.8385** | .8420 |   
+| 60 | .8377 |  |  
+| 80 | .8302 |  |  
 
 Note: If VLC does better, consider testing re-init with it as well as the different MDL
 
