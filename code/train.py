@@ -36,6 +36,7 @@ parser.add_argument('--resume_train', type=bool, default=False, help="resume tra
 parser.add_argument('--correct_bias', type=bool, default=False, help="include bias correction")
 parser.add_argument('--code_sep_token', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--pad_between_code', type=bool, default=True, help="include seperator tokens between code samples")
+parser.add_argument('--vbl_code', type=bool, default=False, help="use variable length code")
 
 args = parser.parse_args()
     
@@ -59,10 +60,10 @@ df_orders = pd.read_csv(
 
 train_ds = MarkdownDataset(train_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
                            total_max_len=args.total_max_len, fts=train_fts, code_sep_token = args.code_sep_token, 
-                           pad_between_code = args.pad_between_code)
+                           pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
 val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
                          total_max_len=args.total_max_len, fts=val_fts, code_sep_token = args.code_sep_token, 
-                         pad_between_code = args.pad_between_code)
+                         pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
 train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.n_workers,
                           pin_memory=False, drop_last=True)
 val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.n_workers,
