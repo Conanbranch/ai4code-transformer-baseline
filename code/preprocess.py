@@ -6,7 +6,6 @@ from scipy import sparse
 from tqdm import tqdm
 import os
 import argparse
-import re
 from utils import *
 
 parser = argparse.ArgumentParser(description='process arguments')
