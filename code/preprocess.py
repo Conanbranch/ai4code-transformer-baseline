@@ -110,15 +110,6 @@ val_df_mark.to_csv("./data/val_mark.csv", index=False)
 val_df.to_csv("./data/val.csv", index=False)
 train_df.to_csv("./data/train.csv", index=False)
 
-# Additional code cells
-def clean_code(cell):
-    cell = str(remove_comments_and_docstrings(cell))
-    cell = str(cell).replace("\\n", "\n")
-    cell = str(cell).replace("\n", " ")
-    cell = str(re.sub(' +', ' ', cell))
-    cell = str(cell).lstrip()
-    return cell
-
 def sample_cells(cells, n):
     cells = [clean_code(cell) for cell in cells]
     if n >= len(cells):
