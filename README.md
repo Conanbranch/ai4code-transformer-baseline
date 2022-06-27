@@ -228,11 +228,9 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 ## To Do (Experiments)
 - Use all code cells, where number of tokens is based on number of code cells. More code cells less tokens per code cell 
 - Try reducing acumulator steps as well
-- Maybe explore https://github.com/huggingface/evaluate (includes function for average word length)
 - Different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
-- Might be able to include comments in with the code for the context, even if not in the correct order. Maybe.
 - Think about adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
-
+- Might be able to include comments in with the code for the context, even if not in the correct order. Maybe.
 
 ## To Try (Input Preprocessing)
 
