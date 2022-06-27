@@ -19,6 +19,7 @@ class MarkdownDataset(Dataset):
         row = self.df.iloc[index]
         num_samples = self.fts[row.id]["num_samples"]  
         num_sampled = self.fts[row.id]["num_sampled"]
+        
         if self.code_sep_token == True:
             add_tokens = True
             if self.vbl_code == True:
