@@ -110,7 +110,9 @@ train_df.to_csv("./data/train.csv", index=False)
 
 # Additional code cells
 def clean_code(cell):
-    return str(cell).replace("\\n", "\n")
+    cell = str(cell).replace("\\n", "\n")
+    cell = str(cell).replace("\n", " ")
+    return cell
 
 def sample_cells(cells, n):
     cells = [clean_code(cell) for cell in cells]
