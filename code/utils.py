@@ -1,5 +1,6 @@
 from io import StringIO
 import tokenize
+import re
 
 def remove_comments_and_docstrings(source):
     """
