@@ -151,3 +151,5 @@ val_fts = get_features(val_df)
 json.dump(val_fts, open("./data/val_fts.json","wt"))
 train_fts = get_features(train_df)
 json.dump(train_fts, open("./data/train_fts.json","wt"))
+
+print(fails)
