@@ -2,6 +2,7 @@ from io import StringIO
 import tokenize
 import re
 
+# Source: https://stackoverflow.com/questions/1769332/script-to-remove-python-comments-docstrings
 def remove_comments_and_docstrings(source):
     """
     Returns 'source' minus comments and docstrings.
