@@ -102,8 +102,8 @@ train_df = df.loc[train_ind].reset_index(drop=True)
 val_df = df.loc[val_ind].reset_index(drop=True)
 
 # clean up markdown
-train_df.loc[train_df["cell_type"] == "markdown", "source"] = train_df[train_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
-val_df.loc[val_df["cell_type"] == "markdown", "source"] = val_df[val_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
+# train_df.loc[train_df["cell_type"] == "markdown", "source"] = train_df[train_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
+# val_df.loc[val_df["cell_type"] == "markdown", "source"] = val_df[val_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
 
 train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
 val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
