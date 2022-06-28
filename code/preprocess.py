@@ -91,6 +91,9 @@ df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='
 df["pct_rank"] = df["mod_rank"] / df["count"]
 df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
 
+# clean up markdown
+df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
+
 from sklearn.model_selection import GroupShuffleSplit
 
 NTRAIN = 0.9 * args.sample_data # proportion of training set
@@ -100,10 +103,6 @@ splitter = GroupShuffleSplit(n_splits=1, train_size=NTRAIN, test_size=NVALID, ra
 train_ind, val_ind = next(splitter.split(df, groups=df["ancestor_id"]))
 train_df = df.loc[train_ind].reset_index(drop=True)
 val_df = df.loc[val_ind].reset_index(drop=True)
-
-# clean up markdown
-# train_df.loc[train_df["cell_type"] == "markdown", "source"] = train_df[train_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
-# val_df.loc[val_df["cell_type"] == "markdown", "source"] = val_df[val_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
 
 train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
 val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
