@@ -101,7 +101,10 @@ train_ind, val_ind = next(splitter.split(df, groups=df["ancestor_id"]))
 train_df = df.loc[train_ind].reset_index(drop=True)
 val_df = df.loc[val_ind].reset_index(drop=True)
 
-# Base markdown dataframes
+# clean up markdown
+train_df.loc[train_df["cell_type"] == "markdown", "source"] = train_df[train_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
+val_df.loc[val_df["cell_type"] == "markdown", "source"] = val_df[val_df["cell_type"] == "markdown"].source.apply(preprocess_markdown)
+
 train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
 val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
 train_df_mark.to_csv("./data/train_mark.csv", index=False)
