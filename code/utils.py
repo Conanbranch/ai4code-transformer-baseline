@@ -28,7 +28,7 @@ def return_unmodified_value_if_failed():
 
 @return_unmodified_value_if_failed()
 def preprocess_text(document):
-    #document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters except 
+    document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters except 
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
     #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
     #document = re.sub(r'\s+', ' ', document, flags=re.I) # Substitute multiple spaces with single space   
@@ -101,7 +101,7 @@ def remove_comments_and_docstrings(source):
 
 @return_unmodified_value_if_failed()
 def clean_code(cell):
-    cell = str(remove_comments_and_docstrings(cell))
+    #cell = str(remove_comments_and_docstrings(cell))
     cell = str(cell).replace("\\n", "\n")
     #cell = str(cell).replace("\n", " ")
     #cell = str(re.sub(' +', ' ', cell))
