@@ -27,7 +27,7 @@ def return_unmodified_value_if_failed():
     return decorator
 
 @return_unmodified_value_if_failed()
-def preprocess_text(document):
+def preprocess_markdown(document):
     document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters except 
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
     #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
@@ -36,10 +36,6 @@ def preprocess_text(document):
     #document = document.lower() # Converting to Lowercase
     #document = document.lstrip()
     return document
-
-@return_unmodified_value_if_failed()
-def preprocess_markdown(df):
-    return [preprocess_text(message) for message in df.source]
 
 # Source: https://stackoverflow.com/questions/1769332/script-to-remove-python-comments-docstrings
 @return_unmodified_value_if_failed()
