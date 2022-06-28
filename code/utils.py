@@ -3,12 +3,13 @@ import tokenize
 import re
 
 def preprocess_text(document):
-    document = re.sub(r'\W', ' ', str(document)) # Remove all the special characters
-    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document) # Remove all single characters
-    document = re.sub(r'\^[a-zA-Z]\s+', ' ', document) # Remove single characters from the start
-    document = re.sub(r'\s+', ' ', document, flags=re.I) # Substituting multiple spaces with single space   
-    document = re.sub(r'^b\s+', '', document) # Removing prefixed 'b'
-    document = document.lower() # Converting to Lowercase
+    #document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters except 
+    #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
+    #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
+    #document = re.sub(r'\s+', ' ', document, flags=re.I) # Substitute multiple spaces with single space   
+    #document = re.sub(r'^b\s+', '', document) # Removing prefixed 'b'
+    #document = document.lower() # Converting to Lowercase
+    #document = document.lstrip()
     return document
     
 def preprocess_markdown(df):
