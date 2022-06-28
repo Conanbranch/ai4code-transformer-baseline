@@ -226,11 +226,9 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 - Add Stochastic Weight Averaging (SWA) - Complicated, Final Step Only If Necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
 
 ## To Do (Experiments)
-- Use all code cells, where number of tokens is based on number of code cells. More code cells less tokens per code cell 
 - Try reducing acumulator steps as well
 - Different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
 - Think about adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
-- Might be able to include comments in with the code for the context, even if not in the correct order. Maybe.
 
 ## To Try (Input Preprocessing)
 
@@ -243,6 +241,3 @@ Note: Heavy processing may not be a good idea as transformers can utilize contex
 - https://www.kaggle.com/code/shahules/basic-eda-cleaning-and-glove/notebook
 - https://towardsdatascience.com/part-1-data-cleaning-does-bert-need-clean-data-6a50c9c6e9fd#:~:text=Lightly%20clean%20the%20text%20data,and%20try%20running%20a%20CNN.
 - https://www.kaggle.com/code/haithamaliryan/ai4code-extract-all-functions-variables-names
-
-Before Deadline: 
-- Make robust https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/120375#688496
