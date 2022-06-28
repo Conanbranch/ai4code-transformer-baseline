@@ -74,7 +74,7 @@ def remove_comments_and_docstrings(source):
 
 def clean_code(cell):
     cell = str(remove_comments_and_docstrings(cell))
-    #cell = str(cell).replace("\\n", "\n")
+    cell = str(cell).replace("\\n", "\n")
     #cell = str(cell).replace("\n", " ")
     #cell = str(re.sub(' +', ' ', cell))
     #cell = str(cell).lstrip()
