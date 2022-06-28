@@ -2,6 +2,18 @@ from io import StringIO
 import tokenize
 import re
 
+def preprocess_text(document):
+    document = re.sub(r'\W', ' ', str(document)) # Remove all the special characters
+    document = re.sub(r'\s+[a-zA-Z]\s+', ' ', document) # Remove all single characters
+    document = re.sub(r'\^[a-zA-Z]\s+', ' ', document) # Remove single characters from the start
+    document = re.sub(r'\s+', ' ', document, flags=re.I) # Substituting multiple spaces with single space   
+    document = re.sub(r'^b\s+', '', document) # Removing prefixed 'b'
+    document = document.lower() # Converting to Lowercase
+    return document
+    
+def preprocess_markdown(df):
+    return [preprocess_text(message) for message in df.source]
+
 # Source: https://stackoverflow.com/questions/1769332/script-to-remove-python-comments-docstrings
 def remove_comments_and_docstrings(source):
     """
