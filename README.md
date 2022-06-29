@@ -138,6 +138,13 @@ Very little gain from 10, but double the training time
 | sigmoid | **.8438** | | 
 | linear | .8385| |
 
+Sigmoid:
+
+| output | Val. |
+| --- | --- | 
+| lhs | .8438 |
+| mean pooling | |
+
 | # Re-Init | Val. | 
 | --- | --- | 
 | 0 | .8385 | 
