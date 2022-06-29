@@ -245,4 +245,3 @@ Note: Heavy processing may not be a good idea as transformers can utilize contex
 - Remove tokens
 - Remove Markdown - https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
 - Remove HTML Tags - https://www.kaggle.com/code/takanorihasebe/text-cleaning-bert-and-transformer/notebook
-- https://www.kaggle.com/code/haithamaliryan/ai4code-extract-all-functions-variables-names
