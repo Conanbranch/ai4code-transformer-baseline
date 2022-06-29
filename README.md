@@ -241,7 +241,6 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 
 Note: Heavy processing may not be a good idea as transformers can utilize context.
 
-- Clean up input (remove comments from code, remove markup and other stuff from comments) Remove \r and \n from markup 
 - Remove tokens
 - Remove Markdown - https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
 - Remove HTML Tags - https://www.kaggle.com/code/takanorihasebe/text-cleaning-bert-and-transformer/notebook
