@@ -153,5 +153,3 @@ def clean_code(cell):
     #cell = str(cell).strip() # remove leading and following spaces
     #cell = str(cell).lower() # converting to Lowercase
     return cell
-
-print(fails)
