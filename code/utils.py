@@ -119,7 +119,7 @@ def remove_comments_and_docstrings(source):
 
 @return_unmodified_value_if_failed()
 def remove_special_tokens(document):
-    special_tokens = ['what', 'who', 'is', 'a', 'at', 'is', 'he']
+    special_tokens = ['<pad>', '</s>', '<unk>', '<s>', '<mask>']
     document_words = query.split()
     cleaned_words  = [word for word in document_words if word.lower() not in special_tokens]
     text = ' '.join(cleaned_words)
@@ -133,9 +133,10 @@ def clean_markdown(document):
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # remove all the special characters except # which indicates heading level
     #document = re.sub('\w*\d\w*', ' ', str(document)) # remove words with numbers
     #document = re.sub(r'[0-9]+', '', str(document)) # remove numbers from words and on their own
+    #document = remove_special_tokens(str(document))) # remove any special tokens
+    #document = re.sub(r'^b\s+', '', str(document)) # removing prefixed 'b'
     #document = re.sub(r"\b[a-zA-Z]\b", ' ', str(document)) # remove all single characters
     #document = re.sub(r'\s+', ' ', str(document), flags=re.I) # substitute multiple spaces with single space   
-    #document = re.sub(r'^b\s+', '', str(document)) # removing prefixed 'b'
     #document = document.strip() # remove leading and following spaces
     #document = document.lower() # converting to Lowercase
     return document
@@ -146,6 +147,7 @@ def clean_code(cell):
     #cell = remove_markup(str(document))
     cell = str(cell).replace("\\n", "\n") # fix newlines
     #cell = str(cell).replace("\n", " ") # remove newlines
+    #cell = remove_special_tokens(str(cell))) # remove any special tokens
     #cell = re.sub(' +', ' ', str(cell)) # remove multiple spaces
     #cell = str(cell).strip() # remove leading and following spaces
     #cell = str(cell).lower() # converting to Lowercase
