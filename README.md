@@ -242,6 +242,6 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 
 Note: Heavy processing may not be a good idea as transformers can utilize context.
 
-- Out of Vocab - https://www.kaggle.com/code/christofhenkel/how-to-preprocessing-when-using-embeddings
-- Spell Check?
-- Remove non-english?
+- Think of Unkown Tokens and whether they are good or bad - https://www.kaggle.com/code/christofhenkel/how-to-preprocessing-when-using-embeddings
+- Spell Check? Maybe
+- Remove non-english? Maybe
