@@ -33,11 +33,11 @@ def return_unmodified_value_if_failed():
 # May have some overhead from converting to html back to text, another solution:
 # https://stackoverflow.com/questions/761824/python-how-to-convert-markdown-formatted-text-to-text
 @return_unmodified_value_if_failed()
-def markdown_to_text(markdown_string):
+def remove_markdown_and_html(string):
     """ Converts a markdown string to plaintext """
     
     # md -> html -> text since BeautifulSoup can extract text cleanly
-    html = markdown(markdown_string)
+    html = markdown(string)
     
     # remove code snippets
     html = re.sub(r'<pre>(.*?)</pre>', ' ', html)
@@ -109,7 +109,8 @@ def remove_comments_and_docstrings(source):
 
 @return_unmodified_value_if_failed()
 def clean_markdown(document):
-    document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters except 
+    #document = remove_markdown_and_html(str(document))
+    document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters 
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
     #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
     #document = re.sub(r'\s+', ' ', document, flags=re.I) # Substitute multiple spaces with single space   
@@ -120,7 +121,7 @@ def clean_markdown(document):
 
 @return_unmodified_value_if_failed()
 def clean_code(cell):
-    #cell = str(remove_comments_and_docstrings(cell))
+    #cell = remove_comments_and_docstrings(str(document))
     cell = str(cell).replace("\\n", "\n")
     #cell = str(cell).replace("\n", " ")
     #cell = str(re.sub(' +', ' ', cell))
