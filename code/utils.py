@@ -120,7 +120,7 @@ def remove_comments_and_docstrings(source):
 @return_unmodified_value_if_failed()
 def remove_special_tokens(document):
     special_tokens = ['<pad>', '</s>', '<unk>', '<s>', '<mask>']
-    document_words = query.split()
+    document_words = document.split()
     cleaned_words  = [word for word in document_words if word.lower() not in special_tokens]
     text = ' '.join(cleaned_words)
     return text
