@@ -109,23 +109,24 @@ def remove_comments_and_docstrings(source):
 
 @return_unmodified_value_if_failed()
 def clean_markdown(document):
-    #document = remove_markdown_and_html(str(document))
+    #document = remove_markdown_and_html(str(document)) #remove markdown and html
     #document = re.sub('https?://\S+|www\.\S+', '', str(document)) # remove links
-    document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters 
-    #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
-    #document = re.sub(r"\b[a-zA-Z]\b", ' ', str(document)) # Remove all single characters
-    #document = re.sub(r'\s+', ' ', str(document), flags=re.I) # Substitute multiple spaces with single space   
-    #document = re.sub(r'^b\s+', '', str(document)) # Removing prefixed 'b'
-    #document = document.strip()
-    #document = document.lower() # Converting to Lowercase
+    document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # remove all the special characters 
+    #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # remove all the special characters except # which indicates heading level
+    #document = re.sub('\w*\d\w*', '', str(document)) # remove numbers
+    #document = re.sub(r"\b[a-zA-Z]\b", ' ', str(document)) # remove all single characters
+    #document = re.sub(r'\s+', ' ', str(document), flags=re.I) # substitute multiple spaces with single space   
+    #document = re.sub(r'^b\s+', '', str(document)) # removing prefixed 'b'
+    #document = document.strip() # remove leading and following spaces
+    #document = document.lower() # converting to Lowercase
     return document
 
 @return_unmodified_value_if_failed()
 def clean_code(cell):
-    #cell = remove_comments_and_docstrings(str(document))
-    cell = str(cell).replace("\\n", "\n")
-    #cell = str(cell).replace("\n", " ")
-    #cell = str(re.sub(' +', ' ', cell))
-    #cell = str(cell).strip()
-    #cell = str(cell).lower()
+    #cell = remove_comments_and_docstrings(str(document)) #remove comments
+    cell = str(cell).replace("\\n", "\n") # fix newlines
+    #cell = str(cell).replace("\n", " ") # remove newlines
+    #cell = re.sub(' +', ' ', str(cell)) # remove multiple spaces
+    #cell = str(cell).strip() # remove leading and following spaces
+    #cell = str(cell).lower() # converting to Lowercase
     return cell
