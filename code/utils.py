@@ -145,7 +145,7 @@ def clean_markdown(document):
 @return_unmodified_value_if_failed()
 def clean_code(cell):
     #cell = remove_comments_and_docstrings(str(document)) #remove comments
-    #cell = remove_markup(str(document))
+    #cell = remove_markup(str(cell))
     cell = str(cell).replace("\\n", "\n") # fix newlines
     #cell = str(cell).replace("\n", " ") # remove newlines
     #cell = remove_special_tokens(str(cell))) # remove any special tokens
