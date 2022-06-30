@@ -1,7 +1,6 @@
 from io import StringIO
 import tokenize
 import re
-
 from bs4 import BeautifulSoup
 from markdown import markdown
 
