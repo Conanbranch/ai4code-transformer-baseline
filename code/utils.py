@@ -137,8 +137,8 @@ def clean_markdown(document):
     #document = re.sub(r"\b[a-zA-Z]\b", ' ', str(document)) # remove all single characters
     #document = remove_special_tokens(str(document))) # remove any special tokens
     #document = re.sub(r'\s+', ' ', str(document), flags=re.I) # substitute multiple spaces with single space   
-    #document = document.strip() # remove leading and following spaces
-    #document = document.lower() # converting to Lowercase
+    #document = str(document).strip() # remove leading and following spaces
+    #document = str(document).lower() # converting to Lowercase
     return document
 
 @return_unmodified_value_if_failed()
