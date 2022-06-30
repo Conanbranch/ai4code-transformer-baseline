@@ -148,8 +148,8 @@ def clean_code(cell):
     cell = str(cell).replace("\\n", "\n") # fix newlines
     #cell = str(cell).replace("\n", " ") # remove newlines
     #cell = remove_special_tokens(str(cell))) # remove any special tokens
-    #cell = re.sub(' +', ' ', str(cell)) # remove multiple spaces
-    #cell = str(cell).strip() # remove leading and following spaces
+    cell = re.sub(' +', ' ', str(cell)) # remove multiple spaces
+    cell = str(cell).strip() # remove leading and following spaces
     #cell = str(cell).lower() # converting to Lowercase
     return cell
 
