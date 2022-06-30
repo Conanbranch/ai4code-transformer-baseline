@@ -118,6 +118,14 @@ def remove_comments_and_docstrings(source):
     return out
 
 @return_unmodified_value_if_failed()
+def remove_special_tokens(document):
+    special_tokens = ['what', 'who', 'is', 'a', 'at', 'is', 'he']
+    document_words = query.split()
+    cleaned_words  = [word for word in document_words if word.lower() not in special_tokens]
+    text = ' '.join(cleaned_words)
+    return text
+
+@return_unmodified_value_if_failed()
 def clean_markdown(document):
     #document = remove_markdown_and_markup(str(document)) #remove markdown and html
     #document = re.sub('https?://\S+|www\.\S+', '', str(document)) # remove links
