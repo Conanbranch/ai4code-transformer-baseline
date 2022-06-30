@@ -242,8 +242,6 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 
 Note: Heavy processing may not be a good idea as transformers can utilize context.
 
-- Remove tokens
-- Other Stuff - https://www.kaggle.com/code/parulpandey/eda-and-preprocessing-for-bert
 - Out of Vocab - https://www.kaggle.com/code/christofhenkel/how-to-preprocessing-when-using-embeddings
 - Spell Check?
 - Remove non-english?
