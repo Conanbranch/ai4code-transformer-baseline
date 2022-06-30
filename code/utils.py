@@ -33,7 +33,7 @@ def return_unmodified_value_if_failed():
 # May have some overhead from converting to html back to text, another solution:
 # https://stackoverflow.com/questions/761824/python-how-to-convert-markdown-formatted-text-to-text
 @return_unmodified_value_if_failed()
-def remove_markdown_and_html(string):
+def remove_markdown_and_markup(string):
     """ Converts a markdown string to plaintext """
     
     # md -> html -> text since BeautifulSoup can extract text cleanly
@@ -45,6 +45,16 @@ def remove_markdown_and_html(string):
 
     # extract text
     soup = BeautifulSoup(html, "html.parser")
+    text = ''.join(soup.findAll(text=True))
+    
+    return text
+
+@return_unmodified_value_if_failed()
+def remove_markup(string):
+    """ Converts a htmls string to plaintext """
+    
+    # extract text
+    soup = BeautifulSoup(string, "html.parser")
     text = ''.join(soup.findAll(text=True))
     
     return text
@@ -109,7 +119,7 @@ def remove_comments_and_docstrings(source):
 
 @return_unmodified_value_if_failed()
 def clean_markdown(document):
-    #document = remove_markdown_and_html(str(document)) #remove markdown and html
+    #document = remove_markdown_and_markup(str(document)) #remove markdown and html
     #document = re.sub('https?://\S+|www\.\S+', '', str(document)) # remove links
     document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # remove all the special characters 
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # remove all the special characters except # which indicates heading level
@@ -124,9 +134,12 @@ def clean_markdown(document):
 @return_unmodified_value_if_failed()
 def clean_code(cell):
     #cell = remove_comments_and_docstrings(str(document)) #remove comments
+    #cell = remove_markup(str(document))
     cell = str(cell).replace("\\n", "\n") # fix newlines
     #cell = str(cell).replace("\n", " ") # remove newlines
     #cell = re.sub(' +', ' ', str(cell)) # remove multiple spaces
     #cell = str(cell).strip() # remove leading and following spaces
     #cell = str(cell).lower() # converting to Lowercase
     return cell
+
+print(fails)
