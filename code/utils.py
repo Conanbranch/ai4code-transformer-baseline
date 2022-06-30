@@ -2,6 +2,9 @@ from io import StringIO
 import tokenize
 import re
 
+from bs4 import BeautifulSoup
+from markdown import markdown
+
 fails = []
 
 def return_default_value_if_failed(default_value):
@@ -26,16 +29,25 @@ def return_unmodified_value_if_failed():
         return inner
     return decorator
 
+# Source: https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
+# May have some overhead from converting to html back to text, another solution:
+# https://stackoverflow.com/questions/761824/python-how-to-convert-markdown-formatted-text-to-text
 @return_unmodified_value_if_failed()
-def preprocess_markdown(document):
-    document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters except 
-    #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
-    #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
-    #document = re.sub(r'\s+', ' ', document, flags=re.I) # Substitute multiple spaces with single space   
-    #document = re.sub(r'^b\s+', '', document) # Removing prefixed 'b'
-    #document = document.lower() # Converting to Lowercase
-    #document = document.lstrip()
-    return document
+def markdown_to_text(markdown_string):
+    """ Converts a markdown string to plaintext """
+    
+    # md -> html -> text since BeautifulSoup can extract text cleanly
+    html = markdown(markdown_string)
+    
+    # remove code snippets
+    html = re.sub(r'<pre>(.*?)</pre>', ' ', html)
+    html = re.sub(r'<code>(.*?)</code >', ' ', html)
+
+    # extract text
+    soup = BeautifulSoup(html, "html.parser")
+    text = ''.join(soup.findAll(text=True))
+    
+    return text
 
 # Source: https://stackoverflow.com/questions/1769332/script-to-remove-python-comments-docstrings
 @return_unmodified_value_if_failed()
@@ -94,6 +106,17 @@ def remove_comments_and_docstrings(source):
         last_col = end_col
         last_lineno = end_line
     return out
+
+@return_unmodified_value_if_failed()
+def clean_markdown(document):
+    document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters except 
+    #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
+    #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
+    #document = re.sub(r'\s+', ' ', document, flags=re.I) # Substitute multiple spaces with single space   
+    #document = re.sub(r'^b\s+', '', document) # Removing prefixed 'b'
+    #document = document.lower() # Converting to Lowercase
+    #document = document.lstrip()
+    return document
 
 @return_unmodified_value_if_failed()
 def clean_code(cell):
