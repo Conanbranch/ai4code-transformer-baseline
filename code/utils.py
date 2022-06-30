@@ -114,8 +114,8 @@ def clean_markdown(document):
     #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
     #document = re.sub(r'\s+', ' ', document, flags=re.I) # Substitute multiple spaces with single space   
     #document = re.sub(r'^b\s+', '', document) # Removing prefixed 'b'
+    #document = document.strip()
     #document = document.lower() # Converting to Lowercase
-    #document = document.lstrip()
     return document
 
 @return_unmodified_value_if_failed()
@@ -124,6 +124,6 @@ def clean_code(cell):
     cell = str(cell).replace("\\n", "\n")
     #cell = str(cell).replace("\n", " ")
     #cell = str(re.sub(' +', ' ', cell))
-    #cell = str(cell).lstrip()
+    #cell = str(cell).strip()
     #cell = str(cell).lower()
     return cell
