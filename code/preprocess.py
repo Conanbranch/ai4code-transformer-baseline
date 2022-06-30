@@ -93,7 +93,7 @@ df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1
 
 # clean up markdown
 tqdm.pandas()
-df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(preprocess_markdown)
+df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
 
 from sklearn.model_selection import GroupShuffleSplit
 
