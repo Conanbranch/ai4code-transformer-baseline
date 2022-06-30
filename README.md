@@ -143,7 +143,7 @@ Sigmoid:
 | output | Val. |
 | --- | --- | 
 | lhs | .8438 |
-| mean pooling | |
+| mean pooling | .8394 |
 
 | # Re-Init | Val. | 
 | --- | --- | 
