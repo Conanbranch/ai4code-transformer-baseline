@@ -128,14 +128,14 @@ def remove_special_tokens(document):
 def clean_markdown(document):
     #document = remove_markdown_and_markup(str(document)) # remove markdown and html
     #document = re.sub('https?://\S+|www\.\S+', '', str(document)) # remove links
-    #document = remove_special_tokens(str(document))) # remove any special tokens
+    #document = remove_special_tokens(str(document)) # remove any special tokens
     #document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # remove all the special characters 
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # remove all the special characters except # which indicates heading level
     #document = re.sub('\w*\d\w*', ' ', str(document)) # remove words with numbers
     #document = re.sub(r'[0-9]+', ' ', str(document)) # remove numbers from words and on their own
     #document = re.sub(r'^b\s+', ' ', str(document)) # removing prefixed 'b'
     #document = re.sub(r"\b[a-zA-Z]\b", ' ', str(document)) # remove all single characters
-    #document = remove_special_tokens(str(document))) # remove any special tokens
+    #document = remove_special_tokens(str(document)) # remove any special tokens
     #document = re.sub(r'\s+', ' ', str(document), flags=re.I) # substitute multiple spaces with single space   
     #document = str(document).strip() # remove leading and following spaces
     #document = str(document).lower() # converting to Lowercase
