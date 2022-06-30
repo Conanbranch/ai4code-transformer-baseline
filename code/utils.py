@@ -110,11 +110,12 @@ def remove_comments_and_docstrings(source):
 @return_unmodified_value_if_failed()
 def clean_markdown(document):
     #document = remove_markdown_and_html(str(document))
+    #document = re.sub('https?://\S+|www\.\S+', '', str(document)) # remove links
     document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # Remove all the special characters 
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # Remove all the special characters except # which indicates heading level
-    #document = re.sub(r"\b[a-zA-Z]\b", ' ', document) # Remove all single characters
-    #document = re.sub(r'\s+', ' ', document, flags=re.I) # Substitute multiple spaces with single space   
-    #document = re.sub(r'^b\s+', '', document) # Removing prefixed 'b'
+    #document = re.sub(r"\b[a-zA-Z]\b", ' ', str(document)) # Remove all single characters
+    #document = re.sub(r'\s+', ' ', str(document), flags=re.I) # Substitute multiple spaces with single space   
+    #document = re.sub(r'^b\s+', '', str(document)) # Removing prefixed 'b'
     #document = document.strip()
     #document = document.lower() # Converting to Lowercase
     return document
