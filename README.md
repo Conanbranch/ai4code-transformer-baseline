@@ -236,6 +236,7 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 - Try reducing acumulator steps as well
 - Different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
 - Think about adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
+- Although this is probably overley complicated, a ratio of comments to code could help. Try if bored.
 
 ## To Try (Input Preprocessing)
 
@@ -244,3 +245,5 @@ Note: Heavy processing may not be a good idea as transformers can utilize contex
 - Remove tokens
 - Remove Markdown - https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
 - Remove HTML Tags - https://www.kaggle.com/code/takanorihasebe/text-cleaning-bert-and-transformer/notebook
+- Spell Check?
+- Remove non-english?
