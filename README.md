@@ -237,6 +237,7 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 - Different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
 - Think about adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
 - Although this is probably overley complicated, a ratio of comments to code could help. Try if bored.
+- Multiple restarts for lowest initial loss
 
 ## To Try (Input Preprocessing)
 
