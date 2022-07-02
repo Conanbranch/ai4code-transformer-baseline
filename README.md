@@ -164,7 +164,11 @@ Sigmoid:
 
 | eval |  Val. |
 | --- | --- | 
-| Code (//n) | | 
+| Code (//n) | .8385 | 
+| Code (/n) |	.8422 | 
+| Code (comments) |	.8397 | 
+| Code (tokens) | .8408 |
+| Code (lower) | .8387 |
 | Markdown | |
 
 ## Sigmoid Eval
