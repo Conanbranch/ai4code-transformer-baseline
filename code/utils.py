@@ -44,7 +44,7 @@ def remove_markdown_and_markup(string):
 
     # extract text
     soup = BeautifulSoup(html, "html.parser")
-    text = ''.join(soup.findAll(text=True))
+    text = ' '.join(soup.findAll(text=True))
     
     return text
 
@@ -133,7 +133,7 @@ def clean_markdown(document):
 
 @return_unmodified_value_if_failed()
 def clean_code(cell):
-    #cell = remove_comments_and_docstrings(str(document)) #remove comments
+    cell = remove_comments_and_docstrings(str(document)) #remove comments
     cell = str(cell).replace("\\n", "\n") # fix newlines
     cell = str(cell).replace("\n", " ") # remove newlines
     cell = remove_special_tokens(str(cell)) # remove any special tokens
