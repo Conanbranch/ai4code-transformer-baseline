@@ -164,7 +164,7 @@ Sigmoid:
 
 | eval |  Val. |
 | --- | --- | 
-| Code (//n) | .8385 | 
+| Code (default) | .8385 | 
 | Code (/n) |	.8422 | 
 | Code (comments) |	.8397 | 
 | Code (tokens) | .8408 |
