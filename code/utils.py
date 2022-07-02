@@ -48,16 +48,6 @@ def remove_markdown_and_markup(string):
     
     return text
 
-@return_unmodified_value_if_failed()
-def remove_markup(string):
-    """ Converts a htmls string to plaintext """
-    
-    # extract text
-    soup = BeautifulSoup(string, "html.parser")
-    text = ''.join(soup.findAll(text=True))
-    
-    return text
-
 # Source: https://stackoverflow.com/questions/1769332/script-to-remove-python-comments-docstrings
 @return_unmodified_value_if_failed()
 def remove_comments_and_docstrings(source):
@@ -144,7 +134,6 @@ def clean_markdown(document):
 @return_unmodified_value_if_failed()
 def clean_code(cell):
     #cell = remove_comments_and_docstrings(str(document)) #remove comments
-    #cell = remove_markup(str(cell))
     cell = str(cell).replace("\\n", "\n") # fix newlines
     cell = str(cell).replace("\n", " ") # remove newlines
     cell = remove_special_tokens(str(cell)) # remove any special tokens
