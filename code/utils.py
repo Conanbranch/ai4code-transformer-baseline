@@ -117,7 +117,7 @@ def remove_special_tokens(document):
 @return_unmodified_value_if_failed()
 def clean_markdown(document):
     #document = remove_markdown_and_markup(str(document)) # remove markdown and html
-    #document = re.sub('https?://\S+|www\.\S+', '', str(document)) # remove links
+    #document = re.sub('https?://\S+|www\.\S+', ' ', str(document)) # remove links
     #document = remove_special_tokens(str(document)) # remove any special tokens
     #document = re.sub(r"[^a-zA-Z0-9]+", ' ', str(document)) # remove all the special characters 
     #document = re.sub(r"[^a-zA-Z0-9#]+", ' ', str(document)) # remove all the special characters except # which indicates heading level
