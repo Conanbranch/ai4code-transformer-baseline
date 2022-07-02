@@ -139,5 +139,5 @@ def clean_code(cell):
     cell = remove_special_tokens(str(cell)) # remove any special tokens
     cell = re.sub(' +', ' ', str(cell)) # remove multiple spaces
     cell = str(cell).strip() # remove leading and following spaces
-    #cell = str(cell).lower() # converting to Lowercase
+    cell = str(cell).lower() # converting to Lowercase
     return cell
