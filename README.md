@@ -249,4 +249,6 @@ Note: Heavy processing may not be a good idea as transformers can utilize contex
 
 - Think of Unkown Tokens and whether they are good or bad - https://www.kaggle.com/code/christofhenkel/how-to-preprocessing-when-using-embeddings
 - Spell Check? Maybe
-- Remove non-english? Maybe
+- Remove non-english? Mayb
+
+May want to submit one version with limited preprocessing for final to limit final submission errors.
