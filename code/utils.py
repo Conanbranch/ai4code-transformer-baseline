@@ -114,7 +114,7 @@ def remove_special_tokens(document):
     text = ' '.join(cleaned_words)
     return text
 
-@return_unmodified_value_if_failed()
+#@return_unmodified_value_if_failed()
 def clean_markdown(document):
     #document = remove_markdown_and_markup(str(document)) # remove markdown and html
     #document = re.sub(r'https?://\S+|www\.\S+', ' ', str(document)) # remove links
@@ -129,7 +129,7 @@ def clean_markdown(document):
     #document = str(document).strip() # remove leading and following spaces
     return document
 
-@return_unmodified_value_if_failed()
+#@return_unmodified_value_if_failed()
 def clean_code(cell):
     cell = remove_comments_and_docstrings(str(document)) #remove comments
     cell = str(cell).replace("\\n", "\n") # fix newlines
