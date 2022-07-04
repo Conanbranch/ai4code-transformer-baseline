@@ -12,7 +12,8 @@ def return_default_value_if_failed(default_value):
             try:
                 return func(*args, **kwargs)
             except Exception as e:
-                fails.append((func, (args, kwargs), e))
+                #fails.append((func, (args, kwargs), e))
+                fails.append((func, e))
                 return default_value
         return inner
     return decorator
@@ -23,7 +24,8 @@ def return_unmodified_value_if_failed():
             try:
                 return func(*args, **kwargs)
             except Exception as e:
-                fails.append((func, (args, kwargs), e))
+                #fails.append((func, (args, kwargs), e))
+                fails.append((func, e))
                 return args
         return inner
     return decorator
