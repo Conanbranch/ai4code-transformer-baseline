@@ -145,6 +145,7 @@ def get_features(df):
         features[idx]["total_code"] = total_code
         features[idx]["total_md"] = total_md
         features[idx]["codes"] = codes
+        print(features)
     return features
 
 val_fts = get_features(val_df)
