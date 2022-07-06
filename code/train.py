@@ -51,6 +51,9 @@ val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna()
 val_fts = json.load(open(args.val_features_path))
 val_df = pd.read_csv(args.val_path)
 
+#val_df_mark['source'] = val_df_mark['source'].fillna('')
+#val_df['source'] = val_df['source'].fillna('')
+
 order_df = pd.read_csv("../input/train_orders.csv").set_index("id")
 df_orders = pd.read_csv(
     data_dir / 'train_orders.csv',
