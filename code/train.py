@@ -84,6 +84,12 @@ def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     scheduler.load_state_dict(checkpoint['scheduler'])
     return model, optimizer, scheduler, checkpoint['epoch']
 
+def load_initial_state(checkpoint):
+    model.load_state_dict(checkpoint['state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    scheduler.load_state_dict(checkpoint['scheduler'])
+    return model, optimizer, scheduler, checkpoint['epoch']
+
 def read_data(data):
     return tuple(d.cuda() for d in data[:-1]), data[-1].cuda()
 
@@ -107,7 +113,8 @@ def validate(model, val_loader):
 
     return np.concatenate(labels), np.concatenate(preds)
 
-def train(model, train_loader, val_loader, epochs):
+def multiple_restart_train(model, train_loader, val_loader, epochs):
+    
     np.random.seed(0)
     
     # optimizer and lr schedulers, includes weight decay
@@ -129,6 +136,72 @@ def train(model, train_loader, val_loader, epochs):
     scaler = torch.cuda.amp.GradScaler()
     
     epoch = 0
+    
+    if args.resume_train == True:
+        model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
+                             
+    initial_state = {
+          'epoch': epoch
+          'state_dict': model.state_dict(),
+          'optimizer': optimizer.state_dict(),
+          'scheduler': scheduler.state_dict()
+        }
+    
+    for e in range(epoch,epochs):
+        model.train()
+        tbar = tqdm(train_loader, file=sys.stdout)
+        loss_list = []
+        preds = []
+        labels = []
+
+        for idx, data in enumerate(tbar):
+            inputs, target = read_data(data)
+
+            with torch.cuda.amp.autocast():
+                pred = model(*inputs)
+                loss = criterion(pred, target)
+            scaler.scale(loss).backward()
+            if idx % args.accumulation_steps == 0 or idx == len(tbar) - 1:
+                scaler.step(optimizer)
+                scaler.update()
+                optimizer.zero_grad()
+                scheduler.step()
+
+            loss_list.append(loss.detach().cpu().item())
+            preds.append(pred.detach().cpu().numpy().ravel())
+            labels.append(target.detach().cpu().numpy().ravel())
+
+            avg_loss = np.round(np.mean(loss_list), 4)
+
+            tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
+            
+            if idx = num_steps:
+                return avg_loss, initial_state    
+
+def train(model, train_loader, val_loader, epochs, best_initial_state):
+    np.random.seed(0)
+    
+    # optimizer and lr schedulers, includes weight decay
+    param_optimizer = list(model.named_parameters())
+    no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
+    optimizer_grouped_parameters = [
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
+        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
+    ]
+
+    num_train_optimization_steps = int(args.epochs * len(train_loader) / args.accumulation_steps)
+    optimizer = AdamW(optimizer_grouped_parameters, lr=3e-5,
+                      correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
+    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0.05 * num_train_optimization_steps,
+                                                num_training_steps=num_train_optimization_steps)  # PyTorch scheduler
+    
+    #criterion = torch.nn.MSELoss()
+    criterion = torch.nn.L1Loss()
+    scaler = torch.cuda.amp.GradScaler()
+    
+    epoch = 0
+    
+    model, optimizer, scheduler, epoch = load_initial_state(state)  
     
     if args.resume_train == True:
         model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
@@ -185,6 +258,20 @@ def train(model, train_loader, val_loader, epochs):
     
     return model, y_pred
 
-model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
-model = model.cuda()
-model, y_pred = train(model, train_loader, val_loader, epochs=args.epochs)
+if args.resume_train != True:
+
+    best_loss = 0
+    best_initial_state = 0
+    for i in range(0,10):
+        model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
+        model = model.cuda()
+        loss, state = multiple_restart_train(model, train_loader, val_loader, epochs=args.epochs)
+        if loss > best_loss:
+            best_loss = loss
+            best_initial_state = state
+        
+else:        
+        
+    model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
+    model = model.cuda()
+    model, y_pred = train(model, train_loader, val_loader, epochs=args.epochs, best_initial_state)   
