@@ -117,6 +117,8 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
     
     np.random.seed(0)
     
+    num_steps = 12
+    
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
@@ -136,9 +138,6 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
     scaler = torch.cuda.amp.GradScaler()
     
     epoch = 0
-    
-    if args.resume_train == True:
-        model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
                              
     initial_state = {
           'epoch': epoch
