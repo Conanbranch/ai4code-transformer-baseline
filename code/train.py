@@ -261,17 +261,22 @@ num_restarts = 100
 
 if args.resume_train != True:
     best_loss = 0
+    worst_loss = 0
     best_initial_state = 0
     for i in range(0,num_restarts):
         print("restart " + str(i+1) + "/" + str(num_restarts))
         model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
         model = model.cuda()
         loss, state = multiple_restart_train(model, train_loader, val_loader, epochs=args.epochs)
+        if loss > worst_loss:
+            worse_lost = loss
         if loss < best_loss:
             best_loss = loss
             best_initial_state = state
-        del model    
-        
+        del model 
+    
+    print("worse:" + str(worse_loss))
+    print("best:" + str(best_loss))
     model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
     model = model.cuda()
     model, y_pred = train(model, train_loader, val_loader, best_initial_state, epochs=args.epochs)
