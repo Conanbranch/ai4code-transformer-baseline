@@ -199,11 +199,11 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
     scaler = torch.cuda.amp.GradScaler()
     
     epoch = 0
-    
-    model, optimizer, scheduler, epoch = load_initial_state(state)  
-    
+       
     if args.resume_train == True:
         model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
+    else:
+        model, optimizer, scheduler, epoch = load_initial_state(state)
     
     for e in range(epoch,epochs):
         model.train()
@@ -269,7 +269,9 @@ if args.resume_train != True:
             best_loss = loss
             best_initial_state = state
         del model    
-else:             
+        
     model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
     model = model.cuda()
-    model, y_pred = train(model, train_loader, val_loader, best_initial_state, epochs=args.epochs)   
+    model, y_pred = train(model, train_loader, val_loader, best_initial_state, epochs=args.epochs)
+else:
+    model, y_pred = train(model, train_loader, val_loader, 0, epochs=args.epochs)
