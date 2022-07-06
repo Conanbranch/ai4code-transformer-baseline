@@ -6,6 +6,7 @@ from scipy import sparse
 from tqdm import tqdm
 import os
 import argparse
+from utils import *
 
 parser = argparse.ArgumentParser(description='process arguments')
 
@@ -90,6 +91,10 @@ df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='
 df["pct_rank"] = df["mod_rank"] / df["count"]
 df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
 
+# clean up markdown
+tqdm.pandas()
+df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
+
 from sklearn.model_selection import GroupShuffleSplit
 
 NTRAIN = 0.9 * args.sample_data # proportion of training set
@@ -100,17 +105,12 @@ train_ind, val_ind = next(splitter.split(df, groups=df["ancestor_id"]))
 train_df = df.loc[train_ind].reset_index(drop=True)
 val_df = df.loc[val_ind].reset_index(drop=True)
 
-# Base markdown dataframes
 train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
 val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
 train_df_mark.to_csv("./data/train_mark.csv", index=False)
 val_df_mark.to_csv("./data/val_mark.csv", index=False)
 val_df.to_csv("./data/val.csv", index=False)
 train_df.to_csv("./data/train.csv", index=False)
-
-# Additional code cells
-def clean_code(cell):
-    return str(cell).replace("\\n", "\n")
 
 def sample_cells(cells, n):
     cells = [clean_code(cell) for cell in cells]
@@ -151,3 +151,5 @@ val_fts = get_features(val_df)
 json.dump(val_fts, open("./data/val_fts.json","wt"))
 train_fts = get_features(train_df)
 json.dump(train_fts, open("./data/train_fts.json","wt"))
+
+print(fails)
