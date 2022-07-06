@@ -278,6 +278,10 @@ Code Sampled = 40
 Activation = Sigmoid
 Epochs = 12
 
+Batch Size:
+
+8, 16
+
 ## To Do (Code)
 - Clean up ranking
 
