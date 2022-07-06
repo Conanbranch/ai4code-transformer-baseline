@@ -260,8 +260,8 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
 num_restarts = 100
 
 if args.resume_train != True:
-    best_loss = 0
-    worst_loss = 0
+    best_loss = 1.0
+    worst_loss = 0.0 
     best_initial_state = 0
     for i in range(0,num_restarts):
         print("restart " + str(i+1) + "/" + str(num_restarts))
