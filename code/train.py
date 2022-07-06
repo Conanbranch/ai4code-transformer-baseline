@@ -117,7 +117,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
     
     np.random.seed(0)
     
-    num_steps = 12
+    num_steps = 10 * args.accumulation_steps
     
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
@@ -260,7 +260,7 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
 if args.resume_train != True:
     best_loss = 0
     best_initial_state = 0
-    for i in range(0,10):
+    for i in range(0,100):
         print("restart: " + i)
         model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
         model = model.cuda()
