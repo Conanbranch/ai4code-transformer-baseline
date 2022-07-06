@@ -203,7 +203,6 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
     if args.resume_train == True:
         model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
     else:
-        print(best_initial_state)
         model, optimizer, scheduler, epoch = load_initial_state(best_initial_state, model, optimizer, scheduler)
     
     for e in range(epoch,epochs):
