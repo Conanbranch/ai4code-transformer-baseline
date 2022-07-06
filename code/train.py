@@ -117,7 +117,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
     
     np.random.seed(0)
     
-    num_steps = int(25 * args.accumulation_steps)
+    num_steps = int(100 * args.accumulation_steps)
     
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
@@ -180,6 +180,8 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
 def train(model, train_loader, val_loader, best_initial_state, epochs):
     np.random.seed(0)
     
+    num_steps = int(20 * args.accumulation_steps)
+    
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
@@ -232,6 +234,9 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
             avg_loss = np.round(np.mean(loss_list), 4)
 
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
+            
+            if idx == num_steps:
+                print(avg_loss)
         
         torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
 
