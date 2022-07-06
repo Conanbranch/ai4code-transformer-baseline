@@ -269,13 +269,13 @@ if args.resume_train != True:
         model = model.cuda()
         loss, state = multiple_restart_train(model, train_loader, val_loader, epochs=args.epochs)
         if loss > worst_loss:
-            worse_lost = loss
+            worst_loss = loss
         if loss < best_loss:
             best_loss = loss
             best_initial_state = state
         del model 
     
-    print("worse:" + str(worse_loss))
+    print("worst:" + str(worst_loss))
     print("best:" + str(best_loss))
     model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
     model = model.cuda()
