@@ -162,14 +162,13 @@ Sigmoid:
 
 \*No pad between code, just after
 
+With Sigmoid Activation Function:
+
 | eval |  Val. |
 | --- | --- | 
-| Code (default) | .8385 | 
-| Code (/n) |	.8422 | 
-| Code (comments) |	.8397 | 
-| Code (tokens) | .8408 |
-| Code (lower) | .8387 |
-| Markdown | |
+| Default | .8438 | 
+| All |	.8396 | 
+| Newlines |	.8437 | 
 
 ## Sigmoid Eval
 
