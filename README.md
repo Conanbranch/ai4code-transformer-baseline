@@ -138,13 +138,6 @@ Very little gain from 10, but double the training time
 | sigmoid | **.8438** | | 
 | linear | .8385| |
 
-Sigmoid:
-
-| output | Val. |
-| --- | --- | 
-| lhs | .8438 |
-| mean pooling | .8394 |
-
 | # Re-Init | Val. | 
 | --- | --- | 
 | 0 | .8385 | 
@@ -161,14 +154,6 @@ Sigmoid:
 | No Code \<SEP\> and \<PAD\>* | .8397 | |
 
 \*No pad between code, just after
-
-With Sigmoid Activation Function:
-
-| eval |  Val. |
-| --- | --- | 
-| Default | .8438 | 
-| All |	.8396 | 
-| Newlines |	.8437 | 
 
 ## Sigmoid Eval
 
@@ -188,6 +173,17 @@ With Sigmoid Activation Function:
 | 50 |  | |  
 | 60 |  | |  
 | 80 |  | |  
+
+| eval |  Val. |
+| --- | --- | 
+| Default | .8438 | 
+| All |	.8396 | 
+| Newlines |	.8437 |
+
+| output | Val. |
+| --- | --- | 
+| lhs | .8438 |
+| mean pooling | .8394 |
 
 ## Full Dataset Eval
 
