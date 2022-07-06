@@ -153,7 +153,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 | Code \<SEP\> | .8385 | |
 | No Code \<SEP\> | .8372 | |
 | No Code \<PAD\>* | .8391 | |
-| No Code \<SEP\> and \<PAD\>* | .8397 | |
+| No Code \<SEP\> and \<PAD\>* | **.8397** | |
 
 \*No pad between code, just after
 
