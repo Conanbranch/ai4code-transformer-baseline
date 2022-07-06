@@ -91,9 +91,9 @@ df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='
 df["pct_rank"] = df["mod_rank"] / df["count"]
 df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
 
-# clean up markdown
-tqdm.pandas()
-df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
+#clean up markdown
+#tqdm.pandas()
+#df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
 
 from sklearn.model_selection import GroupShuffleSplit
 
