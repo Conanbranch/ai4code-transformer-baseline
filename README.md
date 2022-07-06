@@ -239,7 +239,6 @@ Code Sampled = 40
 Activation = Sigmoid
 Epochs = 10
 
-Re-Init = 3
 Code Sampled = 45
 Activation = Sigmoid
 Epochs = 10
