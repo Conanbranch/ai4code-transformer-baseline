@@ -232,11 +232,10 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 - Add Stochastic Weight Averaging (SWA) - Complicated, Final Step Only If Necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
 
 ## To Do (Experiments)
-- Try reducing acumulator steps as well
-- Different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
-- Think about adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
-- Although this is probably overley complicated, a ratio of comments to code could help. Try if bored.
-- Multiple restarts for lowest initial loss
+- Try reducing acumulator steps
+- Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
+- Try adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
+- Try multiple restarts for lowest initial loss, can do this with checkpoints. E.g. 10 restarts where the loss is a certain value after some number of steps in the firt epoch
 
 ## Final
 
