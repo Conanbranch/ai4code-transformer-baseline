@@ -84,7 +84,7 @@ def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     scheduler.load_state_dict(checkpoint['scheduler'])
     return model, optimizer, scheduler, checkpoint['epoch']
 
-def load_initial_state(checkpoint):
+def load_initial_state(checkpoint, model, optimizer, scheduler):
     model.load_state_dict(checkpoint['state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer'])
     scheduler.load_state_dict(checkpoint['scheduler'])
@@ -204,7 +204,7 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
         model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
     else:
         print(best_initial_state)
-        model, optimizer, scheduler, epoch = load_initial_state(best_initial_state)
+        model, optimizer, scheduler, epoch = load_initial_state(best_initial_state, model, optimizer, scheduler)
     
     for e in range(epoch,epochs):
         model.train()
