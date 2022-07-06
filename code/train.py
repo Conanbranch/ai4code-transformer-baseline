@@ -260,7 +260,7 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
 if args.resume_train != True:
     best_loss = 0
     best_initial_state = 0
-    for i in range(0,25):
+    for i in range(0,100):
         print("restart: " + str(i+1))
         model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
         model = model.cuda()
