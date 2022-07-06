@@ -259,7 +259,6 @@ def train(model, train_loader, val_loader, epochs, best_initial_state):
     return model, y_pred
 
 if args.resume_train != True:
-
     best_loss = 0
     best_initial_state = 0
     for i in range(0,10):
@@ -269,9 +268,8 @@ if args.resume_train != True:
         if loss > best_loss:
             best_loss = loss
             best_initial_state = state
-        
-else:        
-        
+        del model    
+else:             
     model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
     model = model.cuda()
     model, y_pred = train(model, train_loader, val_loader, epochs=args.epochs, best_initial_state)   
