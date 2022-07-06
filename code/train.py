@@ -174,7 +174,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
 
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
             
-            if idx = num_steps:
+            if idx == num_steps:
                 return avg_loss, initial_state    
 
 def train(model, train_loader, val_loader, epochs, best_initial_state):
