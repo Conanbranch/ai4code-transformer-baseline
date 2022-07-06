@@ -117,7 +117,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
     
     np.random.seed(0)
     
-    num_steps = int(10 * args.accumulation_steps)
+    num_steps = int(25 * args.accumulation_steps)
     
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
