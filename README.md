@@ -238,12 +238,9 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 - Although this is probably overley complicated, a ratio of comments to code could help. Try if bored.
 - Multiple restarts for lowest initial loss
 
-## To Try (Input Preprocessing)
+## Final
 
-Note: Heavy processing may not be a good idea as transformers can utilize context.
+- Do final evaluation with different rankings, revert if no change
+- Train final models on all data
+- May want to submit one version with limited preprocessing for final to limit final submission errors.
 
-- Think of Unkown Tokens and whether they are good or bad - https://www.kaggle.com/code/christofhenkel/how-to-preprocessing-when-using-embeddings
-- Spell Check? Maybe
-- Remove non-english? Mayb
-
-May want to submit one version with limited preprocessing for final to limit final submission errors.
