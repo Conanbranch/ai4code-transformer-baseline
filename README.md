@@ -296,6 +296,7 @@ Batch Size:
 - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
 - Try adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
 - Try multiple restarts for lowest initial loss, can do this with checkpoints. E.g. 10 restarts where the loss is a certain value after some number of steps in the firt epoch
+- Try different warmup strategies, such as cosine
 
 ## Final
 
