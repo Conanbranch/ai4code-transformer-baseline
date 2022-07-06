@@ -177,7 +177,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
             if idx == num_steps:
                 return avg_loss, initial_state    
 
-def train(model, train_loader, val_loader, epochs, best_initial_state):
+def train(model, train_loader, val_loader, best_initial_state, epochs):
     np.random.seed(0)
     
     # optimizer and lr schedulers, includes weight decay
@@ -271,4 +271,4 @@ if args.resume_train != True:
 else:             
     model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
     model = model.cuda()
-    model, y_pred = train(model, train_loader, val_loader, epochs=args.epochs, best_initial_state)   
+    model, y_pred = train(model, train_loader, val_loader, best_initial_state, epochs=args.epochs)   
