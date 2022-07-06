@@ -257,7 +257,7 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
     
     return model, y_pred
 
-num_restarts = 100
+num_restarts = 10
 
 if args.resume_train != True:
     best_loss = float('inf')  
