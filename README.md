@@ -228,8 +228,8 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 
 ## To Do (Features)
 
-- Frequent evaluation - May not make any difference, don't bother unless really need a boost
-- Add Stochastic Weight Averaging (SWA) - Complicated, Final Step Only If Necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
+- Try Frequent evaluation - May not make any difference, don't bother unless really need a boost
+- Try Stochastic Weight Averaging (SWA) - Complicated, final step only if necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
 
 ## To Do (Experiments)
 - Try reducing acumulator steps
