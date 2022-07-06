@@ -163,16 +163,14 @@ Very little gain from 10, but double the training time
 | 1 |  | 
 | 2 |  |   
 | 4 |  |    
-| 8 |  | 
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
-| 20 |  | |
 | 30 |  | |
+| 35 |  | |
 | 40 |  | |
+| 45 |  | |
 | 50 |  | |  
-| 60 |  | |  
-| 80 |  | |  
 
 | eval |  Val. |
 | --- | --- | 
@@ -185,43 +183,82 @@ Very little gain from 10, but double the training time
 | lhs | .8438 |
 | mean pooling | .8394 |
 
+| weight <br> decay |  Val. |
+| --- | --- |
+| .2 | | 
+| .1 | | 
+| .01 | |    
+
 ## Full Dataset Eval
 
+Best Re-Init:
+
 Re-Init = 1
 Code Sampled = 40
 MDL = 64
 Activation = Sigmoid
-Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
-
-Re-Init = 1
-Code Sampled = 30
-MDL = 64
-Activation = Sigmoid
-Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
+Epochs = 10 
 
 Re-Init = 2
 Code Sampled = 40
 MDL = 64
 Activation = Sigmoid
-Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
-
-Re-Init = 2
-Code Sampled = 30
-MDL = 64
-Activation = Sigmoid
-Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
+Epochs = 10 
 
 Re-Init = 3
 Code Sampled = 40
 MDL = 64
 Activation = Sigmoid
-Epochs = 10 ~ 3 Days (25 Takes ~ 7 Days)
+Epochs = 10
 
-Re-Init = 3
-Code Sampled = 30
+Best MDL:
+
+Code Sampled = 40
 MDL = 64
 Activation = Sigmoid
-Epochs = 10 ~ 3 Days (25 ~ 7 Days)
+Epochs = 10 
+
+Code Sampled = 40
+MDL = 128
+Activation = Sigmoid
+Epochs = 10 
+
+Best Sample:
+
+Code Sampled = 30
+Activation = Sigmoid
+Epochs = 10 
+
+Code Sampled = 35
+Activation = Sigmoid
+Epochs = 10 
+
+Code Sampled = 40
+Activation = Sigmoid
+Epochs = 10
+
+Re-Init = 3
+Code Sampled = 45
+Activation = Sigmoid
+Epochs = 10
+
+Best Epochs:
+
+Code Sampled = 30
+Activation = Sigmoid
+Epochs = 9
+
+Code Sampled = 30
+Activation = Sigmoid
+Epochs = 10 
+
+Code Sampled = 35
+Activation = Sigmoid
+Epochs = 11 
+
+Code Sampled = 40
+Activation = Sigmoid
+Epochs = 12
 
 ## To Do (Code)
 - Clean up ranking
@@ -232,6 +269,7 @@ Epochs = 10 ~ 3 Days (25 ~ 7 Days)
 - Try Stochastic Weight Averaging (SWA) - Complicated, final step only if necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
 
 ## To Do (Experiments)
+- Complete above experiments
 - Try reducing acumulator steps
 - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
 - Try adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
