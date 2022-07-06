@@ -264,7 +264,7 @@ if args.resume_train != True:
         model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
         model = model.cuda()
         loss, state = multiple_restart_train(model, train_loader, val_loader, epochs=args.epochs)
-        if loss > best_loss:
+        if loss < best_loss:
             best_loss = loss
             best_initial_state = state
         del model    
