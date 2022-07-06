@@ -126,6 +126,8 @@ Very little gain from 10, but double the training time
 | 3e-5 | .8385 |    
 | 5e-5 | **.8428** | 
 
+Does not help with larger training sizes. Performance appears to be a function of learning rate, epochs, and training set size
+
 | weight <br> decay |  Val. |
 | --- | --- | 
 | .1 | **.8389** | 
