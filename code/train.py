@@ -140,7 +140,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
     epoch = 0
                              
     initial_state = {
-          'epoch': epoch
+          'epoch': epoch,
           'state_dict': model.state_dict(),
           'optimizer': optimizer.state_dict(),
           'scheduler': scheduler.state_dict()
