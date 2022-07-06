@@ -174,16 +174,33 @@ Does not help with larger training sizes. Performance appears to be a function o
 | 45 |  | |
 | 50 |  | |  
 
-| eval |  Val. |
+| eval (code) |  Val. |
 | --- | --- | 
 | Default | .8438 | 
 | All |	.8396 | 
 | Newlines |	.8437 |
+| Lower |  |
+| Tokens |  |
+| Comments |  |
+
+| eval (code) |  Val. |
+| --- | --- | 
+| Default | .8438 | 
+| All | .8361 | 
+| Markdown|	 |
+| Special Characters |  |
+| Tokens | .8418 |
+| Lowercase | .8436 |
+| Extra | .8366 |
+| URL | |
+
 
 | output | Val. |
 | --- | --- | 
 | lhs | .8438 |
 | mean pooling | .8394 |
+| max pooling |  |
+| mean max pooling |  |
 
 | weight <br> decay |  Val. |
 | --- | --- |
