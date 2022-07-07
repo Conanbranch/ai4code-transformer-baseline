@@ -283,4 +283,6 @@ if args.resume_train != True:
     model = model.cuda()
     model, y_pred = train(model, train_loader, val_loader, best_initial_state, epochs=args.epochs)
 else:
+    model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
+    model = model.cuda()
     model, y_pred = train(model, train_loader, val_loader, 0, epochs=args.epochs)
