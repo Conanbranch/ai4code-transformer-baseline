@@ -159,12 +159,17 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 ## Sigmoid Eval
 
-| # Re-Init | Val. | 
-| --- | --- | 
-| 0 |  | 
-| 1 |  | 
-| 2 |  |   
-| 4 |  |    
+64 MD Size
+
+| Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
+| --- | --- | --- |
+| 30 |  | |
+| 35 |  | |
+| 40 |  | |
+| 45 |  | |
+| 50 |  | |  
+
+128 MD Size
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
