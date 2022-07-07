@@ -148,12 +148,12 @@ Does not help with larger training sizes. Performance appears to be a function o
 | 4 | **.8401** |    
 | 8 | .8206 | 
 
-| eval |  FLC Val. |  VLC Val. |
-| --- | --- | --- |
-| Code \<SEP\> | .8385 | |
-| No Code \<SEP\> | .8372 | |
-| No Code \<PAD\>* | .8391 | |
-| No Code \<SEP\> and \<PAD\>* | **.8397** | |
+| eval |  FLC Val. | 
+| --- | --- | 
+| Code \<SEP\> | .8385 | 
+| No Code \<SEP\> | .8372 | 
+| No Code \<PAD\>* | .8391 | 
+| No Code \<SEP\> and \<PAD\>* | **.8397** |
 
 \*No pad between code, just after
 
