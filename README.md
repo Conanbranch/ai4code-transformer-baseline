@@ -93,7 +93,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 | --- | --- | --- |
 | 20 | .8323 | .8318 |
 | 40 | **.8385** | .8420 |   
-| 60 | .8377 | .8426  |  
+| 60 | .8377 | **.8426**  |  
 | 80 | .8302 | .8409 |  
 
 Note: If VLC does better, consider testing re-init with it as well as the different MDL
