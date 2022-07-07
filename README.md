@@ -188,16 +188,17 @@ Does not help with larger training sizes. Performance appears to be a function o
 | Tokens |  |
 | Comments |  |
 
-| eval (code) |  Val. |
+| eval (md) |  Val. |
 | --- | --- | 
-| Default | .8438 | 
+| Default | **.8438** | 
 | All | .8361 | 
-| Markdown|	 |
-| Special Characters |  |
+| Markdown|	.8384 |
+| Special Characters | .8398 |
+| Special Characters Except | .8423 |
 | Tokens | .8418 |
 | Lowercase | .8436 |
 | Extra | .8366 |
-| URL | |
+| URL | .8419 |
 
 
 | output | Val. |
