@@ -117,7 +117,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
     
     np.random.seed(0)
     
-    num_steps = int(100 * args.accumulation_steps)
+    num_steps = int(50 * args.accumulation_steps)
     
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
@@ -179,8 +179,6 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
 
 def train(model, train_loader, val_loader, best_initial_state, epochs):
     np.random.seed(0)
-    
-    num_steps = int(100 * args.accumulation_steps)
     
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
@@ -259,7 +257,7 @@ def train(model, train_loader, val_loader, best_initial_state, epochs):
     
     return model, y_pred
 
-num_restarts = 100
+num_restarts = 50
 
 if args.resume_train != True:
     best_loss = float('inf')  
