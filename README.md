@@ -134,11 +134,11 @@ Does not help with larger training sizes. Performance appears to be a function o
 | .01 | .8385 |    
 | .001 | .8373 |  
 
-| activation | BCE Val. | MSE Val. |
-| --- | --- | ---|
-| tanh | .8401 | |
-| sigmoid | **.8438** | | 
-| linear | .8385| |
+| activation | BCE Val. | 
+| --- | --- | 
+| tanh | .8401 |
+| sigmoid | **.8438** | 
+| linear | .8385|
 
 | # Re-Init | Val. | 
 | --- | --- | 
