@@ -307,6 +307,6 @@ Batch Size:
 
 - Do final evaluation with different rankings, revert if no change
 - Train final models on all data
-- Fix code sample size
+- Fix code sample size (don't want :200)
 - May want to submit one version with limited preprocessing for final to limit final submission errors.
 
