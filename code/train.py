@@ -116,9 +116,7 @@ def validate(model, val_loader):
 def multiple_restart_train(model, train_loader, val_loader, epochs):
     
     np.random.seed(0)
-    
-    num_steps = int(200 * args.accumulation_steps)
-    
+        
     # optimizer and lr schedulers, includes weight decay
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
@@ -129,7 +127,9 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
 
     num_train_optimization_steps = int(args.epochs * len(train_loader) / args.accumulation_steps)
     
-    num_steps = int(num_train_optimization_steps * 0.1)
+    num_steps = int(num_train_optimization_steps * 0.03)
+    
+    print(num_steps)
     
     optimizer = AdamW(optimizer_grouped_parameters, lr=3e-5,
                       correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
