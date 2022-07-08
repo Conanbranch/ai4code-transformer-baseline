@@ -127,7 +127,7 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
 
     num_train_optimization_steps = int(args.epochs * len(train_loader) / args.accumulation_steps)
     
-    num_steps = int(len(train_loader)*.05)
+    num_steps = int(len(train_loader)*0.1)
     
     optimizer = AdamW(optimizer_grouped_parameters, lr=3e-5,
                       correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
