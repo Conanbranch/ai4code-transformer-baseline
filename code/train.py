@@ -127,7 +127,9 @@ def multiple_restart_train(model, train_loader, val_loader, epochs):
 
     num_train_optimization_steps = int(args.epochs * len(train_loader) / args.accumulation_steps)
     
-    num_steps = int(num_train_optimization_steps * 0.03)
+    num_steps = int(num_train_optimization_steps * 0.1)
+    
+    print(num_train_optimization_steps)
     
     print(num_steps)
     
