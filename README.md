@@ -156,6 +156,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 | No Code \<SEP\> and \<PAD\>* | **.8397**\** |
 
 \*No pad between code, just after
+
 \*\*Not sure if their is a real change
 
 ## Sigmoid Eval
