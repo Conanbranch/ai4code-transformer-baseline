@@ -181,16 +181,16 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 | eval (code) |  Val. |
 | --- | --- | 
-| Default | .8438 | 
+| Default | .8424 | 
 | All |	.8396 | 
-| Newlines |	.8437 |
-| Lower |  |
-| Tokens |  |
-| Comments |  |
+| Newlines |	**.8432** |
+| Lower | .8421 |
+| Tokens | .8430 |
+| Comments | .8421 |
 
 | eval (md) |  Val. |
 | --- | --- | 
-| Default | **.8438** | 
+| Default | ##.8424## | 
 | All | .8361 | 
 | Markdown|	.8384 |
 | Special Characters | .8398 |
