@@ -190,7 +190,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 | eval (md) |  Val. |
 | --- | --- | 
-| Default | ##.8424## | 
+| Default | **.8424** | 
 | All | .8361 | 
 | Markdown|	.8384 |
 | Special Characters | .8398 |
