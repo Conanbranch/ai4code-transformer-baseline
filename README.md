@@ -226,6 +226,17 @@ Does not help with larger training sizes. Performance appears to be a function o
 | .1 | | 
 | .01 | |    
 
+| lr |  Val. |
+| --- | --- | 
+| 2e-5 | | 
+| 3e-5 | |    
+| 4e-5 | | 
+
+| BS |  Val. |
+| --- | --- | 
+| 8 | | 
+| 16 | |    
+
 ## Full Dataset Eval
 
 Best Re-Init:
