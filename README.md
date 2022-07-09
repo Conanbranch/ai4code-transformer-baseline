@@ -216,9 +216,8 @@ Does not help with larger training sizes. Performance appears to be a function o
 | experimemt | Val. |
 | --- | --- | 
 | newlines | .8432 |
-| lower case | .8421 |
-| comments | .8421 |
-| tokens |.8430 |
+| newlines no sep and pad | **.8443** |
+| no sep and pad | .8431 |
 | normal | .8424 |
 
 | weight <br> decay |  Val. |
