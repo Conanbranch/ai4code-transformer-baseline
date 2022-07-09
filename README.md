@@ -188,7 +188,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 | Tokens | .8430 |
 | Comments | .8421 |
 
-\* Does not appear to be any real change 
+\*Does not appear to be any real change from default
 
 | eval (md) |  Val.\* |
 | --- | --- | 
@@ -198,11 +198,11 @@ Does not help with larger training sizes. Performance appears to be a function o
 | Special Characters | .8398 |
 | Special Characters Except | .8423 |
 | Tokens | .8418 |
-| Lowercase | .8436 |
+| Lowercase | **.8436**/* |
 | Extra | .8366 |
 | URL | .8419 |
 
-\* Does not appear to be any real change 
+\*Does not appear to be any real change from default
 
 | output | Val. |
 | --- | --- | 
