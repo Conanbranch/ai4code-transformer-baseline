@@ -305,8 +305,6 @@ Batch Size:
 - Complete above experiments
 - Try reducing acumulator steps
 - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
-- Try adding layer-wise rate decay https://towardsdatascience.com/advanced-techniques-for-fine-tuning-transformers-82e4e61e16e
-- Different learning rate strategies
 - Look at faster warmup
 
 ## Final
