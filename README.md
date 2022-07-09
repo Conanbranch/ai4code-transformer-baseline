@@ -213,6 +213,14 @@ Does not help with larger training sizes. Performance appears to be a function o
 | max pooling |  |
 | mean max pooling |  |
 
+| experimemt | Val. |
+| --- | --- | 
+| newlines | .8432 |
+| lower case | .8421 |
+| comments | .8421 |
+| tokens |.8430 |
+| normal | .8424 |
+
 | weight <br> decay |  Val. |
 | --- | --- |
 | .2 | | 
