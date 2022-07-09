@@ -148,14 +148,15 @@ Does not help with larger training sizes. Performance appears to be a function o
 | 4 | **.8401** |    
 | 8 | .8206 | 
 
-| eval |  FLC Val. | 
+| eval |  FLC Val.\** | 
 | --- | --- | 
 | Code \<SEP\> | .8385 | 
 | No Code \<SEP\> | .8372 | 
 | No Code \<PAD\>* | .8391 | 
-| No Code \<SEP\> and \<PAD\>* | **.8397** |
+| No Code \<SEP\> and \<PAD\>* | **.8397**\** |
 
 \*No pad between code, just after
+\*\*Not sure if their is a real change
 
 ## Sigmoid Eval
 
@@ -179,7 +180,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 | 45 |  | |
 | 50 |  | |  
 
-| eval (code) |  Val. |
+| eval (code) |  Val.* |
 | --- | --- | 
 | Default | .8424 | 
 | All |	.8396 | 
@@ -206,7 +207,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 | output | Val. |
 | --- | --- | 
-| lhs | .8438 |
+| lhs | **.8438** |
 | mean pooling | .8394 |
 | max pooling |  |
 | mean max pooling |  |
