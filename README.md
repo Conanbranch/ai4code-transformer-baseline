@@ -198,7 +198,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 | Special Characters | .8398 |
 | Special Characters Except | .8423 |
 | Tokens | .8418 |
-| Lowercase | **.8436**/* |
+| Lowercase | **.8436**\* |
 | Extra | .8366 |
 | URL | .8419 |
 
