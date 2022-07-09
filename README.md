@@ -311,6 +311,10 @@ Batch Size:
 
 8, 16
 
+LR:
+
+1e-5, 2e-5
+
 ## To Do (Code)
 - Clean up ranking
 
