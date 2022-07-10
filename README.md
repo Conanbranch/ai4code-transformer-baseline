@@ -181,6 +181,25 @@ Does not help with larger training sizes. Performance appears to be a function o
 | 45 |  | |
 | 50 |  | |  
 
+LWRD
+
+| head lr | tail lr | Val. |
+| --- | --- | --- |
+| 2e-5 | 1e-5 | |
+| 3e-5 | 1e-5 | |
+| 4e-5 | 1e-5 | |
+| 5e-5 | 1e-5 | |
+| 2e-5 | 2e-5 | |
+| 3e-5 | 2e-5 | |
+| 4e-5 | 2e-5 | |
+| 5e-5 | 2e-5 | |
+| 3e-5 | 3e-5 | |
+| 4e-5 | 3e-5 | |
+| 5e-5 | 3e-5 | |
+| 4e-5 | 4e-5 | |
+| 5e-5 | 4e-5 | |
+| 5e-5 | 5e-5 | |
+
 | eval (code) |  Val.* |
 | --- | --- | 
 | Default | .8424 | 
