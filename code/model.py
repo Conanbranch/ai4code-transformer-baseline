@@ -15,10 +15,8 @@ class MarkdownModel(nn.Module):
             for n in range(1, self.reinit_n_layers + 1):
                 self.model.encoder.layer[-n].apply(self.model._init_weights)
 
-    #def forward(self, ids, mask, fts):
     def forward(self, ids, mask):
         x = self.model(ids, mask)[0]
-        #x = torch.cat((x[:, 0, :], fts), 1)
-        #x = self.top(x)
         x = self.top(x[:, 0, :])
+        x = torch.sigmoid(x) 
         return x
