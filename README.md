@@ -89,10 +89,8 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 | 10 | 3e-5 | 64 | 40 | 4 | |
 | 10 | 3e-5 | 64 | 30 | 1 |	|  |
 
-## Results - 20% Dataset Eval
-
 <details>
-  <summary>Initial evaluation with a linear activation function...</summary>
+  <summary>Evaluation on 20% of Data - Linear Activation</summary>
 
 ### Linear Function
 
@@ -180,7 +178,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 ### Sigmoid Eval
   
 <details>
-  <summary>Initial evaluation with a sigmoid acivation function...</summary>
+  <summary>Evaluation on 20% of Data - Sigmoid Activation</summary>
 
 64 MD Size
 
