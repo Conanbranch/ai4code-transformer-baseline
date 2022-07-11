@@ -307,7 +307,7 @@ LR:
   
   <details>
   <summary><b>Features</b></summary>
-  &nbsp;  
+
   - Try Adversarial Weight Perturbation (AWP) - Maybe
   - Try Frequent evaluation - May not make any difference, don't bother unless really need a boost
   - Try Stochastic Weight Averaging (SWA) - Complicated, final step only if necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
@@ -317,7 +317,7 @@ LR:
   
   <details>
   <summary><b>Experiments</b></summary>
-  &nbsp;  
+
   - Complete above experiments
   - Try reducing acumulator steps
   - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
@@ -327,7 +327,7 @@ LR:
   
   <details>
   <summary><b>Final Model</b></summary>
-  &nbsp;  
+
   - Do final evaluation with different rankings, revert if no change
   - Train final models on all data
   - Fix code sample size (don't want :200)
