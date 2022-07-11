@@ -91,6 +91,9 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 ## Results - 20% Dataset Eval
 
+<details>
+  <summary>Click to expand...</summary>
+
 ### Linear Function
 
 90/10 split evalution on 20% of data where training set = 18% and the validation set = 2%:
@@ -171,6 +174,8 @@ Does not help with larger training sizes. Performance appears to be a function o
 \*No pad between code, just after
 
 \*\*Not sure if their is a real change
+  
+</details>  
 
 ### Sigmoid Eval
 
