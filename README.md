@@ -179,6 +179,7 @@ Does not help with larger training sizes. Performance appears to be a function o
  
 <details>
   <summary>**Sigmoid Activation**</summary>
+  
   &nbsp;
 
 64 MD Size
