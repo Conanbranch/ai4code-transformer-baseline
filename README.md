@@ -343,7 +343,7 @@ LR:
 - Complete above experiments
 - Try reducing acumulator steps
 - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
-- Look at faster warmup
+- Try slowing down the learning rate and re-initing more layers
 
 ## Final
 
