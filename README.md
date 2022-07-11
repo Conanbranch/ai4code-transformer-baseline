@@ -88,7 +88,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 | epochs | lr | md max | features | re-init | val. | public lb
 | --- | --- | ---|  --- | ---|  --- | --- |
-| 5 | 5e-5 | 64 | 40 | 1 | .8589 | 
+| 5 | 5e-5 | 64 | 40 | 1 | .8589 | .8526 |
 | 10 | 3e-5 | 64 | 30 | 1 |	|  ||
 | 10 | 3e-5 | 64 | 40 | 0 | 	|  |
 | 10 | 2e-5 | 64 | 40 or 30 | 1 | 	|  |
@@ -97,7 +97,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 | 10 | 3e-5 | 64 | 40 | 3 | .8626 | .8558 |
 | 10 | 3e-5 | 64 | 40 | 4 |  | |
 | 10 | 4e-5 | 64 | 40 | 1 | .8641	| .8567 |
-| 10 | 5e-5 | 64 | 40 | 1 | .8639	|  |
+| 10 | 5e-5 | 64 | 40 | 1 | .8639	| .8558 |
 
 ## Results - 20% Dataset Eval
 
