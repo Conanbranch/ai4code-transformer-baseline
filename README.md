@@ -90,9 +90,7 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 | 10 | 3e-5 | 64 | 30 | 1 |	|  |
 
 <details>
-  <summary>Evaluation on 20% of Data - Linear Activation</summary>
-
-### Linear Function
+  <summary>### Results - 20% of Data - Linear Activation</summary>
 
 90/10 split evalution on 20% of data where training set = 18% and the validation set = 2%:
 
