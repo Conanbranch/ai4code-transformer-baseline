@@ -275,6 +275,10 @@ LWRD
 
 ## Full Dataset Eval
   
+<details>
+  <summary><b>To Do</b></summary>
+  &nbsp;  
+  
 Sample Size:
   
 30, 35, 40, 45  
@@ -290,6 +294,8 @@ Batch Size:
 LR:
 
 3.1e-5, 2.9e-5, 1e-5, 2e-5
+  
+  </details>
 
 ## To Do (Code)
 - Clean up ranking
