@@ -301,7 +301,7 @@ LR:
   
   <details>
   <summary><b>Code</b></summary>
-  &nbsp;  
+ 
   - Clean up ranking
   </details> 
   
