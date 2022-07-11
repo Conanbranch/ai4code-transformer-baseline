@@ -256,7 +256,7 @@ LWRD
 
 Best Re-Init:
 
-Re-Init = 1
+Re-Init = 1 \n
 Code Sampled = 40
 MDL = 64
 Activation = Sigmoid
