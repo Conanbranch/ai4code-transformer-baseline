@@ -80,6 +80,19 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 
 ## Results
 
+### 90% Dataset Eval
+
+| epochs | lr | md max | features | re-init | val. | public lb
+| --- | --- | ---|  --- | ---|  --- | --- |
+| 10 | 3e-5 | 64 | 40 | 0 | 	|  |
+| 10 | 3e-5 | 64 | 40 | 1 | **.8650**	| **.8575** |
+| 10 | 3e-5 | 64 | 40 | 2 | .8628	| .8548 |
+| 10 | 3e-5 | 64 | 40 | 3 | .8626 |
+| 10 | 3e-5 | 64 | 40 | 4 | |
+| 10 | 3e-5 | 64 | 30 | 1 |	|  |
+
+### 20% Dataset Eval
+
 90/10 split evalution on 20% of data where training set = 18% and the validation set = 2%:
 
 | Code Cells <br> Sampled | MDL 64 <br> Val. | MDL 128 <br> Val. |
@@ -253,15 +266,6 @@ LWRD
 | 16 | |    
 
 ## Full Dataset Eval
-
-| epochs | lr | md max | features | re-init | val. | public lb
-| --- | --- | ---|  --- | ---|  --- | --- |
-| 10 | 3e-5 | 64 | 40 | 0 | 	|  |
-| 10 | 3e-5 | 64 | 40 | 1 | **.8650**	| **.8575** |
-| 10 | 3e-5 | 64 | 40 | 2 | .8628	| .8548 |
-| 10 | 3e-5 | 64 | 40 | 3 | .8626 |
-| 10 | 3e-5 | 64 | 40 | 4 | |
-| 10 | 3e-5 | 64 | 30 | 1 |	|  |
 
 Best MDL:
 
