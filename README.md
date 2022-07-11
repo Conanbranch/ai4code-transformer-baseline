@@ -96,7 +96,8 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 <details>
   <summary>Linear Activation</summary>
 
-| Code Cells <br> Sampled | MDL 64 <br> Val. | MDL 128 <br> Val. |
+
+  | Code Cells <br> Sampled | MDL 64 <br> Val. | MDL 128 <br> Val. |
 | --- | --- | --- | 
 | 20 | .8323 | .8326  | 
 | 40 | **.8385** | **.8394** |  
