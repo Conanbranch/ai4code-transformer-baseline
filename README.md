@@ -78,9 +78,7 @@ Preprocessing and Training Notebook: Add
 
 Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-baseline-inference/
 
-## Results
-
-### 90% Dataset Eval
+## Results - 90% Dataset Eval
 
 | epochs | lr | md max | features | re-init | val. | public lb
 | --- | --- | ---|  --- | ---|  --- | --- |
@@ -91,7 +89,9 @@ Inference Notebook: https://www.kaggle.com/conanbranch/ai4code-transformer-basel
 | 10 | 3e-5 | 64 | 40 | 4 | |
 | 10 | 3e-5 | 64 | 30 | 1 |	|  |
 
-### 20% Dataset Eval
+## Results - 20% Dataset Eval
+
+### Linear Function
 
 90/10 split evalution on 20% of data where training set = 18% and the validation set = 2%:
 
@@ -172,7 +172,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 \*\*Not sure if their is a real change
 
-## Sigmoid Eval
+### Sigmoid Eval
 
 64 MD Size
 
