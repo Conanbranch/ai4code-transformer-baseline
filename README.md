@@ -298,25 +298,43 @@ LR:
   </details>
 
 ## To Do (Code)
-- Clean up ranking
-
-## To Do (Features)
-
-- Try Adversarial Weight Perturbation (AWP) - Maybe
-- Try Frequent evaluation - May not make any difference, don't bother unless really need a boost
-- Try Stochastic Weight Averaging (SWA) - Complicated, final step only if necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
-- Maybe try packing code a little better (only if bored)
-
-## To Do (Experiments)
-- Complete above experiments
-- Try reducing acumulator steps
-- Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
-- Try slowing down the learning rate and re-initing more layers
-
-## Final
-
-- Do final evaluation with different rankings, revert if no change
-- Train final models on all data
-- Fix code sample size (don't want :200)
-- May want to submit one version with limited preprocessing for final to limit final submission errors.
-
+  
+  <details>
+  <summary><b>Code</b></summary>
+  &nbsp;  
+    
+  - Clean up ranking
+  </details> 
+  
+  <details>
+  <summary><b>Features</b></summary>
+  &nbsp;  
+    
+  - Try Adversarial Weight Perturbation (AWP) - Maybe
+  - Try Frequent evaluation - May not make any difference, don't bother unless really need a boost
+  - Try Stochastic Weight Averaging (SWA) - Complicated, final step only if necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
+  - Maybe try packing code a little better (only if bored)    
+  
+  </details> 
+  
+  <details>
+  <summary><b>Experiments</b></summary>
+  &nbsp;  
+    
+  - Complete above experiments
+  - Try reducing acumulator steps
+  - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
+  - Try slowing down the learning rate and re-initing more layers  
+  
+  </details> 
+  
+  <details>
+  <summary><b>Final Model</b></summary>
+  &nbsp;  
+ 
+  - Do final evaluation with different rankings, revert if no change
+  - Train final models on all data
+  - Fix code sample size (don't want :200)
+  - May want to submit one version with limited preprocessing for final to limit final submission errors.    
+  
+  </details> 
