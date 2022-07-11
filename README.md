@@ -274,54 +274,14 @@ LWRD
 </details>    
 
 ## Full Dataset Eval
-
-Best MDL:
-
-Code Sampled = 40
-MDL = 64
-Activation = Sigmoid
-Epochs = 10 
-
-Code Sampled = 40
-MDL = 128
-Activation = Sigmoid
-Epochs = 10 
-
-Best Sample:
-
-Code Sampled = 30
-Activation = Sigmoid
-Epochs = 10 
-
-Code Sampled = 35
-Activation = Sigmoid
-Epochs = 10 
-
-Code Sampled = 40
-Activation = Sigmoid
-Epochs = 10
-
-Code Sampled = 45
-Activation = Sigmoid
-Epochs = 10
+  
+Sample Size:
+  
+30, 35, 40, 45  
 
 Best Epochs:
 
-Code Sampled = 30
-Activation = Sigmoid
-Epochs = 9
-
-Code Sampled = 30
-Activation = Sigmoid
-Epochs = 10 
-
-Code Sampled = 35
-Activation = Sigmoid
-Epochs = 11 
-
-Code Sampled = 40
-Activation = Sigmoid
-Epochs = 12
+9,10,11,12
 
 Batch Size:
 
