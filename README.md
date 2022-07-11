@@ -254,25 +254,14 @@ LWRD
 
 ## Full Dataset Eval
 
-Best Re-Init:
-
-Re-Init = 1 \n
-Code Sampled = 40
-MDL = 64
-Activation = Sigmoid
-Epochs = 10 
-
-Re-Init = 2
-Code Sampled = 40
-MDL = 64
-Activation = Sigmoid
-Epochs = 10 
-
-Re-Init = 3
-Code Sampled = 40
-MDL = 64
-Activation = Sigmoid
-Epochs = 10
+| epochs | lr | md max | features | re-init | val. | public lb
+| --- | --- | ---|  --- | ---|  --- | --- |
+| 10 | 3e-5 | 64 | 40 | 0 | 	|  |
+| 10 | 3e-5 | 64 | 40 | 1 | **.8650**	| **.8575** |
+| 10 | 3e-5 | 64 | 40 | 2 | .8628	| .8548 |
+| 10 | 3e-5 | 64 | 40 | 3 | .8626 |
+| 10 | 3e-5 | 64 | 40 | 4 | |
+| 10 | 3e-5 | 64 | 30 | 1 |	|  |
 
 Best MDL:
 
