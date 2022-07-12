@@ -328,7 +328,7 @@ LR:
   <details>
   <summary><b>Experiments</b></summary>
 
-  - Try ranking both code and markdown, crazy but who knows
+  - Try ranking both code and markdown, crazy but who knows. Exact same setup, just code in  the markdowns palce for code cells
   - Complete above experiments
   - Try reducing acumulator steps
   - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
