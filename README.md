@@ -332,6 +332,7 @@ LR:
   - Try reducing acumulator steps
   - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
   - Try slowing down the learning rate and re-initing more layers  
+  - Different top layer (modified. E.g. Drop out. Two dense, etc.
   
   </details> 
   
