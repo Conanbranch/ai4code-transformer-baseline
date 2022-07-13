@@ -328,7 +328,7 @@ LR:
   <details>
   <summary><b>Experiments</b></summary>
 
-  - Check the score of the markdown on its own
+  - Check the score of the markdown on its own. Based on the val loss it should be in the .90 range on its own.
   - Try ranking both code and markdown, crazy but who knows. Exact same setup, just code in  the markdowns palce for code cells
   - Complete above experiments
   - Try reducing acumulator steps
