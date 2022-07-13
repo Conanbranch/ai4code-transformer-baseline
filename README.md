@@ -317,21 +317,9 @@ LR:
   </details> 
   
   <details>
-  <summary><b>Features</b></summary>
-
-  - Try Adversarial Weight Perturbation (AWP) - Maybe
-  - Try Frequent evaluation - May not make any difference, don't bother unless really need a boost
-  - Try Stochastic Weight Averaging (SWA) - Complicated, final step only if necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
-  - Maybe try packing code a little better (only if bored)    
-  
-  </details> 
-  
-  <details>
   <summary><b>Experiments</b></summary>
-
-  - Check the score of the markdown on its own. Based on the val loss it should be in the .90 range on its own.
-  - Try ranking both code and markdown, crazy but who knows. Exact same setup, just code in  the markdowns palce for code cells
-  - Complete above experiments
+  
+  - To code sample size fix (don't want :200)
   - Try reducing acumulator steps
   - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
   - Try slowing down the learning rate and re-initing more layers 
@@ -341,10 +329,18 @@ LR:
   
   <details>
   <summary><b>Final Model</b></summary>
-
-  - Do final evaluation with different rankings, revert if no change
+  
   - Train final models on all data
-  - Fix code sample size (don't want :200)
-  - May want to submit one version with limited preprocessing for final to limit final submission errors.    
+  - Do final evaluation with different rankings, revert if no change 
+ 
+  </details> 
+   
+  <details>
+  <summary><b>Features</b></summary>
+
+  - Try Adversarial Weight Perturbation (AWP) - Maybe
+  - Try Frequent evaluation - Maybe
+  - Try Stochastic Weight Averaging (SWA) - Maybe
+  - Try packing code a little better - Maybe    
   
   </details> 
