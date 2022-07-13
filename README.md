@@ -334,6 +334,13 @@ LR:
   - Do final evaluation with different rankings, revert if no change 
  
   </details> 
+  
+  <details>
+  <summary><b>Observations</b></summary>
+
+  - the model seems to be good at figuring out the relative ordering of the code and the relative ordering of the markdown, combinining them seems to be the issue.
+  
+  </details> 
    
   <details>
   <summary><b>Features</b></summary>
