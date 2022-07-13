@@ -247,7 +247,7 @@ LWRD
 | Lowercase | **.8436**\* |
 | Extra | .8366 |
 | URL | .8419 |
-| /n |  |
+| Newlines |  |
 
 \*Does not appear to be any real change from default
 
