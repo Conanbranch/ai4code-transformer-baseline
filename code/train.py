@@ -173,14 +173,17 @@ def train(model, train_loader, val_loader, epochs):
         save_ckp(checkpoint, args.model_ckp_path)
 
         y_val, y_pred = validate(model, val_loader)
+        print("val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
         #val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
         val_df["pred"] = val_df["pct_rank"]
         val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
         y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("Val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
-        print("Pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+        print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy)
+        y_dummy = val_df.loc[val_df["cell_type"] == "markdown"].sort_values("pred").groupby('id')['cell_id'].apply(list)
+        print("val md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+        y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
+        print("val code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
 
-    
     torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
     
     return model, y_pred
