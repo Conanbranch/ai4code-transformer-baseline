@@ -247,6 +247,7 @@ LWRD
 | Lowercase | **.8436**\* |
 | Extra | .8366 |
 | URL | .8419 |
+| /n |  |
 
 \*Does not appear to be any real change from default
 
@@ -333,7 +334,8 @@ LR:
   - Complete above experiments
   - Try reducing acumulator steps
   - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
-  - Try slowing down the learning rate and re-initing more layers  
+  - Try slowing down the learning rate and re-initing more layers 
+  - Try removing newlines from markdown
   
   </details> 
   
