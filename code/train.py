@@ -175,12 +175,20 @@ def train(model, train_loader, val_loader, epochs):
         y_val, y_pred = validate(model, val_loader)
         print("val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
         #val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
+        
+        val_df["pred"] = val_df["pct_rank"]
+        val_df["pred"] = y_pred
+        y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
+        print("md/code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+      
         val_df["pred"] = val_df["pct_rank"]
         val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
         y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
         print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+        
         y_dummy = val_df.loc[val_df["cell_type"] == "markdown"].sort_values("pred").groupby('id')['cell_id'].apply(list)
         print("md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+        
         y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
         print("code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
 
