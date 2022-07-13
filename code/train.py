@@ -178,7 +178,7 @@ def train(model, train_loader, val_loader, epochs):
         val_df["pred"] = val_df["pct_rank"]
         val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
         y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy)
+        print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
         y_dummy = val_df.loc[val_df["cell_type"] == "markdown"].sort_values("pred").groupby('id')['cell_id'].apply(list)
         print("val md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
         y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
