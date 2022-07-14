@@ -194,21 +194,21 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
-| 30 |  | |
-| 35 |  | |
-| 40 |  | |
-| 45 |  | |
-| 50 |  | |  
+| 30 | **.8424** | **.8430** |
+| 35 | .8387 | .8384 |
+| 40 | **.8405** | .8429 |
+| 45 | .8401 | **.8432** |
+| 50 |  .8385  | .8389 |  
 
 128 MD Size
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
-| 30 |  | |
-| 35 |  | |
-| 40 |  | |
-| 45 |  | |
-| 50 |  | |  
+| 30 | **.8418** | |
+| 35 | .8377 | |
+| 40 | .8390 | |
+| 45 | **.8420** | |
+| 50 | .8385 | |  
 
 LWRD (test at 10 epochs)
 
