@@ -194,10 +194,10 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
-| 30 | **.8424** | **.8430** |
+| 30 | **.8424** | ***.8430*** |
 | 35 | .8387 | .8384 |
 | 40 | **.8405** | .8429 |
-| 45 | .8401 | **.8432** |
+| 45 | .8401 | ***.8432*** |
 | 50 |  .8385  | .8389 |  
 
 128 MD Size
