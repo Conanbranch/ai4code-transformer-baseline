@@ -327,6 +327,7 @@ LR:
   - Try slowing down the learning rate and re-initing more layers 
   - Try removing newlines from markdown (test on 30 features both 64 and 128)
   - Try decreasing/increasing batch size
+  - Try pretraining
   
   </details> 
   
