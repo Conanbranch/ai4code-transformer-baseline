@@ -37,7 +37,8 @@ parser.add_argument('--correct_bias', type=bool, default=False, help="include bi
 parser.add_argument('--code_sep_token', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--pad_between_code', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--vbl_code', type=bool, default=False, help="use variable length code")
-parser.add_argument('--lr', type=float, default=3e-5, help="use variable length code")
+parser.add_argument('--lr', type=float, default=3e-5, help="learning rate")
+parser.add_argument('--wd', type=float, default=0.01, help="weight_decay")
 
 args = parser.parse_args()
     
@@ -116,7 +117,7 @@ def train(model, train_loader, val_loader, epochs):
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': wd},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
 
