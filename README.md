@@ -210,7 +210,7 @@ Does not help with larger training sizes. Performance appears to be a function o
 | 45 | **.8420** | |
 | 50 | .8385 | |  
 
-LWRD (test at 10 epochs)
+LWRD (test at 10 epochs re-init 1)
 
 | head lr | tail lr | Val. |
 | --- | --- | --- |
@@ -265,7 +265,7 @@ LWRD (test at 10 epochs)
 | no sep and pad | .8431 |
 | normal | .8424 |
   
-Tested a  10 Epochs Re-Init 1:
+Tested at 10 Epochs re-init 1:
 
 | weight <br> decay |  Val. |
 | --- | --- |
