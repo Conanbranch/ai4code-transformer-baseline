@@ -37,6 +37,7 @@ parser.add_argument('--correct_bias', type=bool, default=False, help="include bi
 parser.add_argument('--code_sep_token', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--pad_between_code', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--vbl_code', type=bool, default=False, help="use variable length code")
+parser.add_argument('--lr', type=float, default=3e-5, help="use variable length code")
 
 args = parser.parse_args()
     
@@ -120,7 +121,7 @@ def train(model, train_loader, val_loader, epochs):
     ]
 
     num_train_optimization_steps = int(args.epochs * len(train_loader) / args.accumulation_steps)
-    optimizer = AdamW(optimizer_grouped_parameters, lr=3e-5,
+    optimizer = AdamW(optimizer_grouped_parameters, lr=args.lr,
                       correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
     scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0.05 * num_train_optimization_steps,
                                                 num_training_steps=num_train_optimization_steps)  # PyTorch scheduler
