@@ -265,7 +265,7 @@ LWRD (test at 10 epochs)
 | no sep and pad | .8431 |
 | normal | .8424 |
   
-Tested a  10 Epochs:
+Tested a  10 Epochs Re-Init 1:
 
 | weight <br> decay |  Val. |
 | --- | --- |
