@@ -1,13 +1,15 @@
 import torch.nn.functional as F
 import torch.nn as nn
 import torch
-from transformers import AutoModel, AutoTokenizer, AdamW, get_linear_schedule_with_warmup
+from transformers import AutoModel, AutoTokenizer, AutoConfig, AdamW, get_linear_schedule_with_warmup
 
 class MarkdownModel(nn.Module):
     def __init__(self, model_path, re_init = False, reinit_n_layers = 0):
         super(MarkdownModel, self).__init__()
         self.model = AutoModel.from_pretrained(model_path)
-        self.top = nn.Linear(768, 1)
+        self.config = AutoConfig.from_pretrained(model_path)
+        self.top = nn.Linear(self.config.hidden_size, 1)
+        #self.top = nn.Linear(768, 1)
         #if reinit_n_layers != 0: 
         if re_init == True: 
             #self.model.pooler.dense.weight.data.normal_(mean=0.0, std=self.model.config.initializer_range)
