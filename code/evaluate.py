@@ -84,6 +84,7 @@ def save_ckp(state, checkpoint_dir):
 def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp)
     model.load_state_dict(checkpoint['state_dict'])
+    print(checkpoint['state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer'])
     scheduler.load_state_dict(checkpoint['scheduler'])
     return model, optimizer, scheduler, checkpoint['epoch']
