@@ -88,6 +88,18 @@ def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     scheduler.load_state_dict(checkpoint['scheduler'])
     return model, optimizer, scheduler, checkpoint['epoch']
 
+def load_ckps(checkpoint_fpath, model, optimizer, scheduler):
+    checkpoint_1 = torch.load(checkpoint_fpath + '/' + args.model_ckp)
+    checkpoint_2 = torch.load(checkpoint_fpath + '/' + args.model_ckp)
+    checkpoint_3 = torch.load(checkpoint_fpath + '/' + args.model_ckp)
+    
+    checkpoint = (checkpoint_1['state_dict'] + checkpoint_2['state_dict'] + checkpoint_3['state_dict']))/3
+    
+    model.load_state_dict(checkpoint_1['state_dict'])
+    optimizer.load_state_dict(checkpoint_1['optimizer'])
+    scheduler.load_state_dict(checkpoint_1['scheduler'])
+    return model, optimizer, scheduler, checkpoint_1['epoch']
+
 def read_data(data):
     return tuple(d.cuda() for d in data[:-1]), data[-1].cuda()
 
@@ -127,66 +139,25 @@ def train(model, train_loader, val_loader, epochs):
                       correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
     scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=args.wup * num_train_optimization_steps,
                                                 num_training_steps=num_train_optimization_steps)  # PyTorch scheduler
-    
-    #criterion = torch.nn.MSELoss()
+   
     criterion = torch.nn.L1Loss()
     scaler = torch.cuda.amp.GradScaler()
     
     epoch = 0
     
-    if args.resume_train == True:
-        model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
-    
-    for e in range(epoch,epochs):
-        model.train()
-        tbar = tqdm(train_loader, file=sys.stdout)
-        loss_list = []
-        preds = []
-        labels = []
-
-        for idx, data in enumerate(tbar):
-            inputs, target = read_data(data)
-
-            with torch.cuda.amp.autocast():
-                pred = model(*inputs)
-                loss = criterion(pred, target)
-            scaler.scale(loss).backward()
-            if idx % args.accumulation_steps == 0 or idx == len(tbar) - 1:
-                scaler.step(optimizer)
-                scaler.update()
-                optimizer.zero_grad()
-                scheduler.step()
-
-            loss_list.append(loss.detach().cpu().item())
-            preds.append(pred.detach().cpu().numpy().ravel())
-            labels.append(target.detach().cpu().numpy().ravel())
-
-            avg_loss = np.round(np.mean(loss_list), 4)
-
-            tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
-        
-        torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
-
-        checkpoint = {
-          'epoch': e + 1,
-          'state_dict': model.state_dict(),
-          'optimizer': optimizer.state_dict(),
-          'scheduler': scheduler.state_dict()
-        }
-        
-        save_ckp(checkpoint, args.model_ckp_path)
-
-        y_val, y_pred = validate(model, val_loader)
-        print("val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
-        #val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
-        val_df["pred"] = val_df["pct_rank"]
-        val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
-        y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-        y_dummy = val_df.loc[val_df["cell_type"] == "markdown"].sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-        y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+    model, optimizer, scheduler, epoch = load_ckps(args.model_ckp_path, model, optimizer, scheduler)
+     
+    y_val, y_pred = validate(model, val_loader)
+    print("val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
+    #val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
+    val_df["pred"] = val_df["pct_rank"]
+    val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
+    y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
+    print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+    y_dummy = val_df.loc[val_df["cell_type"] == "markdown"].sort_values("pred").groupby('id')['cell_id'].apply(list)
+    print("md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+    y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
+    print("code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
 
     torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
     
