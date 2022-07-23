@@ -90,11 +90,11 @@ def validate(model, val_loader):
     
     return np.concatenate(labels), np.concatenate(preds)
 
-def predict(model_path, ckpt_path):
+def predict(model_path, ckpt_path, ckpt):
     model = MarkdownModel(model_path, re_init = True, reinit_n_layers = args.reinit_n_layers)
     model = model.cuda()
     model.eval()
-    model.load_state_dict(torch.load(ckpt_path))
+    model.load_state_dict(torch.load(ckpt_path + '/' + ckpt))
     val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
                          total_max_len=args.total_max_len, fts=val_fts, code_sep_token = args.code_sep_token, 
                          pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
@@ -115,9 +115,9 @@ def eval(y_val, y_pred):
 num_models = 2
 print(num_models)
 
-y_val, y_test_1 = predict(args.model_name_or_path, args.model_ckp_1)
-y_val, y_test_2 = predict(args.model_name_or_path, args.model_ckp_2)
-#y_val, y_test_3 = predict(args.model_name_or_path, args.model_ckp_3)
+y_val, y_test_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_chp_1)
+y_val, y_test_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_chp_2)
+#y_val, y_test_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_chp_3)
 
 # define weights to consider
 w = np.linspace(0.0, 1.0, num=10)
