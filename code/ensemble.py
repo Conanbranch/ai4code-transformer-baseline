@@ -115,9 +115,9 @@ def eval(y_val, y_pred):
 num_models = 2
 print(num_models)
 
-y_val, y_test_1 = predict(args.model, args.model_ckp_1)
-y_val, y_test_2 = predict(args.model, args.model_ckp_2)
-#y_val, y_test_3 = predict(args.model, args.model_ckp_3)
+y_val, y_test_1 = predict(args.model_name_or_path, args.model_ckp_1)
+y_val, y_test_2 = predict(args.model_name_or_path, args.model_ckp_2)
+#y_val, y_test_3 = predict(args.model_name_or_path, args.model_ckp_3)
 
 # define weights to consider
 w = np.linspace(0.0, 1.0, num=10)
