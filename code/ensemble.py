@@ -22,6 +22,8 @@ parser.add_argument('--val_features_path', type=str, default='./data/val_fts.jso
 parser.add_argument('--val_path', type=str, default="./data/val.csv", help='path for validation data')
 parser.add_argument('--model_ckp_path', type=str, default="./output", help='path for model and model checkpoints')
 parser.add_argument('--model_ckp', type=str, default="model.pt", help='model checkpoint filename')
+parser.add_argument('--model_ckp_1', type=str, default="model.pt", help='model checkpoint filename')
+parser.add_argument('--model_ckp_2', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model', type=str, default="model.bin", help='model filename')
 
 parser.add_argument('--md_max_len', type=int, default=64, help='maximum length of tokenized markdown')
@@ -93,6 +95,11 @@ def predict(model_path, ckpt_path):
     model = model.cuda()
     model.eval()
     model.load_state_dict(torch.load(ckpt_path))
+    val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
+                         total_max_len=args.total_max_len, fts=val_fts, code_sep_token = args.code_sep_token, 
+                         pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
+    val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.n_workers,
+                            pin_memory=False, drop_last=False)
     y_val, y_pred = validate(model, val_loader)
     return y_val, y_pred
 
@@ -105,12 +112,12 @@ def eval(y_val, y_pred):
     score = print("pred score", score)
     return score
 
-num_models = len(args.model_ckp)
+num_models = 2
 print(num_models)
 
-y_val, y_test_1 = predict(args.model[0], args.model_ckp[0])
-y_val, y_test_2 = predict(args.model[1], args.model_ckp[1])
-#y_val, y_test_3 = predict(args.model[2], args.model_ckp[2])
+y_val, y_test_1 = predict(args.model, args.model_ckp_1)
+y_val, y_test_2 = predict(args.model, args.model_ckp_2)
+#y_val, y_test_3 = predict(args.model, args.model_ckp_3)
 
 # define weights to consider
 w = np.linspace(0.0, 1.0, num=10)
