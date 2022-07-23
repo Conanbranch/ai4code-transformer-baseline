@@ -89,18 +89,16 @@ def eval(y_val, y_pred):
     score = print("pred score", score)
     return score
 
-num_models = 2
+num_models = len(args.model_ckp)
+print(num_models)
 
-model_path = "../input/codebert-base/codebert-base/"
-ckpt_path = "../input/a14codemodels/epoch_5_model_current_new_r_f_40_init_1_sigmoid_e_10.bin" 
-y_val, y_test_1 = predict(model_path, ckpt_path)
-
-model_path = "../input/codebert-base/codebert-base/"
-ckpt_path = "../input/a14codemodels/epoch_5_model_current_new_r_f_40_init_1_sigmoid_e_10.bin" 
-y_val, y_test_2 = predict(model_path, ckpt_path)
+y_val, y_test_1 = predict(args.model[0], args.model_ckp[0])
+y_val, y_test_2 = predict(args.model[1], args.model_ckp[1])
+#y_val, y_test_3 = predict(args.model[2], args.model_ckp[2])
 
 # define weights to consider
-w = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+w = np.linspace(0.0, 1.0, num=10)
+print(w)
 best_score, best_weights = 0.0, None
 # iterate all possible combinations (cartesian product)
 for weights in product(w, repeat=num_models):
