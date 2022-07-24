@@ -114,10 +114,10 @@ def eval(y_val, y_pred):
 
 num_models = 2
 
-y_val, y_test_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
-print("model 1 pred", eval(y_val, y_pred))
-y_val, y_test_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
-print("model 2 pred", eval(y_val, y_pred))
+y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
+print("model 1 pred", eval(y_val, y_pred_1))
+y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
+print("model 2 pred", eval(y_val, y_pred_2))
 #y_val, y_test_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
 
 # define weights to consider
@@ -130,7 +130,7 @@ for weights in product(w, repeat=num_models):
         continue
     #if not np.any(weights == 1.0):
     #    continue
-    y_pred = ((y_test_1*weights[0]) + (y_test_2*weights[1]))/np.sum(weights)
+    y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]))/np.sum(weights)
     score = eval(y_val, y_pred)
     if score > best_score:
         best_score, best_weights = score, weights
