@@ -125,7 +125,7 @@ if num_models == 2:
     print("model 2 pred", eval(y_val, y_pred_2))
     y_pred = (y_pred_1 + y_pred_2)/num_models
     print("avg model pred", eval(y_val, y_pred))
-else if num models == 3:   
+elif num models == 3:   
     y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
     print("model 1 pred", eval(y_val, y_pred_1))
     y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
@@ -135,7 +135,7 @@ else if num models == 3:
     print("model 3 pred", eval(y_val, y_pred_3))
     y_pred = (y_pred_1 + y_pred_2 + y_pred_3)/num_models
     print("avg model pred", eval(y_val, y_pred))
-else if num_models == 4:    
+elif num_models == 4:    
     y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
     print("model 1 pred", eval(y_val, y_pred_1))
     y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
@@ -158,9 +158,9 @@ for weights in tqdm(product(w, repeat=num_models)):
         continue
     if num_models == 2:
         y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]))/np.sum(weights)
-    if else num_models == 3:
+    elif num_models == 3:
         y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]) + (y_pred_3*weights[2]))/np.sum(weights)
-    if else num_models == 4:    
+    elif num_models == 4:    
         y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]) + (y_pred_3*weights[2]) + (y_pred_4*weights[3]))/np.sum(weights)
     score = eval(y_val, y_pred)
     if score > best_score:
