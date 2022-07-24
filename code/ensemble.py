@@ -130,7 +130,6 @@ elif num_models == 3:
     print("model 1 pred", eval(y_val, y_pred_1))
     y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
     print("model 2 pred", eval(y_val, y_pred_2))
-    print("model 2 pred", eval(y_val, y_pred_2))
     y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
     print("model 3 pred", eval(y_val, y_pred_3))
     y_pred = (y_pred_1 + y_pred_2 + y_pred_3)/num_models
