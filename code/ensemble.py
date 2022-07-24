@@ -122,7 +122,7 @@ y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.mod
 print("model 2 pred", eval(y_val, y_pred_2))
 y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
 print("model 3 pred", eval(y_val, y_pred_3))
-y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
+y_val, y_pred_4 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_4)
 print("model 4 pred", eval(y_val, y_pred_4))
 y_pred = (y_pred_1 + y_pred_2 + y_pred_3 + y_pred_4)/num_models
 print("avg model pred", eval(y_val, y_pred))
