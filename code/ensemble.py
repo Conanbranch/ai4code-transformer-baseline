@@ -25,6 +25,8 @@ parser.add_argument('--model_ckp_path', type=str, default="./output", help='path
 parser.add_argument('--model_ckp', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model_ckp_1', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model_ckp_2', type=str, default="model.pt", help='model checkpoint filename')
+parser.add_argument('--model_ckp_3', type=str, default="model.pt", help='model checkpoint filename')
+parser.add_argument('--model_ckp_4', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model', type=str, default="model.bin", help='model filename')
 
 parser.add_argument('--md_max_len', type=int, default=64, help='maximum length of tokenized markdown')
@@ -112,28 +114,31 @@ def eval(y_val, y_pred):
     score = kendall_tau(df_orders.loc[y_dummy.index], y_dummy)
     return score
 
-num_models = 2
+num_models = 4
 
 y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
 print("model 1 pred", eval(y_val, y_pred_1))
 y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
 print("model 2 pred", eval(y_val, y_pred_2))
-#y_val, y_test_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
-y_pred = (y_pred_1 + y_pred_2)/num_models
+y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
+print("model 3 pred", eval(y_val, y_pred_3))
+y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
+print("model 4 pred", eval(y_val, y_pred_4))
+y_pred = (y_pred_1 + y_pred_2 + y_pred_3 + y_pred_4)/num_models
 print("avg model pred", eval(y_val, y_pred))
 
 # define weights to consider
-w = np.linspace(0.0, 1.0, num=21)
+w = np.linspace(0.0, 1.0, num=101)
 print(w)
 best_score, best_weights = 0.0, None
 # iterate all possible combinations (cartesian product)
-for weights in product(w, repeat=num_models):
-    if np.all(weights == 0.0):
+for weights in tqdm(product(w, repeat=num_models)):
+    if np.all(np.array(weights)): # skip if all values are the same
         continue
-    #if not np.any(weights == 1.0):
-    #    continue
-    y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]))/np.sum(weights)
+    if not np.any(np.array(weights) == 1.0): # skip if 1 is not present
+        continue
+    y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]) + (y_pred_3*weights[2]) + (y_pred_4*weights[3]))/np.sum(weights)
     score = eval(y_val, y_pred)
     if score > best_score:
         best_score, best_weights = score, weights
-        print('>%s %.3f' % (best_weights, best_score))
+        print('>%s %.5f' % (best_weights, best_score))
