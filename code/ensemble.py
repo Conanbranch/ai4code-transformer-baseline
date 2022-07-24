@@ -42,6 +42,7 @@ parser.add_argument('--correct_bias', type=bool, default=False, help="include bi
 parser.add_argument('--code_sep_token', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--pad_between_code', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--vbl_code', type=bool, default=False, help="use variable length code")
+parser.add_argument('--steps', type=int, default=21, help="number of steps for weights")
 
 args = parser.parse_args()
     
@@ -128,7 +129,7 @@ y_pred = (y_pred_1 + y_pred_2 + y_pred_3 + y_pred_4)/num_models
 print("avg model pred", eval(y_val, y_pred))
 
 # define weights to consider
-w = np.linspace(1.0, 0.0, num=101)
+w = np.linspace(1.0, 0.0, num=51)
 best_score, best_weights = 0.0, None
 # iterate all possible combinations (cartesian product)
 for weights in tqdm(product(w, repeat=num_models)):
