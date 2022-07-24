@@ -121,11 +121,15 @@ y_val, y_test_2 = predict(args.model_name_or_path, args.model_ckp_path, args.mod
 #y_val, y_test_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
 
 # define weights to consider
-w = np.linspace(0.0, 1.0, num=20)
+w = np.linspace(0.0, 1.0, num=21)
 print(w)
 best_score, best_weights = 0.0, None
 # iterate all possible combinations (cartesian product)
 for weights in product(w, repeat=num_models):
+    if np.all(weights == 0.0):
+        continue
+    #if not np.any(weights == 1.0):
+    #    continue
     y_pred = ((y_test_1*weights[0]) + (y_test_2*weights[1]))/np.sum(weights)
     score = eval(y_val, y_pred)
     if score > best_score:
