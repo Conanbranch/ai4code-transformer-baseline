@@ -128,7 +128,7 @@ y_pred = (y_pred_1 + y_pred_2 + y_pred_3 + y_pred_4)/num_models
 print("avg model pred", eval(y_val, y_pred))
 
 # define weights to consider
-w = np.linspace(0.0, 1.0, num=101)
+w = np.linspace(1.0, 0.0, num=101)
 best_score, best_weights = 0.0, None
 # iterate all possible combinations (cartesian product)
 for weights in tqdm(product(w, repeat=num_models)):
