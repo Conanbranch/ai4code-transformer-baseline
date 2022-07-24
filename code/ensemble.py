@@ -125,7 +125,7 @@ if num_models == 2:
     print("model 2 pred", eval(y_val, y_pred_2))
     y_pred = (y_pred_1 + y_pred_2)/num_models
     print("avg model pred", eval(y_val, y_pred))
-elif num models == 3:   
+elif num_models == 3:   
     y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
     print("model 1 pred", eval(y_val, y_pred_1))
     y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
