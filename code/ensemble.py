@@ -110,11 +110,10 @@ def eval(y_val, y_pred):
     val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred
     y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
     score = kendall_tau(df_orders.loc[y_dummy.index], y_dummy)
-    score = print("pred score", score)
+    print("pred score", score)
     return score
 
 num_models = 2
-print(num_models)
 
 y_val, y_test_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
 y_val, y_test_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
