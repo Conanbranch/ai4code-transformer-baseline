@@ -43,6 +43,7 @@ parser.add_argument('--code_sep_token', type=bool, default=True, help="include s
 parser.add_argument('--pad_between_code', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--vbl_code', type=bool, default=False, help="use variable length code")
 parser.add_argument('--steps', type=int, default=21, help="number of steps for weights")
+parser.add_argument('--num_models', type=int, default=2, help="number of steps for weights")
 
 args = parser.parse_args()
     
@@ -115,18 +116,36 @@ def eval(y_val, y_pred):
     score = kendall_tau(df_orders.loc[y_dummy.index], y_dummy)
     return score
 
-num_models = 4
+num_models = args.num_models
 
-y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
-print("model 1 pred", eval(y_val, y_pred_1))
-y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
-print("model 2 pred", eval(y_val, y_pred_2))
-y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
-print("model 3 pred", eval(y_val, y_pred_3))
-y_val, y_pred_4 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_4)
-print("model 4 pred", eval(y_val, y_pred_4))
-y_pred = (y_pred_1 + y_pred_2 + y_pred_3 + y_pred_4)/num_models
-print("avg model pred", eval(y_val, y_pred))
+if num_models == 2:
+    y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
+    print("model 1 pred", eval(y_val, y_pred_1))
+    y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
+    print("model 2 pred", eval(y_val, y_pred_2))
+    y_pred = (y_pred_1 + y_pred_2)/num_models
+    print("avg model pred", eval(y_val, y_pred))
+else if num models == 3:   
+    y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
+    print("model 1 pred", eval(y_val, y_pred_1))
+    y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
+    print("model 2 pred", eval(y_val, y_pred_2))
+    print("model 2 pred", eval(y_val, y_pred_2))
+    y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
+    print("model 3 pred", eval(y_val, y_pred_3))
+    y_pred = (y_pred_1 + y_pred_2 + y_pred_3)/num_models
+    print("avg model pred", eval(y_val, y_pred))
+else if num_models == 4:    
+    y_val, y_pred_1 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_1)
+    print("model 1 pred", eval(y_val, y_pred_1))
+    y_val, y_pred_2 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_2)
+    print("model 2 pred", eval(y_val, y_pred_2))
+    y_val, y_pred_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
+    print("model 3 pred", eval(y_val, y_pred_3))
+    y_val, y_pred_4 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_4)
+    print("model 4 pred", eval(y_val, y_pred_4))
+    y_pred = (y_pred_1 + y_pred_2 + y_pred_3 + y_pred_4)/num_models
+    print("avg model pred", eval(y_val, y_pred))
 
 # define weights to consider
 w = np.linspace(1.0, 0.0, num=args.steps)
@@ -137,7 +156,12 @@ for weights in tqdm(product(w, repeat=num_models)):
         continue
     if not np.any(np.array(weights) == 1.0): # skip if 1 is not present
         continue
-    y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]) + (y_pred_3*weights[2]) + (y_pred_4*weights[3]))/np.sum(weights)
+    if num_models == 2:
+        y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]))/np.sum(weights)
+    if else num_models == 3:
+        y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]) + (y_pred_3*weights[2]))/np.sum(weights)
+    if else num_models == 4:    
+        y_pred = ((y_pred_1*weights[0]) + (y_pred_2*weights[1]) + (y_pred_3*weights[2]) + (y_pred_4*weights[3]))/np.sum(weights)
     score = eval(y_val, y_pred)
     if score > best_score:
         best_score, best_weights = score, weights
