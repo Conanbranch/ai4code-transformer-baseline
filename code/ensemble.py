@@ -129,7 +129,6 @@ print("avg model pred", eval(y_val, y_pred))
 
 # define weights to consider
 w = np.linspace(0.0, 1.0, num=101)
-print(w)
 best_score, best_weights = 0.0, None
 # iterate all possible combinations (cartesian product)
 for weights in tqdm(product(w, repeat=num_models)):
@@ -141,4 +140,4 @@ for weights in tqdm(product(w, repeat=num_models)):
     score = eval(y_val, y_pred)
     if score > best_score:
         best_score, best_weights = score, weights
-        print('>%s %.5f' % (best_weights, best_score))
+        print('>%s %.6f' % (best_weights, best_score))
