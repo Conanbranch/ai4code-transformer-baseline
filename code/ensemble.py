@@ -121,7 +121,7 @@ y_val, y_test_2 = predict(args.model_name_or_path, args.model_ckp_path, args.mod
 #y_val, y_test_3 = predict(args.model_name_or_path, args.model_ckp_path, args.model_ckp_3)
 
 # define weights to consider
-w = np.linspace(0.0, 1.0, num=10)
+w = np.linspace(0.0, 1.0, num=20)
 print(w)
 best_score, best_weights = 0.0, None
 # iterate all possible combinations (cartesian product)
