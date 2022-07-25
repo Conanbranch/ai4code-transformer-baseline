@@ -115,7 +115,7 @@ train_df.to_csv("./data/train.csv", index=False)
 
 def sample_cells(cells, n):
     if n >= len(cells):
-        return [cell[:200] for cell in cells]
+        return cells
     else:
         results = []
         step = len(cells) / n
