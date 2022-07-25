@@ -50,13 +50,13 @@ data_dir = Path('..//input/')
 
 train_df_mark = pd.read_csv(args.train_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
 train_fts = json.load(open(args.train_features_path))
-val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
-#val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).reset_index(drop=True)
+#val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
+val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).reset_index(drop=True)
 val_fts = json.load(open(args.val_features_path))
 val_df = pd.read_csv(args.val_path)
 
-#val_df_mark['source'] = val_df_mark['source'].fillna('')
-#val_df['source'] = val_df['source'].fillna('')
+val_df_mark['source'] = val_df_mark['source'].fillna('')
+val_df['source'] = val_df['source'].fillna('')
 
 order_df = pd.read_csv("../input/train_orders.csv").set_index("id")
 df_orders = pd.read_csv(

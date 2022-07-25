@@ -119,6 +119,8 @@ def remove_special_tokens(document):
 #@return_unmodified_value_if_failed()
 def clean_markdown(document):
     #document = remove_markdown_and_markup(str(document)) # remove markdown and html
+    document = str(document).replace("\\n", "\n") # fix newlines
+    document = str(document).replace("\n", " ") # remove newlines
     #document = re.sub(r'https?://\S+|www\.\S+', ' ', str(document)) # remove links
     #document = remove_special_tokens(str(document)) # remove any special tokens
     #document = re.sub(r'[^a-zA-Z0-9]+', ' ', str(document)) # remove all the special characters 
@@ -129,17 +131,17 @@ def clean_markdown(document):
     #document = re.sub(r'\b[a-zA-Z]\b', ' ', str(document)) # remove all single characters
     #document = remove_special_tokens(str(document)) # remove any special tokens
     #document = str(document).lower() # converting to Lowercase
-    #document = re.sub(r'\s+', ' ', str(document), flags=re.I) # substitute multiple spaces with single space   
-    #document = str(document).strip() # remove leading and following spaces
+    document = re.sub(r'\s+', ' ', str(document), flags=re.I) # substitute multiple spaces with single space   
+    document = str(document).strip() # remove leading and following spaces
     return document
 
 #@return_unmodified_value_if_failed()
 def clean_code(cell):
     #cell = remove_comments_and_docstrings(str(cell)) #remove comments
     cell = str(cell).replace("\\n", "\n") # fix newlines
-    #cell = str(cell).replace("\n", " ") # remove newlines
+    cell = str(cell).replace("\n", " ") # remove newlines
     #cell = remove_special_tokens(str(cell)) # remove any special tokens
-    #cell = re.sub(r'\s+', ' ', str(cell), flags=re.I) # remove multiple spaces
-    #cell = str(cell).strip() # remove leading and following spaces
+    cell = re.sub(r'\s+', ' ', str(cell), flags=re.I) # remove multiple spaces
+    cell = str(cell).strip() # remove leading and following spaces
     #cell = str(cell).lower() # converting to Lowercase
     return cell
