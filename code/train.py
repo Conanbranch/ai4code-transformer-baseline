@@ -192,6 +192,10 @@ def train(model, train_loader, val_loader, epochs):
     
     return model, y_pred
 
+#device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
+if torch.cuda.device_count() > 1:
+  model = nn.DataParallel(model)
 model = model.cuda()
+#model = model.to(device)
 model, y_pred = train(model, train_loader, val_loader, epochs=args.epochs)
