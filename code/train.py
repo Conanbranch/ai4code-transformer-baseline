@@ -37,6 +37,9 @@ parser.add_argument('--correct_bias', type=bool, default=False, help="include bi
 parser.add_argument('--code_sep_token', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--pad_between_code', type=bool, default=True, help="include seperator tokens between code samples")
 parser.add_argument('--vbl_code', type=bool, default=False, help="use variable length code")
+parser.add_argument('--lr', type=float, default=3e-5, help="learning rate")
+parser.add_argument('--wd', type=float, default=0.01, help="weight_decay")
+parser.add_argument('--wup', type=float, default=0.05, help="warm up rate")
 
 args = parser.parse_args()
     
@@ -47,12 +50,13 @@ data_dir = Path('..//input/')
 
 train_df_mark = pd.read_csv(args.train_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
 train_fts = json.load(open(args.train_features_path))
-val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
+#val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
+val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).reset_index(drop=True)
 val_fts = json.load(open(args.val_features_path))
 val_df = pd.read_csv(args.val_path)
 
-#val_df_mark['source'] = val_df_mark['source'].fillna('')
-#val_df['source'] = val_df['source'].fillna('')
+val_df_mark['source'] = val_df_mark['source'].fillna('')
+val_df['source'] = val_df['source'].fillna('')
 
 order_df = pd.read_csv("../input/train_orders.csv").set_index("id")
 df_orders = pd.read_csv(
@@ -114,14 +118,14 @@ def train(model, train_loader, val_loader, epochs):
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': args.wd},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
 
     num_train_optimization_steps = int(args.epochs * len(train_loader) / args.accumulation_steps)
-    optimizer = AdamW(optimizer_grouped_parameters, lr=3e-5,
+    optimizer = AdamW(optimizer_grouped_parameters, lr=args.lr,
                       correct_bias=args.correct_bias)  # To reproduce BertAdam specific behavior set correct_bias=False
-    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0.05 * num_train_optimization_steps,
+    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=args.wup * num_train_optimization_steps,
                                                 num_training_steps=num_train_optimization_steps)  # PyTorch scheduler
     
     #criterion = torch.nn.MSELoss()

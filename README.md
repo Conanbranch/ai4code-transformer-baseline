@@ -194,23 +194,23 @@ Does not help with larger training sizes. Performance appears to be a function o
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
-| 30 |  | |
-| 35 |  | |
-| 40 |  | |
-| 45 |  | |
-| 50 |  | |  
+| 30 | **.8424** | ***.8430*** |
+| 35 | .8387 | .8384 |
+| 40 | **.8405** | *.8429* |
+| 45 | .8401 | ***.8432*** |
+| 50 |  .8385  | *.8389* |  
 
 128 MD Size
 
 | Code Cells <br> Sampled | FLC <br> Val. | VLC <br> Val. |
 | --- | --- | --- |
-| 30 |  | |
-| 35 |  | |
-| 40 |  | |
-| 45 |  | |
-| 50 |  | |  
+| 30 | **.8418** | |
+| 35 | .8377 | |
+| 40 | .8390 | |
+| 45 | **.8420** | |
+| 50 | .8385 | |  
 
-LWRD
+LWRD (test at 10 epochs re-init 1)
 
 | head lr | tail lr | Val. |
 | --- | --- | --- |
@@ -247,6 +247,7 @@ LWRD
 | Lowercase | **.8436**\* |
 | Extra | .8366 |
 | URL | .8419 |
+| Newlines |  |
 
 \*Does not appear to be any real change from default
 
@@ -263,6 +264,8 @@ LWRD
 | newlines no sep and pad | **.8443** |
 | no sep and pad | .8431 |
 | normal | .8424 |
+  
+Tested at 10 Epochs re-init 1:
 
 | weight <br> decay |  Val. |
 | --- | --- |
@@ -316,33 +319,40 @@ LR:
   </details> 
   
   <details>
-  <summary><b>Features</b></summary>
-
-  - Try Adversarial Weight Perturbation (AWP) - Maybe
-  - Try Frequent evaluation - May not make any difference, don't bother unless really need a boost
-  - Try Stochastic Weight Averaging (SWA) - Complicated, final step only if necessary - Some chatter that it doens't help anyway, don't bother unless really need a small boost
-  - Maybe try packing code a little better (only if bored)    
-  
-  </details> 
-  
-  <details>
   <summary><b>Experiments</b></summary>
-
-  - Check the score of the markdown on its own. Based on the val loss it should be in the .90 range on its own.
-  - Try ranking both code and markdown, crazy but who knows. Exact same setup, just code in  the markdowns palce for code cells
-  - Complete above experiments
+  
+  - To code sample size fix (don't want :200)
   - Try reducing acumulator steps
-  - Try different pooling strategies https://www.kaggle.com/code/conanbranch/utilizing-transformer-representations-efficiently/edit
-  - Try slowing down the learning rate and re-initing more layers  
+  - Try decreasing/increasing batch size
+  - Try pretraining
+  - Try training the 90% for more epochs
+  - Try more re-inits (4) with a smaller lr 1e-5 or 2e-5
+  - Experiment with warmup rate 0.01, 0.05, .1
+  - Try more data
   
   </details> 
   
   <details>
   <summary><b>Final Model</b></summary>
-
-  - Do final evaluation with different rankings, revert if no change
+  
   - Train final models on all data
-  - Fix code sample size (don't want :200)
-  - May want to submit one version with limited preprocessing for final to limit final submission errors.    
+  - Do final evaluation with different rankings, revert if no change 
+ 
+  </details> 
+  
+  <details>
+  <summary><b>Observations</b></summary>
+
+  - the model seems to be good at figuring out the relative ordering of the code and the relative ordering of the markdown, combinining them seems to be the issue.
+  
+  </details> 
+   
+  <details>
+  <summary><b>Features</b></summary>
+
+  - Try Adversarial Weight Perturbation (AWP) - Maybe
+  - Try Frequent evaluation - Maybe
+  - Try Stochastic Weight Averaging (SWA) - Maybe
+  - Try packing code a little better - Maybe    
   
   </details> 
