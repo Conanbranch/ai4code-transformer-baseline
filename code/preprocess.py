@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser(description='process arguments')
 
 parser.add_argument('--num_samples', type=int, default=20, help='number of code cells to sample')
 parser.add_argument('--sample_data', type=float, default=1.0, help='proportion the data for training and validation set')
+parser.add_argument('--final_model', type=bool, default=False, help='train on all data if --final_model is True')
 
 args = parser.parse_args()
 
@@ -96,22 +97,33 @@ tqdm.pandas()
 df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
 df.loc[df["cell_type"] == "code", "source"] = df[df["cell_type"] == "code"].source.progress_apply(clean_code)
 
-from sklearn.model_selection import GroupShuffleSplit
+if args.final_model:
 
-NTRAIN = 0.9 * args.sample_data # proportion of training set
-NVALID = 0.1 * args.sample_data # proportion of validation set
+    train_df = df.reset_index(drop=True)
+    train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
+    
+    train_df_mark.to_csv("./data/train_mark.csv", index=False)
+    train_df.to_csv("./data/train.csv", index=False)
 
-splitter = GroupShuffleSplit(n_splits=1, train_size=NTRAIN, test_size=NVALID, random_state=0)
-train_ind, val_ind = next(splitter.split(df, groups=df["ancestor_id"]))
-train_df = df.loc[train_ind].reset_index(drop=True)
-val_df = df.loc[val_ind].reset_index(drop=True)
+else:    
+    
+    from sklearn.model_selection import GroupShuffleSplit
 
-train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
-val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
-train_df_mark.to_csv("./data/train_mark.csv", index=False)
-val_df_mark.to_csv("./data/val_mark.csv", index=False)
-val_df.to_csv("./data/val.csv", index=False)
-train_df.to_csv("./data/train.csv", index=False)
+    NTRAIN = 0.9 * args.sample_data # proportion of training set
+    NVALID = 0.1 * args.sample_data # proportion of validation set
+
+    splitter = GroupShuffleSplit(n_splits=1, train_size=NTRAIN, test_size=NVALID, random_state=0)
+    train_ind, val_ind = next(splitter.split(df, groups=df["ancestor_id"]))
+    train_df = df.loc[train_ind].reset_index(drop=True)
+    val_df = df.loc[val_ind].reset_index(drop=True)
+
+    train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
+    val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
+    
+    train_df_mark.to_csv("./data/train_mark.csv", index=False)
+    val_df_mark.to_csv("./data/val_mark.csv", index=False)
+    val_df.to_csv("./data/val.csv", index=False)
+    train_df.to_csv("./data/train.csv", index=False)
 
 def sample_cells(cells, n):
     if n >= len(cells):
