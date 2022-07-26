@@ -91,9 +91,10 @@ df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='
 df["pct_rank"] = df["mod_rank"] / df["count"]
 df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
 
-#clean up markdown
+#clean up markdown and code
 tqdm.pandas()
 df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
+df.loc[df["cell_type"] == "code", "source"] = df[df["cell_type"] == "code"].source.progress_apply(clean_code)
 
 from sklearn.model_selection import GroupShuffleSplit
 
@@ -113,7 +114,6 @@ val_df.to_csv("./data/val.csv", index=False)
 train_df.to_csv("./data/train.csv", index=False)
 
 def sample_cells(cells, n):
-    cells = [clean_code(cell) for cell in cells]
     if n >= len(cells):
         return cells
     else:
