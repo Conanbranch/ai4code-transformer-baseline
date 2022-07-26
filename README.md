@@ -320,39 +320,30 @@ LR:
   
   <details>
   <summary><b>Experiments</b></summary>
-  
-  - To code sample size fix (don't want :200)
   - Try reducing acumulator steps
-  - Try decreasing/increasing batch size
-  - Try pretraining
+  - Try decreasing and increasing batch size
   - Try training the 90% for more epochs
   - Try more re-inits (4) with a smaller lr 1e-5 or 2e-5
   - Experiment with warmup rate 0.01, 0.05, .1
   - Try more data
-  
   </details> 
   
   <details>
   <summary><b>Final Model</b></summary>
   
+  - Train final models on 90% of data 
   - Train final models on all data
   - Do final evaluation with different rankings, revert if no change 
  
   </details> 
   
-  <details>
-  <summary><b>Observations</b></summary>
-
-  - the model seems to be good at figuring out the relative ordering of the code and the relative ordering of the markdown, combinining them seems to be the issue.
-  
-  </details> 
+  <details
    
   <details>
-  <summary><b>Features</b></summary>
+  <summary><b>Features (did not get to)</b></summary>
 
-  - Try Adversarial Weight Perturbation (AWP) - Maybe
-  - Try Frequent evaluation - Maybe
-  - Try Stochastic Weight Averaging (SWA) - Maybe
-  - Try packing code a little better - Maybe    
+  - Adversarial Weight Perturbation (AWP)
+  - Frequent evaluation 
+  - Stochastic Weight Averaging (SWA) 
   
   </details> 
