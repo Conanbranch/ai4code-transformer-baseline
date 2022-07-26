@@ -291,14 +291,10 @@ Tested at 10 Epochs re-init 1:
 <details>
   <summary><b>To Do</b></summary>
   &nbsp;  
-  
-Sample Size:
-  
-30, 35, 40, 45  
 
 Best Epochs:
 
-9,10,11,12
+9,10,11
 
 Batch Size:
 
@@ -306,7 +302,7 @@ Batch Size:
 
 LR:
 
-3.1e-5, 2.9e-5, 1e-5, 2e-5
+1e-5, 2e-5, 2.9e-5, 3e-5
   
   </details>
 
