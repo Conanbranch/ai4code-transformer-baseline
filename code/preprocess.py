@@ -158,9 +158,14 @@ def get_features(df):
         features[idx]["codes"] = codes
     return features
 
-val_fts = get_features(val_df)
-json.dump(val_fts, open("./data/val_fts.json","wt"))
-train_fts = get_features(train_df)
-json.dump(train_fts, open("./data/train_fts.json","wt"))
+if args.final_model:
+    train_fts = get_features(train_df)
+    json.dump(train_fts, open("./data/train_fts.json","wt"))
+    
+else:
+    val_fts = get_features(val_df)
+    json.dump(val_fts, open("./data/val_fts.json","wt"))
+    train_fts = get_features(train_df)
+    json.dump(train_fts, open("./data/train_fts.json","wt"))
 
 print(fails)
