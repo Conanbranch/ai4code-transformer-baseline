@@ -49,16 +49,23 @@ if not os.path.exists("./output"):
       
 data_dir = Path('..//input/')
 
-train_df_mark = pd.read_csv(args.train_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
-train_fts = json.load(open(args.train_features_path))
-#val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
-val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).reset_index(drop=True)
-val_fts = json.load(open(args.val_features_path))
-val_df = pd.read_csv(args.val_path)
+if not args.final_model:
 
-val_df_mark['source'] = val_df_mark['source'].fillna('')
-val_df['source'] = val_df['source'].fillna('')
+    train_df_mark = pd.read_csv(args.train_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
+    train_fts = json.load(open(args.train_features_path))
+    #val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
+    val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).reset_index(drop=True)
+    val_fts = json.load(open(args.val_features_path))
+    val_df = pd.read_csv(args.val_path)
 
+    val_df_mark['source'] = val_df_mark['source'].fillna('')
+    val_df['source'] = val_df['source'].fillna('')
+    
+else:   
+    
+    train_df_mark = pd.read_csv(args.train_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
+    train_fts = json.load(open(args.train_features_path))
+    
 order_df = pd.read_csv("../input/train_orders.csv").set_index("id")
 df_orders = pd.read_csv(
     data_dir / 'train_orders.csv',
@@ -66,16 +73,27 @@ df_orders = pd.read_csv(
     squeeze=True,
 ).str.split()
 
-train_ds = MarkdownDataset(train_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
-                           total_max_len=args.total_max_len, fts=train_fts, code_sep_token = args.code_sep_token, 
-                           pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
-val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
-                         total_max_len=args.total_max_len, fts=val_fts, code_sep_token = args.code_sep_token, 
-                         pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
-train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.n_workers,
-                          pin_memory=False, drop_last=True)
-val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.n_workers,
-                        pin_memory=False, drop_last=False)
+if not args.final_model:
+
+    train_ds = MarkdownDataset(train_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
+                               total_max_len=args.total_max_len, fts=train_fts, code_sep_token = args.code_sep_token, 
+                               pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
+    val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
+                             total_max_len=args.total_max_len, fts=val_fts, code_sep_token = args.code_sep_token, 
+                             pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
+    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.n_workers,
+                              pin_memory=False, drop_last=True)
+    val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.n_workers,
+                            pin_memory=False, drop_last=False)
+else:
+    
+    train_ds = MarkdownDataset(train_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
+                               total_max_len=args.total_max_len, fts=train_fts, code_sep_token = args.code_sep_token, 
+                               pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
+
+    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.n_workers,
+                              pin_memory=False, drop_last=True)
+   
 
 def save_ckp(state, checkpoint_dir):
     f_path = checkpoint_dir + '/' + args.model_ckp
