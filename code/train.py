@@ -40,6 +40,7 @@ parser.add_argument('--vbl_code', type=bool, default=False, help="use variable l
 parser.add_argument('--lr', type=float, default=3e-5, help="learning rate")
 parser.add_argument('--wd', type=float, default=0.01, help="weight_decay")
 parser.add_argument('--wup', type=float, default=0.05, help="warm up rate")
+parser.add_argument('--final_model', type=bool, default=False, help='train on all data if --final_model is True')
 
 args = parser.parse_args()
     
@@ -175,39 +176,41 @@ def train(model, train_loader, val_loader, epochs):
         }
         
         save_ckp(checkpoint, args.model_ckp_path)
+        
+        if not args.final_model:
 
-        y_val, y_pred = validate(model, val_loader)
-        print("val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
-        #val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
-        
-        # Code and Markdown 
-        
-        val_df["pred"] = val_df["pct_rank"]
-        val_df["pred"] = y_pred
-        y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("md/code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-      
-        # Only Markdown
-        
-        val_df["pred"] = val_df["pct_rank"]
-        val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred[val_df.index[val_df["cell_type"] == "markdown"]]      
-       
-        y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-        
-        y_dummy = val_df.loc[val_df["cell_type"] == "markdown"].sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-        
-        y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-        
-        # Only Code (don't have orders for markdown when using only code)
-        
-        val_df["pred"] = val_df["pct_rank"]
-        val_df.loc[val_df["cell_type"] == "code", "pred"] = y_pred[val_df.index[val_df["cell_type"] == "code"]]      
-            
-        y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
-        print("only code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+            y_val, y_pred = validate(model, val_loader)
+            print("val loss (markdown)",  np.round(mean_absolute_error(y_val, y_pred),4))
+            #val_df["pred"] = val_df.groupby(["id", "cell_type"])["rank"].rank(pct=True)
+
+            # Code and Markdown 
+
+            val_df["pred"] = val_df["pct_rank"]
+            val_df["pred"] = y_pred
+            y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
+            print("md/code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+
+            # Only Markdown
+
+            val_df["pred"] = val_df["pct_rank"]
+            val_df.loc[val_df["cell_type"] == "markdown", "pred"] = y_pred[val_df.index[val_df["cell_type"] == "markdown"]]      
+
+            y_dummy = val_df.sort_values("pred").groupby('id')['cell_id'].apply(list)
+            print("pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+
+            y_dummy = val_df.loc[val_df["cell_type"] == "markdown"].sort_values("pred").groupby('id')['cell_id'].apply(list)
+            print("md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+
+            y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
+            print("code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
+
+            # Only Code (don't have orders for markdown when using only code)
+
+            val_df["pred"] = val_df["pct_rank"]
+            val_df.loc[val_df["cell_type"] == "code", "pred"] = y_pred[val_df.index[val_df["cell_type"] == "code"]]      
+
+            y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
+            print("only code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
                     
     torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
     
