@@ -93,6 +93,7 @@ else:
 
     train_ds = MarkdownDataset(train_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
                                total_max_len=args.total_max_len, fts=train_fts, code_sep_token = args.code_sep_token, 
+                               pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=args.n_workers,
                               pin_memory=False, drop_last=True)
     
