@@ -321,7 +321,6 @@ LR:
   - Try decreasing and increasing batch size
   - Try training the 90% for more epochs
   - Try more re-inits (4) with a smaller lr 1e-5 or 2e-5
-  - Experiment with warmup rate 0.01, 0.05, .1
   - Try more data
     
   </details> 
