@@ -322,6 +322,7 @@ LR:
   - Try training the 90% for more epochs
   - Try more re-inits (4) with a smaller lr 1e-5 or 2e-5
   - Try more data
+  - Might be worth probbing leaderboard with vlc 40 and vlc 50 to see if 50 does better on leaderboard
     
   </details> 
   
