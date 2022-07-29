@@ -97,11 +97,16 @@ tqdm.pandas()
 df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
 df.loc[df["cell_type"] == "code", "source"] = df[df["cell_type"] == "code"].source.progress_apply(clean_code)
 
+df_extra = pd.read_csv("./data/train_extra.csv")
+
+df_extra.loc[df_extra["cell_type"] == "markdown", "source"] = df_extra[df_extra["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
+df_extra.loc[df_extra["cell_type"] == "code", "source"] = df_extra[df_extra["cell_type"] == "code"].source.progress_apply(clean_code)
+
 if args.final_model:
 
     train_df = df.reset_index(drop=True)
+    train_df = pd.concat([train_df, df_extra]).reset_index(drop=True)
     train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
-    
     train_df_mark.to_csv("./data/train_mark.csv", index=False)
     train_df.to_csv("./data/train.csv", index=False)
 
@@ -115,8 +120,8 @@ else:
     splitter = GroupShuffleSplit(n_splits=1, train_size=NTRAIN, test_size=NVALID, random_state=0)
     train_ind, val_ind = next(splitter.split(df, groups=df["ancestor_id"]))
     train_df = df.loc[train_ind].reset_index(drop=True)
+    train_df = pd.concat([train_df, df_extra]).reset_index(drop=True)
     val_df = df.loc[val_ind].reset_index(drop=True)
-
     train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
     val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
     
