@@ -92,12 +92,32 @@ df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='
 df["pct_rank"] = df["mod_rank"] / df["count"]
 df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
 
+df_extra = pd.read_csv("./data/train_extra.csv")
+
+# new ranking
+df_extra = df_extra.sort_values(['id','rank'],ascending=True).reset_index(drop=True)
+df_extra["ct_rank"] = df_extra.groupby(["id", "cell_type"]).cumcount() + 1 # this will shift the first value to 0.5 and duplicate the orignal pred
+df_extra["mod_rank"] = df_extra.loc[df_extra['cell_type'] == 'code']['ct_rank']
+df_extra["mod_rank"] = df_extra.groupby(["id"])["mod_rank"].fillna(method='ffill')
+df_extra["dup_rank"] = df_extra.loc[df_extra['cell_type'] == 'markdown'].groupby(["id", "cell_type", "mod_rank"]).cumcount() + 1
+df_extra["dup_count"] = df_extra.loc[df_extra['cell_type'] == 'markdown'].groupby(["id", "cell_type", "mod_rank"])["mod_rank"].transform("count")
+df_extra["t_mod_rank"] = df_extra.loc[(df_extra['cell_type'] == 'markdown')]["mod_rank"] + (df_extra.loc[(df_extra['cell_type'] == 'markdown')]["dup_rank"] / (df_extra.loc[(df_extra['cell_type'] == 'markdown')]["dup_count"] + 1))
+df_extra.t_mod_rank.fillna(df_extra.mod_rank, inplace=True)
+df_extra["mod_rank_1"] = df_extra.groupby(["id"])["t_mod_rank"].fillna(method='bfill')
+df_extra["dup_rank_1"] = df_extra.loc[(df_extra['cell_type'] == 'markdown') & (df_extra.mod_rank_1 == 1.0)].groupby(["id", "cell_type", "mod_rank_1"]).cumcount() + 1
+df_extra["dup_count_1"] = df_extra.loc[(df_extra['cell_type'] == 'markdown') & (df_extra.mod_rank_1 == 1.0)].groupby(["id", "cell_type", "mod_rank_1"])["mod_rank_1"].transform("count")
+df_extra["mod_rank_2"] = df_extra.loc[(df_extra['cell_type'] == 'markdown') & (df_extra.mod_rank_1 == 1.0)]["mod_rank_1"] - ((df_extra.loc[(df_extra['cell_type'] == 'markdown') & (df_extra.mod_rank_1 == 1.0)]["dup_count_1"] + 1) - (df_extra.loc[(df_extra['cell_type'] == 'markdown') & (df_extra.mod_rank_1 == 1.0)]["dup_rank_1"])) / (df_extra.loc[(df_extra['cell_type'] == 'markdown') & (df_extra.mod_rank_1 == 1.0)]["dup_count_1"] + 1)
+df_extra.t_mod_rank.fillna(df_extra.mod_rank_2, inplace=True)
+df_extra["mod_rank"] = df_extra["t_mod_rank"]
+df_extra["count"] = df_extra.loc[df_extra['cell_type'] == 'code'].groupby(["id", "cell_type"])["mod_rank"].transform("count") + 1 # needed if using sigmoid activation function, keeps pct_rank between 0 and 1
+df_extra["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='ffill')
+df_extra["pct_rank"] = df_extra["mod_rank"] / df_extra["count"]
+df_extra = df_extra.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
+
 #clean up markdown and code
 tqdm.pandas()
 df.loc[df["cell_type"] == "markdown", "source"] = df[df["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
 df.loc[df["cell_type"] == "code", "source"] = df[df["cell_type"] == "code"].source.progress_apply(clean_code)
-
-df_extra = pd.read_csv("./data/train_extra.csv")
 
 df_extra.loc[df_extra["cell_type"] == "markdown", "source"] = df_extra[df_extra["cell_type"] == "markdown"].source.progress_apply(clean_markdown)
 df_extra.loc[df_extra["cell_type"] == "code", "source"] = df_extra[df_extra["cell_type"] == "code"].source.progress_apply(clean_code)
