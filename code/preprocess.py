@@ -143,9 +143,9 @@ else:
     train_df = df.loc[train_ind].reset_index(drop=True)
     train_df = pd.concat([train_df, df_extra]).reset_index(drop=True)
     val_df = df.loc[val_ind].reset_index(drop=True)
-    train_df_mark = train_df[train_df["cell_type"] == "markdown"].reset_index(drop=True)
-    val_df_mark = val_df[val_df["cell_type"] == "markdown"].reset_index(drop=True)
     
+    train_df_mark = train_df.reset_index(drop=True)
+    val_df_mark = val_df.reset_index(drop=True)  
     train_df_mark.to_csv("./data/train_mark.csv", index=False)
     val_df_mark.to_csv("./data/val_mark.csv", index=False)
     val_df.to_csv("./data/val.csv", index=False)
