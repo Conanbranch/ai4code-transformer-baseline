@@ -92,7 +92,8 @@ df["count"] = df.groupby(["id"])["count"].fillna(method='bfill').fillna(method='
 df["pct_rank"] = df["mod_rank"] / df["count"]
 df = df.drop(columns = ["count","dup_rank","dup_rank_1","t_mod_rank","mod_rank_1","dup_count","dup_count_1","mod_rank_2"])
 
-df_extra = pd.read_csv("./data/train_extra.csv")
+# import extra dataset, duplicates removed (also no duplicates from the original data)
+df_extra = pd.read_csv("./data/train_extra_cleaned_np.csv").reset_index(drop=True)
 
 # new ranking
 df_extra = df_extra.sort_values(['id','rank'],ascending=True).reset_index(drop=True)
