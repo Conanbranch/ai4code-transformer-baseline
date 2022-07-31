@@ -317,12 +317,9 @@ LR:
   <details>
   <summary><b>Experiments</b></summary>
     
-  - Try reducing acumulator steps
-  - Try decreasing and increasing batch size
   - Try training the 90% for more epochs
-  - Try more re-inits (4) with a smaller lr 1e-5 or 2e-5
-  - Try more data
   - Might be worth probbing leaderboard with vlc 40 and vlc 50 to see if 50 does better on leaderboard
+  - Do evaluation with different rankings, revert if no change 
     
   </details> 
   
@@ -330,8 +327,6 @@ LR:
   <summary><b>Final Model</b></summary>
   
   - Train final models on 90% of data 
-  - Train final models on all data
-  - Do final evaluation with different rankings, revert if no change 
  
   </details> 
   
