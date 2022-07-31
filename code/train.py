@@ -64,7 +64,8 @@ if not args.final_model:
     
 else:   
     
-    train_df_mark = pd.read_csv(args.train_mark_path).drop("parent_id", axis=1).drop("cell_id", axis=1).dropna().reset_index(drop=True)
+    train_df_mark = pd.read_csv(args.train_mark_path).drop(["parent_id","cell_id","ancestor_id","pct_rank_old"], axis=1).dropna().reset_index(drop=True)
+    train_df_mark['id'] = pd.Series(train_df_mark['id'], dtype="string")
     train_fts = json.load(open(args.train_features_path))
     
 order_df = pd.read_csv("../input/train_orders.csv").set_index("id")
