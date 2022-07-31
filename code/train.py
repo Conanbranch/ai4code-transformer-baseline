@@ -159,6 +159,11 @@ def train(model, train_loader, val_loader, epochs):
         model, optimizer, scheduler, epoch = load_ckp(args.model_ckp_path, model, optimizer, scheduler)
     
     for e in range(epoch,epochs):
+        
+        if single_epoch:
+            if e == 1:
+                return model, y_pred
+        
         model.train()
         tbar = tqdm(train_loader, file=sys.stdout)
         loss_list = []
