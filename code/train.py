@@ -41,6 +41,7 @@ parser.add_argument('--lr', type=float, default=3e-5, help="learning rate")
 parser.add_argument('--wd', type=float, default=0.01, help="weight_decay")
 parser.add_argument('--wup', type=float, default=0.05, help="warm up rate")
 parser.add_argument('--final_model', type=bool, default=False, help='train on all data if --final_model is True')
+parser.add_argument('--single_epoch', type=bool, default=False, help='only train a single epoch')
 
 args = parser.parse_args()
     
