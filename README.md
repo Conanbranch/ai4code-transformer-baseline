@@ -318,7 +318,6 @@ LR:
   <summary><b>Experiments</b></summary>
     
   - Try training the 90% for more epochs
-  - Might be worth probbing leaderboard with vlc 40 and vlc 50 to see if 50 does better on leaderboard
   - Do evaluation with different rankings, revert if no change 
     
   </details> 
