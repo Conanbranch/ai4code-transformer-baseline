@@ -52,6 +52,7 @@ data_dir = Path('..//input/')
 if not args.final_model:
 
     train_df_mark = pd.read_csv(args.train_mark_path).drop(["parent_id","cell_id","ancestor_id","pct_rank_old"], axis=1).dropna().reset_index(drop=True)
+    train_df_mark['id'] = pd.Series(train_df_mark['id'], dtype="string")
     train_fts = json.load(open(args.train_features_path))
     #val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
     val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).reset_index(drop=True)
