@@ -25,7 +25,6 @@ parser.add_argument('--model', type=str, default="model.bin", help='model filena
 parser.add_argument('--steps', type=int, default=21, help="number of steps for weights")
 parser.add_argument('--num_models', type=int, default=2, help="number of steps for weights")
 
-parser = argparse.ArgumentParser(description='process arguments')
 parser.add_argument('--model_name_or_path', type=str, default='microsoft/codebert-base', help='path for pretrained model')
 parser.add_argument('--train_mark_path', type=str, default='./data/train_mark.csv', help='path for markdown training data')
 parser.add_argument('--train_features_path', type=str, default='./data/train_fts.json', help='path for code training data')
