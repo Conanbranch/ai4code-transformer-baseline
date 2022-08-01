@@ -36,11 +36,6 @@ parser.add_argument('--correct_bias', action='store_true', help="include bias co
 parser.add_argument('--code_sep_token', action='store_true', help="include seperator tokens between code samples")
 parser.add_argument('--pad_between_code', action='store_true', help="include seperator tokens between code samples")
 parser.add_argument('--vbl_code', action='store_true', help="use variable length code")
-parser.add_argument('--lr', type=float, default=3e-5, help="learning rate")
-parser.add_argument('--wd', type=float, default=0.01, help="weight_decay")
-parser.add_argument('--wup', type=float, default=0.05, help="warm up rate")
-parser.add_argument('--final_model', action='store_true', help='train on all data if --final_model is True')
-parser.add_argument('--single_epoch', action='store_true', help='only train a single epoch')
 
 
 args = parser.parse_args()
