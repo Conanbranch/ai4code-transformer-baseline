@@ -111,7 +111,8 @@ def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     return model, optimizer, scheduler, checkpoint['epoch']
 
 def read_data(data):
-    return tuple(d.cuda() for d in data[:-1]), data[-1].cuda()
+    return tuple(d.to(device) for d in data[:-1]), data[-1].to(device)
+    #return tuple(d.cuda() for d in data[:-1]), data[-1].cuda()
 
 def validate(model, val_loader):
     model.eval()
