@@ -109,6 +109,7 @@ def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     return model, optimizer, scheduler, checkpoint['epoch']
 
 def read_data(data):
+    #return tuple(d.to(device) for d in data[:-1]), data[-1].to(device)
     return tuple(d.cuda() for d in data[:-1]), data[-1].cuda()
 
 def validate(model, val_loader):
@@ -219,7 +220,7 @@ def train(model, train_loader, val_loader, epochs):
     
     return model, y_pred
 
-#device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = MarkdownModel(args.model_name_or_path, args.re_init, args.reinit_n_layers)
 print(torch.cuda.device_count())
 if torch.cuda.device_count() > 1:
