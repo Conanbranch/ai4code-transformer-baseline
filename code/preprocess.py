@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='process arguments')
 
 parser.add_argument('--num_samples', type=int, default=20, help='number of code cells to sample')
 parser.add_argument('--sample_data', type=float, default=1.0, help='proportion the data for training and validation set')
-parser.add_argument('--final_model', type=bool, default=False, help='train on all data if --final_model is True')
+parser.add_argument('--final_model', action='store_true', help='train on all data if --final_model is True')
 
 args = parser.parse_args()
 
