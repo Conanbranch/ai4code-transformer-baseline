@@ -41,6 +41,8 @@ parser.add_argument('--wd', type=float, default=0.01, help="weight_decay")
 parser.add_argument('--wup', type=float, default=0.05, help="warm up rate")
 parser.add_argument('--final_model', action='store_true', help='train on all data if --final_model is True')
 parser.add_argument('--single_epoch', action='store_true', help='only train a single epoch')
+parser.add_argument('--early_stop', action='store_true', help="use variable length code")
+parser.add_argument('--early_stop_num', type=int, default=10, help="use variable length code")
 
 
 args = parser.parse_args()
@@ -165,6 +167,10 @@ def train(model, train_loader, val_loader, epochs):
         if args.single_epoch:
             if e == 1:
                 return model, y_pred
+            
+        if args.early_stop:
+            if e == early_stop_num:
+                return model, y_pred      
         
         model.train()
         tbar = tqdm(train_loader, file=sys.stdout)
