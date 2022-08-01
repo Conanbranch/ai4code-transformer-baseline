@@ -191,7 +191,7 @@ def train(model, train_loader, val_loader, epochs):
 
             avg_loss = np.round(np.mean(loss_list), 4)
 
-            tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss} lr: {scheduler.get_last_lr()}")
+            tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss}")
         
         torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
 
