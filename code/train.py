@@ -165,7 +165,7 @@ def train(model, train_loader, val_loader, epochs):
     for e in range(epoch,epochs):
         
         if args.single_epoch:
-            if e == 2:
+            if e == 1:
                 return model, y_pred
         
         if args.early_stop:
