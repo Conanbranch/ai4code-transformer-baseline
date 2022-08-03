@@ -105,7 +105,7 @@ def save_ckp(state, checkpoint_dir):
 
 def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     
-    if isinstance(model, (nn.DataParallel, nn.DistributedDataParallel)):
+    if isinstance(model, (nn.DataParallel)):
         checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp, map_location=device)
         model.module.load_state_dict(checkpoint['state_dict'])
         optimizer.module.load_state_dict(checkpoint['optimizer'])
@@ -210,7 +210,7 @@ def train(model, train_loader, val_loader, epochs):
         else:
             torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
             
-        if isinstance(model, (nn.DataParallel, nn.DistributedDataParallel)):
+        if isinstance(model, (nn.DataParallel)):
             checkpoint = {
               'epoch': e + 1,
               'state_dict': model.module.state_dict(),
@@ -241,7 +241,7 @@ def train(model, train_loader, val_loader, epochs):
             y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
             print("code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
     
-    if isinstance(model, (nn.DataParallel, nn.DistributedDataParallel)):
+    if isinstance(model, (nn.DataParallel)):
         torch.save(model.module.state_dict(), args.model_ckp_path + "/" + args.model)
     else:
         torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
