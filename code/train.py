@@ -169,7 +169,7 @@ def train(model, train_loader, val_loader, epochs):
                 return model, y_pred
             
         if args.early_stop:
-            if e == early_stop_num:
+            if e == args.early_stop_num:
                 return model, y_pred      
         
         model.train()
