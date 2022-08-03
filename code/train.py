@@ -107,7 +107,7 @@ def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     
     if isinstance(model, (DataParallel, DistributedDataParallel)):
         checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp, map_location=device)
-        model.module.oad_state_dict(checkpoint['state_dict'])
+        model.module.load_state_dict(checkpoint['state_dict'])
         optimizer.module.load_state_dict(checkpoint['optimizer'])
         scheduler.module.load_state_dict(checkpoint['scheduler'])  
     else:
