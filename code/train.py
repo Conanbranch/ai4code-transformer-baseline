@@ -104,10 +104,18 @@ def save_ckp(state, checkpoint_dir):
     torch.save(state, f_path)
 
 def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
-    checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp)
-    model.load_state_dict(checkpoint['state_dict'])
-    optimizer.load_state_dict(checkpoint['optimizer'])
-    scheduler.load_state_dict(checkpoint['scheduler'])
+    
+    if isinstance(model, (DataParallel, DistributedDataParallel)):
+        checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp, map_location=current_gpu_device)
+        model.module.oad_state_dict(checkpoint['state_dict'])
+        optimizer.module.load_state_dict(checkpoint['optimizer'])
+        scheduler.module.load_state_dict(checkpoint['scheduler'])  
+    else:
+        checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp)
+        model.load_state_dict(checkpoint['state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer'])
+        scheduler.load_state_dict(checkpoint['scheduler'])
+    
     return model, optimizer, scheduler, checkpoint['epoch']
 
 def read_data(data):
@@ -196,15 +204,26 @@ def train(model, train_loader, val_loader, epochs):
             avg_loss = np.round(np.mean(loss_list), 4)
 
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss}")
-        
-        torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
 
-        checkpoint = {
-          'epoch': e + 1,
-          'state_dict': model.state_dict(),
-          'optimizer': optimizer.state_dict(),
-          'scheduler': scheduler.state_dict()
-        }
+        if isinstance(model, (DataParallel, DistributedDataParallel)):
+            torch.save(model.module.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
+        else:
+            torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
+            
+        if isinstance(model, (DataParallel, DistributedDataParallel)):
+            checkpoint = {
+              'epoch': e + 1,
+              'state_dict': model.module.state_dict(),
+              'optimizer': optimizer.module.state_dict(),
+              'scheduler': scheduler.module.state_dict()
+            }    
+        else:
+            checkpoint = {
+              'epoch': e + 1,
+              'state_dict': model.state_dict(),
+              'optimizer': optimizer.state_dict(),
+              'scheduler': scheduler.state_dict()
+            }    
         
         save_ckp(checkpoint, args.model_ckp_path)
         
@@ -221,8 +240,11 @@ def train(model, train_loader, val_loader, epochs):
             print("md pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
             y_dummy = val_df.loc[val_df["cell_type"] == "code"].sort_values("pred").groupby('id')['cell_id'].apply(list)
             print("code pred score", kendall_tau(df_orders.loc[y_dummy.index], y_dummy))
-
-    torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
+    
+    if isinstance(model, (DataParallel, DistributedDataParallel)):
+        torch.save(model.module.state_dict(), args.model_ckp_path + "/" + args.model)
+    else:
+        torch.save(model.state_dict(), args.model_ckp_path + "/" + args.model)
     
     return model, y_pred
 
