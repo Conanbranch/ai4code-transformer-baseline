@@ -205,7 +205,7 @@ def train(model, train_loader, val_loader, epochs):
 
             tbar.set_description(f"Epoch {e + 1} Loss: {avg_loss}")
 
-        if isinstance(model, (nn.DataParallel, nn.DistributedDataParallel)):
+        if isinstance(model, (nn.DataParallel)):
             torch.save(model.module.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
         else:
             torch.save(model.state_dict(), args.model_ckp_path + "/" + "epoch_" + str(e + 1) + "_" + args.model)
