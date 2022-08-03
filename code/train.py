@@ -108,8 +108,8 @@ def load_ckp(checkpoint_fpath, model, optimizer, scheduler):
     if isinstance(model, (nn.DataParallel)):
         checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp, map_location=device)
         model.module.load_state_dict(checkpoint['state_dict'])
-        optimizer.module.load_state_dict(checkpoint['optimizer'])
-        scheduler.module.load_state_dict(checkpoint['scheduler'])  
+        optimizer.load_state_dict(checkpoint['optimizer'])
+        scheduler.load_state_dict(checkpoint['scheduler'])  
     else:
         checkpoint = torch.load(checkpoint_fpath + '/' + args.model_ckp)
         model.load_state_dict(checkpoint['state_dict'])
@@ -214,8 +214,8 @@ def train(model, train_loader, val_loader, epochs):
             checkpoint = {
               'epoch': e + 1,
               'state_dict': model.module.state_dict(),
-              'optimizer': optimizer.module.state_dict(),
-              'scheduler': scheduler.module.state_dict()
+              'optimizer': optimizer.state_dict(),
+              'scheduler': scheduler.state_dict()
             }    
         else:
             checkpoint = {
