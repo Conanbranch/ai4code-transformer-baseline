@@ -74,12 +74,6 @@ df_orders = pd.read_csv(
     squeeze=True,
 ).str.split()
 
-val_ds = MarkdownDataset(val_df_mark, model_name_or_path=args.model_name_or_path, md_max_len=args.md_max_len,
-                         total_max_len=args.total_max_len, fts=val_fts, code_sep_token = args.code_sep_token, 
-                         pad_between_code = args.pad_between_code, vbl_code=args.vbl_code)
-val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=args.n_workers,
-                        pin_memory=False, drop_last=False)
-
 def read_data(data):
     return tuple(d.cuda() for d in data[:-1]), data[-1].cuda()
 
