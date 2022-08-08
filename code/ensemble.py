@@ -32,30 +32,17 @@ parser.add_argument('--steps', type=int, default=21, help="number of steps for w
 parser.add_argument('--num_models', type=int, default=2, help="number of steps for weights")
 
 parser.add_argument('--model_name_or_path', type=str, default='microsoft/codebert-base', help='path for pretrained model')
-parser.add_argument('--train_mark_path', type=str, default='./data/train_mark.csv', help='path for markdown training data')
-parser.add_argument('--train_features_path', type=str, default='./data/train_fts.json', help='path for code training data')
 parser.add_argument('--val_mark_path', type=str, default='./data/val_mark.csv', help='path for markdown validation data')
 parser.add_argument('--val_features_path', type=str, default='./data/val_fts.json', help='path for code validation data')
 parser.add_argument('--val_path', type=str, default="./data/val.csv", help='path for validation data')
 parser.add_argument('--md_max_len', type=int, default=64, help='maximum length of tokenized markdown')
 parser.add_argument('--total_max_len', type=int, default=512, help='maximum length of tokenized markdown and code')
 parser.add_argument('--batch_size', type=int, default=8, help='training batchsize, try --batch_size 8 if you encounter memory issues')
-parser.add_argument('--accumulation_steps', type=int, default=4, help='number of accumulating steps')
-parser.add_argument('--epochs', type=int, default=5, help='number of epochs, 3 or 5 are good starting points')
 parser.add_argument('--n_workers', type=int, default=8, help='number of workers')
 parser.add_argument('--re_init', action='store_true', help="option to re-initialize layers of the pretrained model")
 parser.add_argument('--reinit_n_layers', type=int, default=0, help="number of layers of the pretrained model to re-initialize")
-parser.add_argument('--resume_train', action='store_true', help="resume training if previous training was interupted")
-parser.add_argument('--correct_bias', action='store_true', help="include bias correction")
 parser.add_argument('--code_sep_token', action='store_true', help="include seperator tokens between code samples")
 parser.add_argument('--pad_between_code', action='store_true', help="include seperator tokens between code samples")
-parser.add_argument('--vbl_code', action='store_true', help="use variable length code")
-parser.add_argument('--lr', type=float, default=3e-5, help="learning rate")
-parser.add_argument('--wd', type=float, default=0.01, help="weight_decay")
-parser.add_argument('--wup', type=float, default=0.05, help="warm up rate")
-parser.add_argument('--final_model', action='store_true', help='train on all data if --final_model is True')
-parser.add_argument('--single_epoch', action='store_true', help='only train a single epoch')
-
 
 args = parser.parse_args()
     
@@ -102,7 +89,7 @@ def validate(model, val_loader):
     return np.concatenate(labels), np.concatenate(preds)
 
 def predict(model_path, ckpt_path, ckpt, vbl_code):
-    model = MarkdownModel(model_path, re_init = True, reinit_n_layers = args.reinit_n_layers)
+    model = MarkdownModel(model_path, re_init = args.re_init, reinit_n_layers = args.reinit_n_layers)
     model = model.cuda()
     model.eval()
     model.load_state_dict(torch.load(ckpt_path + '/' + ckpt))
