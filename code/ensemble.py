@@ -23,6 +23,11 @@ parser.add_argument('--model_ckp_3', type=str, default="model.pt", help='model c
 parser.add_argument('--model_ckp_4', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model', type=str, default="model.bin", help='model filename')
 
+parser.add_argument('--model_ckp_1_vbl_code', action='store_true', help="use variable length code")
+parser.add_argument('--model_ckp_2_vbl_code', action='store_true', help="use variable length code")
+parser.add_argument('--model_ckp_3_vbl_code', action='store_true', help="use variable length code")
+parser.add_argument('--model_ckp_4_vbl_code', action='store_true', help="use variable length code")
+
 parser.add_argument('--steps', type=int, default=21, help="number of steps for weights")
 parser.add_argument('--num_models', type=int, default=2, help="number of steps for weights")
 
