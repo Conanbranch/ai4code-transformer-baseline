@@ -142,8 +142,9 @@ elif num_models == 4:
 # define weights to consider
 w = np.linspace(1.0, 0.0, num=args.steps)
 best_score, best_weights = 0.0, None
+total_len = int(sum([len(i) for i in product(w, repeat=num_models)])/num_models)
 # iterate all possible combinations (cartesian product)
-for weights in tqdm(product(w, repeat=num_models)):
+for weights in tqdm(product(w, repeat=num_models), total=total_len):
     if np.all(np.array(weights) == np.array(weights[0])): # skip if all values are the same
         continue
     if not np.any(np.array(weights) == 1.0): # skip if 1 is not present
