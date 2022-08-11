@@ -111,8 +111,9 @@ Model 3:
 | Model 1 | .8676 | .8610  |  |
 | Model 2 | .8650 | .8575 |  |  
 | Model 3 | .8641 | .8567 |  |
-| Average Ensemble | .8713 | .8641 |  |
 | Weighted Ensemble | .8715 | .8643 |  |
+
+Weights for the weighted ensemble were 1.0, 0.6, and 0.6 corresponding to model 1, 2, and 3.
 
 ## Trained Models
 
