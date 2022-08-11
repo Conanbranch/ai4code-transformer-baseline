@@ -100,15 +100,15 @@ Model 3:
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 4e-5 --wd 0.01 --pad_between_code --code_sep_token```
 
-### Weighted Ensemble
+## Reproducing Weighted Ensemble
 
 - To Do
 
-### Extra Data
+## Extra Data
 
 - To Do
 
-### Results - Trained on 90% of Dataset
+## Results - Trained on 90% of Dataset
 
 | Model | Val | Public | Private |
 | --- | --- | --- | --- |
