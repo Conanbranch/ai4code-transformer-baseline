@@ -86,7 +86,7 @@ The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/n
 
 ## Reproducing Final Models
 
-For my final solution I combined 3 different trained models via an average ensemble:
+For my final solution I combined 3 different trained models via a weighted ensemble:
 
 Model 1:
 
