@@ -106,7 +106,7 @@ Model 3:
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 4e-5 --wd 0.01 --pad_between_code --code_sep_token```
 
-## Reproducing Weighted Ensemble
+Weighted Ensemble:
 
 - To Do
 
