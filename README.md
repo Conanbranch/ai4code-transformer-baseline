@@ -78,7 +78,7 @@ To use variable length code:
 
 The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/num_samples)```, where the code size (number of tokens per code cell) is fixed regardless of the number of code cells in the notebook. With variable length code, ```code_max_length = int((self.total_max_len - self.md_max_len)/num_sampled)``` and is a function of the actual number of code cells sampled (i.e. there were only 7 code cells ```num_sampled = 7``` but ```num_samples = 20```, this gives you more tokens per code cells when ```num_sampled < num_samples```).
 
-### Training Time
+### Training Time (Per Model)
 
 ~ 40 Hours - A100-SXM4-40GB - 10 Epochs - 54.8 Gb RAM
 
