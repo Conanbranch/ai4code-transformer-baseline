@@ -84,7 +84,7 @@ The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/n
 
 ~ 66 Hours - V100-SXM2-16GB - 10 Epochs - 54.8 Gb RAM
 
-## Reproducing Final Models
+## Reproducing Submission Models
 
 For my final solution I combined 3 different trained models via a weighted ensemble:
 
@@ -100,15 +100,15 @@ Model 3:
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 4e-5 --wd 0.01 --pad_between_code --code_sep_token```
 
-## Reproducing Weighted Ensemble
+### Weighted Ensemble
 
 - To Do
 
-## Extra Data
+### Extra Data
 
 - To Do
 
-## Results - Trained on 90% of Dataset
+### Results - Trained on 90% of Dataset
 
 | Model | Val | Public | Private |
 | --- | --- | --- | --- |
@@ -119,6 +119,6 @@ Model 3:
 
 Weights for the weighted ensemble were 1.0, 0.6, and 0.6 corresponding to model 1, 2, and 3.
 
-## Trained Models
+### Trained Models
 
 - To Do
