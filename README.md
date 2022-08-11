@@ -100,6 +100,10 @@ Model 3:
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 4e-5 --wd 0.01 --pad_between_code --code_sep_token```
 
+## Extra Data
+
+- To Do
+
 ## Results - Trained on 90% of Dataset
 
 | Model | Val | Public | Private |
@@ -110,6 +114,6 @@ Model 3:
 | Average Ensemble | .8713 | .8641 |  |
 | Weighted Ensemble | .8715 | .8643 |  |
 
-## To Do
+## Trained Models
 
-- Add models and data
+- To Do
