@@ -11,15 +11,15 @@ Code cells are sampled from the notebook to provide context for the markdown. Th
 
 ### Important Additions
 
-•	multi-GPU support
-•	variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells is sampled)
-•	ranking preserved between training, validation and test sets for code cells and forces values to between 0 and 1
-•	sigmoid top for the model
-•	layer re-initialization for top layer of transformer
-•	no limit on the size of the code cell being sampled
-•	preprocessing that removes newlines
-•	removed "fts" from MarkdownModel
-•	some options to play around with code padding and separators
+-	multi-GPU support
+-	variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells is sampled)
+-	ranking preserved between training, validation and test sets for code cells and forces values to between 0 and 1
+-	sigmoid top for the model
+-	layer re-initialization for top layer of transformer
+-	no limit on the size of the code cell being sampled
+-	preprocessing that removes newlines
+-	removed "fts" from MarkdownModel
+-	some options to play around with code padding and separators
 
 This is not an extensive list of all modifications
 
