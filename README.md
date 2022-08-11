@@ -100,9 +100,15 @@ Model 3:
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 4e-5 --wd 0.01 --pad_between_code --code_sep_token```
 
-## Results - 90% Dataset Eval
+## Results - Trained on 90% of Dataset
 
-Add
+| Model | Val | Public | Private |
+| --- | --- | --- | --- |
+| 1 | .8676 | .8610  |  |
+| 2 | .8650 | .8575 |  |  
+| 3 | .8641 | .8567 |  |
+| Average Ensemble | .8713 | .8641 |  |
+| Weighted Ensemble | .8715 | .8643 |  |
 
 ## To Do
 
