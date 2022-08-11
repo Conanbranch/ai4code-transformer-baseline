@@ -80,9 +80,9 @@ The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/n
 
 ### Training Time
 
-~ 40 Hours - Tesla A100-SXM4-40GB - 10 Epochs - 54.8 Gb RAM
+~ 40 Hours - A100-SXM4-40GB - 10 Epochs - 54.8 Gb RAM
 
-~ 66 Hours - Tesla V100-SXM2-16GB - 10 Epochs - 54.8 Gb RAM
+~ 66 Hours - V100-SXM2-16GB - 10 Epochs - 54.8 Gb RAM
 
 ## Reproducing Final Models
 
