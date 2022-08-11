@@ -11,7 +11,7 @@ Code cells are sampled from the notebook to provide context for the markdown. Th
 
 ### Important Additions
 
-- variable length code for the code samples (i.e. if there was only 7 code cells to sample than more code from those cells is sampled)
+- variable length code for the code samples (i.e. if there was only 7 code cells to sample then more code from those cells is sampled)
 - ranking perserved between training, validation and test sets for code cells and forces values to between 0 and 1
 - sigmoid top for the model
 - layer re-itialization for top layer of transfomer
