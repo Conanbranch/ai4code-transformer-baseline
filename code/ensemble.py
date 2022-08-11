@@ -16,7 +16,6 @@ from itertools import product
 
 parser = argparse.ArgumentParser(description='process arguments')
 parser.add_argument('--model_ckp_path', type=str, default="./output", help='path for model and model checkpoints')
-parser.add_argument('--model_ckp', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model_ckp_1', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model_ckp_2', type=str, default="model.pt", help='model checkpoint filename')
 parser.add_argument('--model_ckp_3', type=str, default="model.pt", help='model checkpoint filename')
@@ -51,7 +50,6 @@ if not os.path.exists("./output"):
       
 data_dir = Path('..//input/')
 
-#val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).dropna().reset_index(drop=True)
 val_df_mark = pd.read_csv(args.val_mark_path).drop("parent_id", axis=1).reset_index(drop=True)
 val_fts = json.load(open(args.val_features_path))
 val_df = pd.read_csv(args.val_path)
