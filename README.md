@@ -27,6 +27,8 @@ To prepare the markdown and code cells for training run:
 
 ```$ python preprocess.py```
 
+This will generate a 90/10 split for training/dev
+
 To reduce the size of the data set used for training and validation:
 
 ```$ python preprocess.py --sample_data 0.2```
