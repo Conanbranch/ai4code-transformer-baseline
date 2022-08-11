@@ -115,7 +115,7 @@ Model 3:
 | Model 1 | .8676 | .8610  | NA |
 | Model 2 | .8650 | .8575 | NA |  
 | Model 3 | .8641 | .8567 | NA |
-| Weighted Ensemble | .8715 | .8643 |  |
+| Weighted Ensemble | .8715 | .8643 | TBD |
 
 Weights for the weighted ensemble were 1.0, 0.6, and 0.6 corresponding to model 1, 2, and 3.
 
