@@ -56,6 +56,13 @@ class MarkdownDataset(Dataset):
             truncation=True
         )
         
+        n_md = self.fts[row.id]["total_md"]
+        n_code = self.fts[row.id]["total_code"]
+        if n_md + n_code == 0:
+            fts = torch.FloatTensor([0])
+        else:
+            fts = torch.FloatTensor([n_md / (n_md + n_code)])
+        
         ids = inputs['input_ids']
         for x in code_inputs['input_ids']:
             if self.code_sep_token == True:
@@ -84,7 +91,7 @@ class MarkdownDataset(Dataset):
 
         assert len(ids) == self.total_max_len
 
-        return ids, mask, torch.FloatTensor([row.pct_rank])
+        return ids, mask, fts, torch.FloatTensor([row.pct_rank])
 
     def __len__(self):
         return self.df.shape[0]
