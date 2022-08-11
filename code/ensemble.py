@@ -159,4 +159,4 @@ for weights in tqdm(product(w, repeat=num_models), total=total_len):
     if score > best_score:
         best_score, best_weights = score, weights
         #print('>%s %.6f' % (best_weights, best_score))
- print('>%s %.6f' % (best_weights, best_score))
+print('>%s %.6f' % (best_weights, best_score))
