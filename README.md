@@ -110,10 +110,6 @@ Weighted Ensemble:
 
 - To Do
 
-## Extra Data
-
-- To Do
-
 ## Results - Trained on 90% of Dataset
 
 | Model | Val | Public | Private |
@@ -124,11 +120,3 @@ Weighted Ensemble:
 | Weighted Ensemble | .8715 | .8643 | TBD |
 
 Weights for the weighted ensemble were 1.0, 0.6, and 0.6 corresponding to model 1, 2, and 3.
-
-### Trained Models
-
-- To Do
-
-### Example Notebooks
-
-- To Do
