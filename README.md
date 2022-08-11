@@ -83,7 +83,9 @@ The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/n
 
 ~ 66 Hours - Tesla V100-SXM2-16GB - 10 Epochs - 54.8 Gb RAM
 
-## Parameters for Final Models
+## Reproducing Final Models
+
+For my final solution I combined 3 different trained models via an average ensemble:
 
 Model 1:
 
