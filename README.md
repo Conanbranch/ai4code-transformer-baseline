@@ -90,13 +90,19 @@ For my final solution I combined 3 different trained models via a weighted ensem
 
 Model 1:
 
+```$ python preprocess.py --num_features 40```
+
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 3e-5 --wd 0.1 --vbl_code --pad_between_code --code_sep_token```
 
 Model 2:
 
+```$ python preprocess.py --num_features 40```
+
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 3e-5 --wd 0.01 --pad_between_code --code_sep_token```
 
 Model 3:
+
+```$ python preprocess.py --num_features 40```
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 4e-5 --wd 0.01 --pad_between_code --code_sep_token```
 
