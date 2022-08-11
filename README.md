@@ -85,9 +85,9 @@ The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/n
 
 ## Parameters for Final Models
 
-```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 3e-5 --wd 0.1 --vbl_code --pad_between_code --code_sep_token``
+```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 3e-5 --wd 0.1 --vbl_code --pad_between_code --code_sep_token```
 
-```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 3e-5 --wd 0.1 --pad_between_code --code_sep_token``
+```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 12 --re_init --reinit_n_layers 1 --lr 3e-5 --wd 0.1 --pad_between_code --code_sep_token```
 
 ## Results - 90% Dataset Eval
 
