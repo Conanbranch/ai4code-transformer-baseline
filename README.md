@@ -84,7 +84,7 @@ The default is ```code_max_length = int((self.total_max_len - self.md_max_len)/n
 
 ~ 66 Hours - V100-SXM2-16GB - 10 Epochs - 54.8 Gb RAM
 
-## Reproducing Submission Models
+## Reproducing Submitted Models
 
 For my final solution I combined 3 different trained models via a weighted ensemble:
 
