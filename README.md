@@ -1,9 +1,9 @@
 # ai4code-transformer-baseline
 
-My solution for the [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition.
+My solution for the [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition. This solution placed 37th on the public leaderboard.
 
 ## Overview
-Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with several modifications and addiitons to the model and preprocessing. This solution uses a pretrained [codeBERT](https://github.com/microsoft/CodeBERT) transformer, fine tuned to predict the ranks of the markdown cells in each notebook, utilizing code cells sampled from the notebook of the associated markdown as additional context for the markdown cells. This solution placed 37th on the public leaderboard.
+Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with several modifications and addiitons to the model and preprocessing. This solution uses a pretrained [codeBERT](https://github.com/microsoft/CodeBERT) transformer, fine tuned to predict the ranks of the markdown cells in each notebook, utilizing code cells sampled from the notebook of the associated markdown as additional context for the markdown cells. 
 
 The code cells are sampled uniformaly, perserving the order. The input is in the following form: 
 
