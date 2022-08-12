@@ -14,7 +14,7 @@ The code cells are sampled uniformaly, perserving the order. The input takes the
 -	variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells are sampled)
 -	ranking is preserved between training, validation and test sets for code cells
 -	sigmoid top for the model
--	layer re-initialization for top layer of transformer
+-	layer re-initialization for top layer of the transformer encoder
 -	no limit on the size of the code cell being sampled
 -	preprocessing that removes newlines
 -	removed "fts" from MarkdownModel
