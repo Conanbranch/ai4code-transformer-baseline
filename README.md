@@ -72,6 +72,8 @@ To save model (with specific file name):
 
 Output will be in the ```./data``` folder:
 
+- Add output structure
+
 ### Variable Length Code
 
 To use variable length code:
