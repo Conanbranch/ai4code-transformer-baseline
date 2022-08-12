@@ -20,6 +20,7 @@ Code cells are sampled from the notebook to provide context for the markdown. Th
 -	preprocessing that removes newlines
 -	removed "fts" from MarkdownModel
 -	some options to play around with code padding and separators
+-	uses [codeBERT](https://github.com/microsoft/CodeBERT)
 
 This is not an extensive list of all modifications and additions
 
@@ -50,9 +51,7 @@ ai4code-transformer-baseline
 │   val.csv
 ```
 
-## Train
-
-This solution utilizes [codeBERT](https://github.com/microsoft/CodeBERT) as as a pretrained transformer. 
+## Train 
 
 To train the model: 
 
