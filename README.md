@@ -9,7 +9,7 @@ The code cells are sampled uniformaly, perserving the order. The input is in the
 
 ```<CLS> markdown <SEP> code_1 <SEP> code_2 <SEP> ... code_n <SEP>```
 
-### Important Additions
+### Important Features
 
 -	multi-GPU support
 -	variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells is sampled)
