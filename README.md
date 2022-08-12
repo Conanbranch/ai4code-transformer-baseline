@@ -21,7 +21,7 @@ The code cells are sampled uniformaly, perserving the order. The input is in the
 -	removed "fts" from MarkdownModel
 -	some options to play around with code padding and separators
 
-This is not an extensive list of all modifications and additions
+This is not an extensive list of all modifications and additions.
 
 ## Preprocess
 To prepare the markdown and code cells for training run:
