@@ -11,7 +11,7 @@ The code cells are sampled uniformaly, perserving the order. The input takes the
 
 ### Key Additions and Modifications
 
--	variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells is sampled)
+-	variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells are sampled)
 -	ranking preserved between training, validation and test sets for code cells and forces values to between 0 and 1
 -	sigmoid top for the model
 -	layer re-initialization for top layer of transformer
