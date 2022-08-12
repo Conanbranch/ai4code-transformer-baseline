@@ -42,7 +42,7 @@ To change the number of feature samples:
 
 ```$ python preprocess.py --num_samples 40```
 
-The output is structured as follows:
+The above command will produce the following output:
 
 ```
 ai4code-transformer-baseline/data
@@ -72,7 +72,7 @@ To save model (with specific file name):
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 2 --model "model.bin"```
 
-The output is structured as follows:
+The above command will produce the following output:
 
 ```
 ai4code-transformer-baseline/output
