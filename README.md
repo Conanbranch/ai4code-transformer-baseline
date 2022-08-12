@@ -3,7 +3,7 @@
 My solution for the [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition.
 
 ## Overview
-Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with several modifications and addiitons to the model and preprocessing. 
+Based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with several modifications and addiitons to the model and preprocessing. This model uses a pretrained [codeBERT](https://github.com/microsoft/CodeBERT) transformer.
 
 Code cells are sampled from the notebook to provide context for the markdown. The code cells are sampled uniformaly, perserving the order. Input will look like this: 
 
@@ -20,7 +20,7 @@ Code cells are sampled from the notebook to provide context for the markdown. Th
 -	preprocessing that removes newlines
 -	removed "fts" from MarkdownModel
 -	some options to play around with code padding and separators
--	fine tunes the pretrained model [codeBERT](https://github.com/microsoft/CodeBERT)
+-	
 
 This is not an extensive list of all modifications and additions
 
