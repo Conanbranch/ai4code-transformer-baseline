@@ -1,6 +1,6 @@
 # ai4code-transformer-baseline
 
-My solution for the [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition. 
+The following repository is my solution for the [Google AI4Code](https://www.kaggle.com/competitions/AI4Code) competition. 
 
 I placed 37th on the public leaderboard. 
 
