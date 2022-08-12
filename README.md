@@ -72,7 +72,16 @@ To save model (with specific file name):
 
 Output will be in the ```./data``` folder:
 
-- Add output structure
+```
+ai4code-transformer-baseline
+│   model.bin
+│   model.pt 
+|   epoch_1_model.bin
+│   epoch_2_model.bin
+│   epoch_3_model.bin
+│   ...
+|   epoch_n_model.bin
+```
 
 ### Variable Length Code
 
