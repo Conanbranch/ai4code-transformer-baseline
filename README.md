@@ -11,17 +11,17 @@ The code cells are sampled uniformaly, perserving the order. The input takes the
 
 ### Key Additions and Modifications
 
--	variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells are sampled)
--	ranking is preserved between training, validation and test sets for code cells
--	sigmoid top for the model
--	layer re-initialization for top layer of the transformer encoder
--	no limits on the size of the code cell being sampled (aside from the max length available for each code cell)
--	preprocessing to remove newlines
--	removed "fts" from MarkdownModel
--	some options to play around with code padding and separators
--	multi-GPU support
+-	Variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells are sampled)
+-	Ranking is preserved between training, validation and test sets for code cells
+-	Sigmoid top for the model
+-	Layer re-initialization for top layer of the transformer encoder
+-	No limits on the size of the code cell being sampled (aside from the max length available for each code cell)
+-	Preprocessing to remove newlines
+-	Removed "fts" from MarkdownModel
+-	Some options to play around with code padding and separators
+-	Multi-GPU support
 
-This is not an extensive list of all modifications and additions.
+This is not an exhaustive list of all modifications and additions.
 
 ## Preprocess
 To prepare the markdown and code cells for training run:
