@@ -20,7 +20,7 @@ Code cells are sampled from the notebook to provide context for the markdown. Th
 -	preprocessing that removes newlines
 -	removed "fts" from MarkdownModel
 -	some options to play around with code padding and separators
--	Fine tunes the pretrained model [codeBERT](https://github.com/microsoft/CodeBERT)
+-	fine tunes the pretrained model [codeBERT](https://github.com/microsoft/CodeBERT)
 
 This is not an extensive list of all modifications and additions
 
