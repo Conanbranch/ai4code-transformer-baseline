@@ -72,13 +72,13 @@ To save model (with specific file name):
 
 ```
 ai4code-transformer-baseline/output
-│   model.bin
-│   model.pt 
 |   epoch_1_model.bin
 │   epoch_2_model.bin
 │   epoch_3_model.bin
 │   ...
 |   epoch_n_model.bin
+|   model.bin
+|   model.pt
 ```
 
 ### Variable Length Code
