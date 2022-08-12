@@ -52,7 +52,9 @@ ai4code-transformer-baseline
 
 ## Train
 
-This solution fine tunes the code-bert pre-trained transformer. To fine tune the transfomer: 
+This solution utilizes [codeBERT](https://github.com/microsoft/CodeBERT) as as a pretrained transformer. 
+
+To train the model: 
 
 ```$ python train.py --md_max_len 64 --total_max_len 512 --batch_size 16 --accumulation_steps 4 --epochs 10 --n_workers 2```
 
