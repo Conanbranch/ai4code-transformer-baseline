@@ -6,8 +6,13 @@ from transformers import AutoModel, AutoTokenizer, AutoConfig, AdamW, get_linear
 class MarkdownModel(nn.Module):
     def __init__(self, model_path, re_init = False, reinit_n_layers = 0):
         super(MarkdownModel, self).__init__()
-        self.model = AutoModel.from_pretrained(model_path)
+        #self.model = AutoModel.from_pretrained(model_path)
         self.config = AutoConfig.from_pretrained(model_path)
+        # self.config.hidden_dropout = 0.
+        # self.config.hidden_dropout_prob = 0.
+        # self.config.attention_dropout = 0.
+        # self.config.attention_probs_dropout_prob = 0.
+        self.model = AutoModel.from_pretrained(model_path, config=self.config)
         self.top = nn.Linear(self.config.hidden_size, 1)
         #self.top = nn.Linear(768, 1)
         #if reinit_n_layers != 0: 
