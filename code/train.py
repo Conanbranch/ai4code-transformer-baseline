@@ -190,6 +190,7 @@ def train(model, train_loader, val_loader, epochs):
             with torch.cuda.amp.autocast():
                 pred = model(*inputs)
                 loss = criterion(pred, target)
+                loss = loss / args.accumulation_steps
             scaler.scale(loss).backward()
             if idx % args.accumulation_steps == 0 or idx == len(tbar) - 1:
                 scaler.step(optimizer)
