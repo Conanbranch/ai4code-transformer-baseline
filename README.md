@@ -5,7 +5,7 @@ The following repository is my solution for the [Google AI4Code](https://www.kag
 I placed 37th on the public leaderboard. 
 
 ## Overview
-This solution is based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with several modifications to the model and data preprocessing. It uses a pretrained [codeBERT](https://github.com/microsoft/CodeBERT) transformer, fine tuned to predict the ranks of markdown cells in each notebook, utilizing code cells sampled from the notebook of the associated markdown cell as additional context. 
+This solution is based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with numerous modifications to the model and data preprocessing. It uses a pretrained [codeBERT](https://github.com/microsoft/CodeBERT) transformer, fine tuned to predict the ranks of markdown cells in each notebook, utilizing code cells sampled from the notebook of the associated markdown cell as additional context. 
 
 The code cells are sampled uniformaly, perserving the order. The input takes the following form: 
 
@@ -19,7 +19,6 @@ The code cells are sampled uniformaly, perserving the order. The input takes the
 -	Layer re-initialization for top layer of the transformer encoder
 -	No limits on the size of the code cell being sampled (aside from the max length available for each code cell)
 -	Preprocessing to remove newlines
--	Removed "fts" from MarkdownModel
 -	Some options to play around with code padding and separators
 -	Multi-GPU support
 
