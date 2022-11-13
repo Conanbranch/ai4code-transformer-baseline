@@ -18,7 +18,7 @@ The input takes the following form:
 -	Variable length code for the code samples (i.e. if there were only 7 code cells to sample then more code from those cells are sampled)
 -	Ranking is preserved between training, validation and test sets for code cells
 -	Sigmoid top for the model
--	Layer re-initialization for top layer of the transformer encoder
+-	Layer re-initialization for top layer of the transformer
 -	No limits on the size of the code cell being sampled (aside from the max length available for each code cell)
 -	Preprocessing to remove newlines
 -	Some options to play around with code padding and separators
