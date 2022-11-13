@@ -7,7 +7,7 @@ I won silver and placed 37/1135 in the competition (top 4%).
 ## Overview
 This solution is based on Amet Erdem's [baseline](https://www.kaggle.com/code/aerdem4/ai4code-pytorch-distilbert-baseline) and Khoi Nguyen's [baseline](https://www.kaggle.com/code/suicaokhoailang/stronger-baseline-with-code-cells) with numerous modifications to the model and data preprocessing. It uses a pretrained [codeBERT](https://github.com/microsoft/CodeBERT) transformer, fine tuned to predict the ranks of markdown cells in each notebook, utilizing code cells sampled from the notebook of the associated markdown cell as additional context. 
 
-The code cells are sampled so that they are evenly spaced and the order of the code cells are preserved. 
+The code cells are sampled so they are evenly spaced (aside from the second to last and last cell) and the order of the code cells are preserved, while the first and last code cell are always included.
 
 The input takes the following form: 
 
